@@ -12,5 +12,4 @@
 </head>
 <body>
 
-</body>
-</html>
+<%@ include file="/WEB-INF/views/module/footer.jsp" %> 
