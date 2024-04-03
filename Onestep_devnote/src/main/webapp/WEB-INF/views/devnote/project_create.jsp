@@ -57,9 +57,9 @@
 		<div class="dt-pjc-create">
 			<header> 새 프로젝트 만들기</header>
 			<hr style="box-shadow: 1px 1px 1px 1px rgba(32, 0, 31, 0.04)"/>
-			<!-- 입력란 -->
 			<div class="container-fluid" style="margin-top:50px;">
 				<section >
+					<!-- 입력란 -->
 					<form role="form">
 						<div class="form-group">
 							<label for="pj-title"> 프로젝트 명 </label>
@@ -73,7 +73,6 @@
 					<!-- 생성버튼 -->
 					<div style="text-align:center;">
 						<button type="button" class="btn btn-primary dt-pjc-btn" onclick="">등 록</button>
-						&nbsp;&nbsp;&nbsp;&nbsp;
 					</div>
 				</section>
 			</div>
