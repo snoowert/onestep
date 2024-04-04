@@ -21,14 +21,14 @@
 		<div class="col-md-10 ">
 			<form action="" role="form">
 				<div class="input-group">
-					<select style="width:120px">
-						<option>제목</option>
-						<option>내용</option>
-						<option>제목+내용</option>
+					<select style="width:120px"  name="searchType">
+						<option value="t" ${pageMaker.searchType eq 't' ? 'selected':'' }>제목</option>
+						<option value="c" ${pageMaker.searchType eq 'c' ? 'selected':'' }>내용</option>
+						<option value="tc" ${pageMaker.searchType eq 'tc' ? 'selected':'' }>제목+내용</option>
 					</select>
-					<input type="search" class="form-control form-control-lg" placeholder="검색어">
+					<input type="search" class="form-control form-control-lg" placeholder="검색어" name="keyword">
 					<div class="input-group-append">
-						<button type="submit" class="btn btn-lg btn-default">
+						<button type="submit" class="btn btn-lg btn-default" onclick="search_list(1);">
 						<i class="fa fa-search"></i>
 						</button>
 					</div>
@@ -52,12 +52,14 @@
 					<c:if test="${empty pdsList}">
 						<td colspan="5">자료가 존재하지 않습니다.</td>
 					</c:if>
-					<c:forEach var="file" items="${pds}">
-						<td>${file.id}</td>
-						<td><a href="">${file.title }</a></td>
-						<td>${file.username }</td>
-						<td>${file.regdate }</td>
-						<td>${file.viewpoint }</td>
+					<c:forEach var="pds" items="${pdsList}">
+					<tr>
+						<td>${pds.pdsid}</td>
+						<td><a href="">${pds.pdstitle }</a></td>
+						<td>${pds.memberid }</td>
+						<td>${pds.pdsregdate }</td>
+						<td>${pds.pdsviewpoint }</td>
+					<tr>
 					</c:forEach>
 				</tbody>
 			</table>
@@ -96,10 +98,10 @@
 				</a>
 			</li>
 		</ul>
-		<input type="button"style="WIDTH: 70pt; HEIGHT: 30pt" class="btn btn-primary linkBtn my-2" value="자료 등록" onclick="location.href=''"/>
+		<input type="button"style="WIDTH: 70pt; HEIGHT: 30pt" class="btn btn-primary linkBtn my-2" value="자료 등록" onclick="location='registForm'"/>
 		
 	</nav>  
-	
 </section>
 </body>
+<%@ include file="/WEB-INF/views/modules/pagination.jsp" %>
 </html>
