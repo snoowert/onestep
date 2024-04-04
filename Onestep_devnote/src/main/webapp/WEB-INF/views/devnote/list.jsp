@@ -47,16 +47,14 @@
 				<div style="margin: 40px; margin-left: 1px; margin-right: 100px;">
 					<!-- 프로젝트 목록-->
 					<div class="card"
-						style="width: 230px; float: left; margin-right: 50px;">
-						<img src="" class="card-img-top" alt="썸네일" />
+						style="width: 200px; height:140px; float: left; margin-right: 50px;">
 						<div class="card-body">
 							<h5 class="card-title" style="font-size: 20px;">프로젝트 제목</h5>
 							<p class="card-text">프로젝트 설명</p>
 						</div>
 					</div>
 					<div class="card"
-						style="width: 230px; float: left; margin-right: 50px;">
-						<img src="" class="card-img-top" alt="썸네일" />
+						style="width: 200px; height:140px; float: left; margin-right: 50px;">
 						<div class="card-body">
 							<h5 class="card-title" style="font-size: 20px;">프로젝트 제목</h5>
 							<p class="card-text">프로젝트 설명</p>
