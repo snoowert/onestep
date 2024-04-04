@@ -7,8 +7,8 @@
 	<typeAliases>
 		<typeAlias type="java.lang.Integer" alias="int"/>
 		<typeAlias type="java.lang.String" alias="str"/>
-		<typeAlias type="com.spring.mappers.Pds" alias="pds"/>
-		<typeAlias type="com.spring.mappers.PdsFileVO" alias="pdsfile"/>
+		<typeAlias type="com.pds.vo.PdsVO" alias="pds"/>
+		<typeAlias type="com.pds.vo.PdsFileVO" alias="pdsfile"/>
 	</typeAliases>
 	
 </configuration>

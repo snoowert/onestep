@@ -19,11 +19,11 @@ public class PdsDAOImpl implements PdsDAO{
 	@Override
 	public List<PdsVO> selectSearchPdsList(PageMaker pageMaker) throws SQLException {
 		// TODO Auto-generated method stub
-		int offset = (pageMaker.getPage()-1)*pageMaker.getPerPageNum();
+		int offset = pageMaker.getStartRow();
 		int limmit = pageMaker.getPerPageNum();
 		
 		RowBounds rows = new RowBounds(offset,limmit);
-		return sqlsession.selectList("Pds-Mapper.selectSearchPdsList" ,rows);
+		return sqlsession.selectList("Pds-Mapper.selectSearchPdsList", pageMaker ,rows);
 	}
 
 	@Override
@@ -41,25 +41,25 @@ public class PdsDAOImpl implements PdsDAO{
 	@Override
 	public void insertPds(PdsVO pds) throws SQLException {
 		// TODO Auto-generated method stub
-		sqlsession.insert(statement)
+		sqlsession.insert("Pds-Mapper.insertPds", pds);
 	}
 
 	@Override
 	public void updatePds(PdsVO pds) throws SQLException {
 		// TODO Auto-generated method stub
-		
+		sqlsession.update("Pds-Mapper.updatePds",pds);
 	}
 
 	@Override
 	public void increaseViewPoint(int pdsid) throws SQLException {
 		// TODO Auto-generated method stub
-		
+		sqlsession.update("Pds-Mapper.increasePdsViewPoint",pdsid);
 	}
 
 	@Override
 	public void deletePds(int pdsid) throws SQLException {
 		// TODO Auto-generated method stub
-		
+		sqlsession.delete("Pds-Mapper.deletePds",pdsid);
 	}
 	
 }

@@ -3,12 +3,12 @@ package com.pds.vo;
 import java.util.Date;
 
 public class PdsVO {
-	public int pdsid;
-	public int memberid;
-	public String pdstitle;
-	public String pdscontent;
-	public Date pdsregdate;
-	public int pdsviewpoint;
+	private int pdsid;
+	private int memberid;
+	private String pdstitle;
+	private String pdscontent;
+	private Date pdsregdate;
+	private int pdsviewpoint;
 	public int getPdsid() {
 		return pdsid;
 	}
