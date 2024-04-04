@@ -33,7 +33,8 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "devnote/project_create";
+		return "devnote/main";
+	
 	}
 	
 }
