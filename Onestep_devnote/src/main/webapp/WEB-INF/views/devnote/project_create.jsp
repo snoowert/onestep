@@ -58,7 +58,7 @@
 			<header> 새 프로젝트 만들기</header>
 			<hr style="box-shadow: 1px 1px 1px 1px rgba(32, 0, 31, 0.04)"/>
 			<div class="container-fluid" style="margin-top:50px;">
-				<section >
+				<section>
 					<!-- 입력란 -->
 					<form role="form">
 						<div class="form-group">
