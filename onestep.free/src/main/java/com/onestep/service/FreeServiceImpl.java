@@ -56,7 +56,6 @@ public class FreeServiceImpl implements FreeService{
 	@Override
 	public void modify(FreeVO free) throws SQLException {
 		FreeDAO.updateFree(free);
-		int freeid = free.getFreeid();
 		
 	}
 
