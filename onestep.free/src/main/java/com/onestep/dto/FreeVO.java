@@ -1,6 +1,7 @@
 package com.onestep.dto;
 
 import java.util.Date;
+import java.util.List;
 
 public class FreeVO {
 	
@@ -13,6 +14,7 @@ public class FreeVO {
 	private String freeimage;
 	private Date freeupdatedate;
 	
+	List<FreeCommentVO> commentlist;
 	
 	public int getFreeid() {
 		return freeid;
@@ -61,6 +63,12 @@ public class FreeVO {
 	}
 	public void setFreeupdatedate(Date freeupdatedate) {
 		this.freeupdatedate = freeupdatedate;
+	}
+	public List<FreeCommentVO> getCommentlist() {
+		return commentlist;
+	}
+	public void setCommentlist(List<FreeCommentVO> commentlist) {
+		this.commentlist = commentlist;
 	}
 	
 

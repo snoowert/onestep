@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 <script>
 	alert("수정되었습니다.");
-	location.href="detail?n_number=${param.n_number}";
+	location.href="detail?freeid=${param.freeid}";
 </script>

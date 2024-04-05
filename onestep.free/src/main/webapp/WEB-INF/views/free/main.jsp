@@ -25,7 +25,6 @@
 					<div class="input-group row">
 	
 						<select class="form-control col-md-3" name="searchType" id="searchType">
-							<option value="tcw" ${pageMaker.searchType eq 'tcw' ? 'selected':'' }>전 체</option>
 							<option value="t" ${pageMaker.searchType eq 't' ? 'selected':'' }>제 목</option>
 							<option value="w" ${pageMaker.searchType eq 'w' ? 'selected':'' }>작성자</option>																		
 						</select>	
@@ -75,7 +74,7 @@
 					<%@ include file="/WEB-INF/views/module/pagination.jsp" %>
 				</div>
 			</div>
-			<button type="button" class="btn btn-primary btn float-right" id="registBtn" onclick="OpenWindow('registForm.do','글등록',800,700);">글쓰기</button>
+			<button type="button" class="btn btn-primary btn float-right" id="registBtn" onclick="location='registForm'">글쓰기</button>
 		
 	</section>
 			
