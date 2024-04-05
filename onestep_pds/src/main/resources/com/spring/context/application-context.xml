@@ -5,9 +5,6 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<!-- savePath -->
-	<bean id="thumnailPath" class="java.lang.String">
-		<constructor-arg value="${savePath.board.thumnail}"></constructor-arg>
-	</bean>
 	<bean id="fileUploadPath" class="java.lang.String">
 		<constructor-arg value="${savePath.pds}"></constructor-arg>
 	</bean>
@@ -17,8 +14,16 @@
 	<bean id="errorLogPath" class="java.lang.String">
 		<constructor-arg value="${savePath.error.log}"></constructor-arg>
 	</bean>
+	<bean id="imageUploadPath" class="java.lang.String">
+		<constructor-arg value="${savePath.image}"></constructor-arg>
+	</bean>
 	<!-- repo -->
 	<bean id="PdsDAO" class="com.pds.dao.PdsDAOImpl"
 		p:sqlSession-ref="sqlSession"/>
+	<bean id="PdsFileDAO" class="com.pds.dao.PdsFileDAOImpl"
+		p:sqlSession-ref="sqlSession" />
 	<!-- service -->
+	<bean id="PdsService" class="com.pds.service.PdsServiceImpl"
+		p:pdsDAO-ref="PdsDAO"
+		p:pdsFileDAO-ref="PdsFileDAO"/>
 </beans>

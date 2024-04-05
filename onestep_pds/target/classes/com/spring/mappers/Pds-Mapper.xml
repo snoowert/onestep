@@ -5,16 +5,16 @@
 <mapper namespace="Pds-Mapper">
 	<sql id="search">
 		<if test="searchType == 't'.toString()">
-			and title like '%'||#{keyword}||'%'			
+			where pdstitle like '%'||#{keyword}||'%'			
 		</if>
 		<if test="searchType == 'c'.toString()">
-			and content like '%'||#{keyword}||'%'			
+			where pdscontent like '%'||#{keyword}||'%'			
 		</if>
 		<if test="searchType == 'tc'.toString()">
-			and (
-			title like '%'||#{keyword}||'%'
+			where (
+			pdstitle like '%'||#{keyword}||'%'
 			or
-			content like '%'||#{keyword}||'%'						
+			pdscontent like '%'||#{keyword}||'%'						
 			)			
 		</if>
 	</sql>
@@ -23,8 +23,7 @@
 		select
 		*
 		from
-		pds
-		where pdsid is not null  			  	
+		pds	  	
 		<include refid="search" />
 		order by pdsregdate desc
 	</select>
@@ -33,8 +32,7 @@
 		select
 		count(*)
 		from
-		pds
-		where pdsid is not null  			  	
+		pds		  	
 		<include refid="search" />
 	</select>
 	

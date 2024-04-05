@@ -38,7 +38,8 @@
 	       />
 	       
 	 <bean id="transactionManager"
-		   class="datasource"
+		   class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		   p:dataSource-ref="dataSourceSpied"
 		   />		 
 </beans>
 

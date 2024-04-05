@@ -19,7 +19,7 @@
 	<insert id="insertFreeComment" parameterType="comment">
 		insert into
 		freecomment(freeid,commentid,memberid,commentcontent) 
-		values(#{freeid}, #{commentid}, #{memberid}, #{commentcontent} )
+		values(#{freeid}, FREECOMMENTID_SEQ.NEXTVAL, #{memberid}, #{commentcontent} )
 	</insert>
 
 	<update id="updateFreeComment" parameterType="comment">
