@@ -36,7 +36,7 @@
 	</select>
 	
 	<select id="selectFreeSeqNext" resultType="int">
-		select free_seq.nextval as Freeid from dual
+		select freeid_seq.nextval as freeid from dual
 	</select>
 	
 	<insert id="insertFree" parameterType="free">

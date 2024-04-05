@@ -7,10 +7,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.onestep.command.CommentRegistCommand;
@@ -28,7 +33,7 @@ public class Freecontroller {
 	private FreeService freeService;
 
 	@GetMapping("/main")
-	public ModelAndView list(PageMaker pageMaker, ModelAndView mnv) throws Exception {
+	public ModelAndView list(@ModelAttribute PageMaker pageMaker, ModelAndView mnv) throws Exception {
 		String url="/free/main";
 		
 		List<FreeVO> freeList = freeService.searchList(pageMaker);
@@ -121,5 +126,14 @@ public class Freecontroller {
 		mnv.addObject("freeid",freeid);
 		mnv.setViewName(url);
 		return mnv;
+	}
+	@PostMapping("/commentremove")
+	public ModelAndView Commentremove(int commentid, ModelAndView mnv) throws Exception {
+	    String url = "/free/removeComment_success";
+	    ModelAndView comment = new ModelAndView();
+	    freeService.removecomment(commentid);
+	    mnv.addObject("commentid", commentid);
+	    mnv.setViewName(url);
+	    return mnv;
 	}
 }

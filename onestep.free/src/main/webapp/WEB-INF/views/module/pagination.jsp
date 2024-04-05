@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         			
 
 <nav aria-label="Navigation">
@@ -11,20 +11,20 @@
 			</a>
 		</li>
 		<li class="page-item">
-			<a class="page-link" href="javascript:searchList_go(${pageMaker.prev ? pageMaker.startPage-1 : command.page});">
-				<i class="fas fa-angle-left"></i>
-			</a>						
+		    <a class="page-link" href="javascript:searchList_go(${pageMaker.prev ? pageMaker.startPage-1 : pageMaker.startPage});">
+		        <i class="fas fa-angle-left"></i>
+		    </a>						
 		</li>
 		<c:forEach var="pageNum" begin="${pageMaker.startPage }" end="${pageMaker.endPage }" >
 		<li class="page-item ${pageMaker.page == pageNum?'active':''}">
-			<a class="page-link" href="javascript:searchList_go(${pageNum});" >
+			<a class="page-link" href="javascript:searchList_go(${pageNum });" >
 				${pageNum }
 			</a>
 		</li>
 		</c:forEach>
 		
 		<li class="page-item">
-			<a class="page-link" href="javascript:searchList_go(${pageMaker.next ? pageMaker.endPage+1 :command.page});">
+			<a class="page-link" href="javascript:searchList_go(${pageMaker.next ? pageMaker.endPage+1 :pageMaker.endPage});">
 				<i class="fas fa-angle-right" ></i>
 			</a>
 		</li>
@@ -50,16 +50,13 @@
 <script>
 	function searchList_go(page,url){
 		//alert("click search btn");
-		if(!url) url="list.do";
+		if(!url) url="main.do";
 		
-		var jobFormn = document.querySelector("form#jobForm");
+		var jobForm = document.querySelector("form#jobForm");
 		jobForm.page.value = page;
-		jobForm.perPageNum.value 
-			= document.querySelector("select[name='perPageNum']").value;
-		jobForm.searchType.value 
-			= document.querySelector("select[name='searchType']").value;
-		jobForm.keyword.value 
-			= document.querySelector("input[name='keyword']").value;
+		jobForm.perPageNum.value = 10;
+		jobForm.searchType.value = document.querySelector("select[name='searchType']").value;
+		jobForm.keyword.value = document.querySelector("input[name='keyword']").value;
 		
 		jobForm.action=url;
 		jobForm.submit();

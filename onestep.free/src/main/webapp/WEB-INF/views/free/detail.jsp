@@ -44,9 +44,27 @@
 	                    </div>
 	            </div>
                 <div class="row"style="border: 1px solid #ccc;">
-                    <h4>댓글</h4>
+                    <label for="comment">댓글</label>
                     <div class="col-md-12">
-                        <!-- 원글에 댓글을 작성할 폼 -->
+                    	
+						<table class="table table-bordered">
+							<c:forEach var="comment" items="${free.commentlist }">
+								<tr>
+									<td class="col-sm-6">${comment.commentcontent }</td>
+									<td class="col-sm-1">${comment.memberid }</td>
+									<td class="col-sm-1"><fmt:formatDate value="${comment.commentregdate }"
+											pattern="yyyy-MM-dd" /></td>
+							<td class="col-sm-1">
+								<button onclick="updateform?commentid=${comment.commentid }">수정</button>
+		                    </td>
+		                    <td class="col-sm-1">
+		                   	 	<button type="button" onclick="deleteComment(${comment.commentid})">삭제</button>					
+							</td>	
+								</tr>
+							</c:forEach>
+						</table>
+
+                       <!-- 원글에 댓글을 작성할 폼 -->
                         <form class="comment-form insert-form" action="commentregist" method="post" style="width: 100%;">
                             <input type="hidden" name="freeid" value="${free.freeid }"/>
                             <input type="hidden" name="memberid" value="${free.memberid }"/>
@@ -59,10 +77,7 @@
                         </form>
                         <br>
                         <br>
-                        <!--<c:if test="${sessionScope eq freecomment.memberid}">-->
-                        	<a href="updateform?num=${freecomment.commentid }">수정</a>
-                        	<a href="javascript:" onclick="deletecomment()">삭제</a>
-                        <!--</c:if>-->
+
                        
                                  
                      </div>
@@ -76,7 +91,7 @@
 <form role="form">
     <input type="hidden" name="freeid" value="${free.freeid }" />
 </form>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 var formObj = document.querySelector("form[role='form']");
 
@@ -88,11 +103,38 @@ function submit_go(url){
     formObj.submit();
 }
 
-function deletecomment(){
-	const isDelete=confirm("댓글을 삭제 하겠습니까?");
-	if(isDelete){
-		location.href="delete?num=${freecomment.commentid}";
-	}
+function deleteComment(commentid) {
+    if (confirm("정말로 삭제하시겠습니까?")) {
+        // 폼을 동적으로 생성합니다.
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "/free/commentremove");
+        form.setAttribute("style", "display: none;"); // 폼을 보이지 않도록 설정합니다.
+
+        // 폼에 댓글 ID를 전송할 hidden input을 추가합니다.
+        var commentIdInput = document.createElement("input");
+        commentIdInput.setAttribute("type", "hidden");
+        commentIdInput.setAttribute("name", "commentid");
+        commentIdInput.setAttribute("value", commentid);
+        form.appendChild(commentIdInput);
+
+        // 폼을 body에 추가합니다.
+        document.body.appendChild(form);
+
+        // 폼을 서버로 전송합니다.
+        form.submit();
+
+        // 댓글이 삭제된 후 이전 페이지로 돌아가도록 설정합니다.
+        window.history.back();
+    }
+}
+
+function registerComment() {
+    var formData = {
+        freeid: "${free.freeid}",
+        memberid: "${free.memberid}",
+        commentcontent: $("textarea[name='commentcontent']").val()
+    }
 }
 </script>
 
