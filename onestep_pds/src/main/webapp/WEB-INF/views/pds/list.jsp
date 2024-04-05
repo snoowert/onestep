@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,8 +44,8 @@
 					<tr>
 						<th class="col-sm-1">번호</th>
 						<th class="col-sm-4">제목</th>
-						<th class="col-sm-4">작성자</th>
-						<th class="col-sm-2">작성일자</th>
+						<th class="col-sm-3">작성자</th>
+						<th class="col-sm-3">작성일자</th>
 						<th class="col-sm-1">조회수</th>
 					</tr>
 				</thead>
@@ -55,9 +56,9 @@
 					<c:forEach var="pds" items="${pdsList}">
 					<tr>
 						<td>${pds.pdsid}</td>
-						<td><a href="">${pds.pdstitle }</a></td>
+						<td><a href="detail?pdsid=${pds.pdsid}&from=list">${pds.pdstitle }'</a></td>
 						<td>${pds.memberid }</td>
-						<td>${pds.pdsregdate }</td>
+						<td><fmt:formatDate pattern="yyyy.MM.dd" value="${pds.pdsregdate}"/></td>
 						<td>${pds.pdsviewpoint }</td>
 					<tr>
 					</c:forEach>
@@ -102,6 +103,6 @@
 		
 	</nav>  
 </section>
-</body>
 <%@ include file="/WEB-INF/views/modules/pagination.jsp" %>
+</body>
 </html>

@@ -22,6 +22,8 @@ public class PdsServiceImpl implements PdsService{
 	public List<PdsVO> searchList(PageMaker pageMaker) throws SQLException {
 		// TODO Auto-generated method stub
 		List<PdsVO> PdsList = pdsDAO.selectSearchPdsList(pageMaker);
+		
+		pageMaker.setTotalCount(pdsDAO.selectSearchPdsListCount(pageMaker));
 		return PdsList;
 	}
 
