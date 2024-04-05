@@ -14,6 +14,9 @@
 	<bean id="errorLogPath" class="java.lang.String">
 		<constructor-arg value="${savePath.error.log}"></constructor-arg>
 	</bean>
+	<bean id="imageUploadPath" class="java.lang.String">
+		<constructor-arg value="${savePath.image}"></constructor-arg>
+	</bean>
 	<!-- repo -->
 	<bean id="PdsDAO" class="com.pds.dao.PdsDAOImpl"
 		p:sqlSession-ref="sqlSession"/>

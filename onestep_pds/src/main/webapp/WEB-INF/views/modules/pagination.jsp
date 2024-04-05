@@ -27,7 +27,7 @@ function search_list(page){
 	form.keyword.value = keyword;
 	
 	console.log(page,perPageNum,searchType,keyword);
-	console.log($(form).serialize());
+	//console.log($(form).serialize());
 	
 	//form.action="";
 	//form.method="";
