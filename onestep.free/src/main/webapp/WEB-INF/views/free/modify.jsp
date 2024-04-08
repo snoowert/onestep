@@ -11,19 +11,19 @@
 				
 					<div class="card-body">
 						<form role="form" method="post" action="modify.do" name="modifyForm" onsubmit="return false;">
-							<input type="hidden" name="freeId" value="${free.freeId }" />
+							<input type="hidden" name="freeid" value="${free.freeid }" />
 							<div class="form-group">
 								<label for="freeTitle">제 목</label> 
-								<input type="text" id="freeTitle" name='freeTitle' class="form-control" value="${free.freeTitle }">
+								<input type="text" id="freetitle" name='freetitle' class="form-control" value="${free.freetitle }">
 							</div>
 							<div class="form-group">
-								<label for="memberId">작성자</label> 
-								<input type="text" id="memverId" readonly	name="memberId" class="form-control"  value="${free.memberId }">
+								<label for="memberid">작성자</label> 
+								<input type="text" id="memberid" readonly	name="memberid" class="form-control"  value="${free.memberid }">
 							</div>
 							<div class="form-group">
-								<label for="content">내 용</label>		
-								<textarea class="form-control" name="content" id="content" rows="20"
-									placeholder="내용을 수정하세요">${free.freeContent }</textarea>						
+								<label for="freecontent">내 용</label>		
+								<textarea class="form-control" name="freecontent" id="freecontent" rows="20"
+									placeholder="내용을 수정하세요">${free.freecontent }</textarea>						
 							</div>
 							<input type="file" class="real-upload" accept="image/*" required multiple>
 						</form>
@@ -43,7 +43,6 @@
 
 <script>
 function modify_submit(){
-	//alert("click modify btn");
 	document.querySelector("form[role='form']").submit();	
 }
 

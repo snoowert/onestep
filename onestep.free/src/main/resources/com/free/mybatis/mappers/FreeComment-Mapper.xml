@@ -7,10 +7,10 @@
 
     <select id="selectFreeCommentList" resultType="comment">
         select * from freecomment
+        where freeid=#{freeid}
         order by Commentid desc
     </select>
 
-	
 	<select id="selectFreeByCommentId" parameterType="int" resultType="comment">
 		select * from freecomment
 		where commentid=#{commentid}

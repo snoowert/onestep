@@ -3,7 +3,7 @@ package com.onestep.command;
 import java.util.Date;
 
 import com.onestep.dto.FreeCommentVO;
-import com.onestep.dto.FreeVO;
+
 
 public class CommentRegistCommand {
 	private int freeid;
