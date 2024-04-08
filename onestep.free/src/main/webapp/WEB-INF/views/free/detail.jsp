@@ -12,79 +12,83 @@
         <div class="col-md-9">
             <div class="card card-outline card-info"></div>
             <div class="card-body">
-                <div class="row" style="border: 1px solid #ccc; padding: 1px; ">
-                    <div class="col-sm-10">
-                        <span class="form-control" id="freetitle" style="border: none;">${free.freetitle }</span>                            
-                    </div>&nbsp;&nbsp;&nbsp;
-                    <div class="row card-tools col-sm-1 justify-content-center">
-                        <button type="button" id="modify" class="btn btn-warning" style="width:100px; height:40px;" onclick="submit_go('modifyForm.do');">수정</button>                       
-                    </div>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                    <div class="row card-tools col-sm-1 justify-content-center">
-                        <button type="button" id="remove" class="btn btn-danger" style="width:100px; height:40px" onclick="submit_go('remove.do');">삭제</button>
+            <div class="row justify-content-end" style="margin-right: 10px;"> <!-- 수정 및 삭제 버튼을 오른쪽으로 정렬 -->
+			    <button type="button" id="modify" style="width:80px; height:40px; margin-right: 10px;background-color: transparent;text-decoration: none;border-color: transparent;" onclick="submit_go('modifyForm.do');">수정</button> <!-- 버튼 텍스트 및 스타일 수정 -->
+			    <button type="button" id="remove" style="width:80px; height:40px; margin-right: 10px;background-color: transparent;text-decoration: none;border-color: transparent;" onclick="submit_go('remove.do');">삭제</button> <!-- 버튼 텍스트 및 스타일 수정 -->
+			</div>
+
+                <div class="row" style="padding: 1px; background-color: aliceblue;">
+                    <div class="col-sm-12" style="border-top: 1px solid;border-bottom: 1px solid;border-color: var(--color-bd-outer);padding: .5rem .75rem;font-size: 1.2rem;">
+                        <span class="font-weight-bold" id="freetitle" style="border: none;font-size: 2rem;">${free.freetitle }</span> <!-- 제목을 진하게 표시 -->
                     </div>
                 </div>
-                <div class="row" style="border: 1px solid #ccc; padding: 1px;">    
-                    <div class="col-sm-10" >
-                        <span class="form-control" id="memberid" style="border: none;">${free.memberid }</span>
-                    </div>        
-                    
-                    <div class="form-group col-sm-1" >
-                        <span class="form-control" id="freeregdate" style="border: none;">
+                <div class="row" style="border-bottom: 1px solid;border-color: var(--color-bd-outer);padding: .5rem .75rem;font-size: 1.2rem;" >
+                    <div class="col-sm-10">
+                        <span id="memberid" style="border: none;font-size: 25px;text-align:center">${free.memberid }</span> <!-- 작성자를 진하게 표시 -->
+                    </div>
+                    <div class="right">
+                        <span class="form-control" id="freeregdate" style="border: none;text-align:center">
                             <fmt:formatDate value="${free.freeregdate }" pattern="yyyy-MM-dd"/>  
                         </span>
                     </div>
-                    <div class="col-sm-1" >
+                    <div class="col-sm-1">
                         <span class="form-control" id="freeviewpoint" style="border: none; text-align:center">${free.freeviewpoint }</span>
                     </div>
-                </div> 
-                	<div class="row" style="border:1px solid #ccc;">     
-	                    <div class="col-sm-12">
-	                        <div id="freecontent" style="border: none; min-height: 800px; max-width: 923px;">${free.freecontent }</div>    
-	                    </div>
-	            </div>
-                <div class="row"style="border: 1px solid #ccc;">
-                    <label for="comment">댓글</label>
-                    <div class="col-md-12">
-                    	
-						<table class="table table-bordered">
-							<c:forEach var="comment" items="${free.commentlist }">
-								<tr>
-									<td class="col-sm-6">${comment.commentcontent }</td>
-									<td class="col-sm-1">${comment.memberid }</td>
-									<td class="col-sm-1"><fmt:formatDate value="${comment.commentregdate }"
-											pattern="yyyy-MM-dd" /></td>
-							<td class="col-sm-1">
-								<button onclick="updateform?commentid=${comment.commentid }">수정</button>
-		                    </td>
-		                    <td class="col-sm-1">
-		                   	 	<button type="button" onclick="deleteComment(${comment.commentid})">삭제</button>					
-							</td>	
-								</tr>
-							</c:forEach>
-						</table>
+                </div>
+                <br>
+                <div class="row" style="border-bottom: 1px solid;border-color: var(--color-bd-outer);padding: .5rem .75rem;font-size: 1.2rem;">     
+                    <div class="col-sm-12">
+                        <div id="freecontent" style="border: none; min-height: 800px; max-width: 100%;">${free.freecontent }</div>
+                    </div>
+                </div>
+				 <div class="row title font-weight-bold" style="border-bottom: 1px solid;border-color: var(--color-bd-outer);padding: .5rem .75rem;font-size: 1.2rem;">
+				    댓글
+				 </div>
+				 <br>
+				 <br>
+				 <c:forEach var="comment" items="${free.commentlist}">
+				    <div class="row" style="border:1px solid #dee2e6; background-color: aliceblue;">
+				        <span class="font-weight-bold" style="font-size: 1.3rem; padding-left: 10px;padding-top: 5px;">${comment.memberid}&nbsp;</span>
+				        <div class="right" style="font-size: .85rem; margin-left: auto;">
+				            <fmt:formatDate value="${comment.commentregdate}" pattern="yyyy-MM-dd"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				            <span class="sep"></span>
+				            <button type="button" style="width:80px; height:40px; margin-right: 10px; background-color: transparent; text-decoration: none; border-color: transparent;" onclick="window.open('modifycommentForm?commentid=${comment.commentid}', '_blank', 'width=600,height=400')"><span class="icon ion-compose"></span>수정</button>
+				            
+				            <span class="sep"></span>&nbsp;&nbsp;
+				            <button type="button" style="width:80px; height:40px; margin-right: 10px; background-color: transparent; text-decoration: none; border-color: transparent;" onclick="deleteComment(${comment.commentid})"><span class="icon ion-trash-b"></span>삭제</button>
+				            
+				            <span class="sep"></span>
+				        </div>
+				    </div>
+				    <div class="row" style="border:1px solid #dee2e6;">
+				        <div class="text"><pre class="">${comment.commentcontent}</pre></div>
+				    </div>
+				    <br>
+				</c:forEach>
 
-                       <!-- 원글에 댓글을 작성할 폼 -->
+
+                        <!-- 댓글 입력 폼 -->
                         <form class="comment-form insert-form" action="commentregist" method="post" style="width: 100%;">
-                            <input type="hidden" name="freeid" value="${free.freeid }"/>
-                            <input type="hidden" name="memberid" value="${free.memberid }"/>
-                            <!-- 댓글 폼의 텍스트 영역 -->
-                            <textarea name="commentcontent" style="width:100%; min-height: 50px;">${empty memberid ? '댓글 작성을 위해 로그인이 필요 합니다.' : '' }</textarea>
-                            <!-- 댓글 작성 버튼 -->
-                            <div style="text-align: right;">
-                                <button type="submit" class="btn btn-primary" style="width:100px; height:40px;">등록</button>
-                            </div>
-                        </form>
-                        <br>
-                        <br>
+						    <div class="row" style="border: 1px solid #dee2e6;">
+						        <input type="hidden" name="freeid" value="${free.freeid}" />
+						        <input class="font-weight-bold" name="memberid" style="border: none; padding-left: 10px;font-size: 1.2rem;margin-top: auto;" value="${free.memberid}" />
+						    </div>                  
+						
+						    <div class="row" style="margin-bottom: 10px;"> <!-- 댓글 텍스트 입력 영역 -->
+						        <textarea class="reply-form-textarea" name="commentcontent" required="required" style="width: 100%; min-height: 80px; border: 1px solid #dee2e6;">내용을 입력</textarea>
+						    </div>
+							<div class="float-left">
+								<button type="button" style="width: 80px; height: 40px; background-color: transparent; text-decoration: none; border-color: black; margin-top: auto;" onclick="goToMainPage()">메인으로</button>
+						    </div>
+						    <div class="row" style="display: flex; justify-content: flex-end;"> <!-- 등록 버튼 영역 -->
+						   		<button style="width: 80px; height: 40px; background-color: transparent; text-decoration: none; border-color: black; margin-top: auto;">등록</button>
+						    </div>
+						</form>
 
-                       
-                                 
-                     </div>
+                    </div>
                 </div>                                                  
             </div><!-- end card -->              
-        </div><!-- end col-md-12 -->
-    </div><!-- end row  -->
+
 </section>
 <!-- /.content -->
 <!-- REQUIRED SCRIPTS -->
@@ -118,17 +122,23 @@ function deleteComment(commentid) {
         commentIdInput.setAttribute("value", commentid);
         form.appendChild(commentIdInput);
 
+        var freeid = document.createElement("input");
+        freeid.setAttribute("type", "hidden");
+        freeid.setAttribute("name", "freeid");
+        freeid.setAttribute("value", "${free.freeid}");
+        form.appendChild(freeid);
         // 폼을 body에 추가합니다.
         document.body.appendChild(form);
 
         // 폼을 서버로 전송합니다.
         form.submit();
 
-        // 댓글이 삭제된 후 이전 페이지로 돌아가도록 설정합니다.
-        window.history.back();
     }
 }
 
+function goToMainPage() {
+    window.location.href = "/free/main"; // 메인 페이지로 이동하는 URL로 대체해야 함
+}
 function registerComment() {
     var formData = {
         freeid: "${free.freeid}",

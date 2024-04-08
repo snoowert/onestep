@@ -43,7 +43,6 @@
 
 <script>
 function modify_submit(){
-	//alert("click modify btn");
 	document.querySelector("form[role='form']").submit();	
 }
 

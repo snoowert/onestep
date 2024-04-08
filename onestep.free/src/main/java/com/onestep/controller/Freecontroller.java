@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.onestep.command.CommentModifyCommand;
 import com.onestep.command.CommentRegistCommand;
 import com.onestep.command.FreeModifyCommand;
 import com.onestep.command.FreeRegistCommand;
@@ -128,12 +129,35 @@ public class Freecontroller {
 		return mnv;
 	}
 	@PostMapping("/commentremove")
-	public ModelAndView Commentremove(int commentid, ModelAndView mnv) throws Exception {
+	public ModelAndView Commentremove(int freeid, int commentid, ModelAndView mnv) throws Exception {
 	    String url = "/free/removeComment_success";
 	    ModelAndView comment = new ModelAndView();
 	    freeService.removecomment(commentid);
-	    mnv.addObject("commentid", commentid);
+	    mnv.addObject("freeid", freeid);
 	    mnv.setViewName(url);
 	    return mnv;
+	}
+	@GetMapping("/modifycommentForm")
+	public ModelAndView modifycommentForm(int commentid, ModelAndView mnv)throws Exception{
+		String url = "/free/modifyComment";
+
+		FreeCommentVO comment = freeService.readcomment(commentid);
+
+		mnv.addObject("comment", comment);
+		mnv.setViewName(url);
+		return mnv;
+	}
+	
+	@PostMapping(value="/commentmodify", produces="text/plain;charset=utf-8")
+	public ModelAndView Commentmodify(CommentModifyCommand command, ModelAndView mnv) throws Exception{
+		String url = "/free/modifyComment_success";
+		FreeCommentVO comment = command.toFreeCommentVO();
+		int freeid = command.getFreeid();
+		
+		freeService.modifycomment(comment);
+		
+		mnv.addObject("freeid",freeid);
+		mnv.setViewName(url);
+		return mnv;
 	}
 }
