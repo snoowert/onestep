@@ -7,10 +7,10 @@
 
 	<bean id="dataSource"
 		  class="org.apache.commons.dbcp2.BasicDataSource"
-		  p:driverClassName=""
-		  p:url=""
-		  p:username=""
-		  p:password=""
+		  p:driverClassName="${db.driverClassName}"
+		  p:url="${db.url}"
+		  p:username="${db.username}"
+		  p:password="${db.password}"
 		/>
 	
 	<bean id="dataSourceSpied"

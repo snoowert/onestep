@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="fileUploadPath" class ="java.lang.String">
+		<constructor-arg value="${savePath.qna}"></constructor-arg>
+	</bean>
+	
+	<bean id="loginUserLogSavePath" class="java.lang.String">
+		<constructor-arg value="savePath.error.log"></constructor-arg>
+	</bean>
+	
+	<bean id="errorLogPath" class="java.lang.String">
+		<constructor-arg value="${savePath.error.log}"></constructor-arg>
+	</bean>
+	
+	<bean id="imageUploadPath" class="java.lang.String">
+		<constructor-arg value="${savePath.image}"></constructor-arg>
+	</bean>
+	
+	
+	<bean id="QnADAO" class="com.spring.dao.QnADAOImpl"
+		  p:sqlSession-ref="sqlSession" />
+	
+	<bean id="QnAFileDAO" class="com.spring.dao.QnAFileDAOImpl"
+		  p:sqlSession-ref="sqlSession" />
+		  
+	
+	<bean id="QnAService" class="com.spring.service.QnAServiceImpl"
+		  p:QnADAO-ref="QnADAO"
+		  p:QnAFileDAO-ref="QnAFileDAO" />
+
+</beans>
