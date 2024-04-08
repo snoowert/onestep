@@ -20,12 +20,27 @@
  		</if>		
  	</sql>
  	
+ 	<insert id="insertQnA" parameterType="qna">
+ 		insert
+ 		into
+ 		qna(memberid,qnaid,qnatitle,qnacontent)
+ 		values(#{memberid},#{qnaid},#{qnatitle},#{qnacontent})
+ 	</insert>
+ 	
  	<update id="increaseViewCnt" parameterType="int">
  		update
  		qna
  		set
  		viewcnt=viewcnt+1
  		where qnaviewpoint=#{qnaviewpoint}
+ 	</update>
+ 	
+ 	<update id="updateQnA" parameterType="qna">
+ 		update
+ 		qna
+ 		set
+ 		qnatitle=#{qnatitle},qnacontent={qnacontent},updatedate=sysdate
+ 		where qnaid=#[qnaid]
  	</update>
  	
  	
