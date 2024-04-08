@@ -42,12 +42,16 @@
 		where pdsid=#{pdsid}
 	</select>
 	
+	<select id="selectPdsidSeqNext" resultType="int">
+		select pdsid_seq.nextval as pdsid from dual
+	</select>
+	
 	<insert id="insertPds" parameterType="pds">
 		insert 
 		into 
 		pds(pdsid, pdstitle, memberid, pdscontent)
 		values
-		(pdsid_seq.nextval,#{pdstitle},#{memberid},#{pdscontent})
+		(#{pdsid}, #{pdstitle},#{memberid},#{pdscontent})
 	</insert>
 	
 	

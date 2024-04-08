@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,7 +15,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -28,8 +28,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pds.service.PdsService;
+import com.pds.vo.PdsFileVO;
 import com.pds.vo.PdsVO;
 import com.spring.command.PageMaker;
+import com.spring.command.PdsRegistCommand;
+import com.spring.view.FileDownloadView;
 
 @Controller
 public class PdsController {
@@ -38,7 +41,8 @@ public class PdsController {
 	
 	@Resource(name = "imageUploadPath")
 	private String uploadDir;
-
+	@Resource(name = "fileUploadPath")
+	private String fileUploadDir;
 	//목록
 	@GetMapping("/list")
 	public ModelAndView list(ModelAndView mnv, @ModelAttribute PageMaker pagemaker) throws SQLException{
@@ -53,7 +57,6 @@ public class PdsController {
 	public ModelAndView detail(ModelAndView mnv, int pdsid, String from) throws Exception{
 		String url = "/pds/detail";
 		PdsVO pds = pdsService.getPds(pdsid);
-		
 		if(from != null && from.equals("list")) {
 			pdsService.increaseViewCnt(pdsid);
 			url = "redirect:/detail?pdsid="+pdsid;
@@ -76,9 +79,17 @@ public class PdsController {
 	}
 	//글작성
 	@PostMapping("/regist")
-	public ModelAndView regist(ModelAndView mnv) throws SQLException{
+	public ModelAndView regist(ModelAndView mnv, PdsRegistCommand command) throws Exception{
 		String url = "/pds/regist_success";
 		
+		List<MultipartFile> pdsFile = command.getUploadFile();
+		String savePath = fileUploadDir;
+		List<PdsFileVO> pdsFileList = saveFileToAttaches(pdsFile, savePath);
+		
+		PdsVO pds = command.toPdsVO();
+		pds.setPdsfilelist(pdsFileList);
+		
+		pdsService.regist(pds);
 		
 		mnv.setViewName(url);
 		return mnv;
@@ -101,7 +112,45 @@ public class PdsController {
 	}
 	//글삭제
 	//파일불러오기
+	@GetMapping("/getFile")
+	public ModelAndView getFile(int pdsfileid,  ModelAndView mnv)throws Exception{
+		String url="download";
+		
+		PdsFileVO pdsFile = pdsService.getAttachByAno(pdsfileid);
+		
+		mnv.setView(new FileDownloadView());
+		mnv.addObject("savedPath", fileUploadDir);
+		mnv.addObject("fileName", pdsFile.getPdsfilename());		
+		
+		return mnv;
+	}
 	//파일업로드
+	private List<PdsFileVO> saveFileToAttaches(List<MultipartFile> multiFiles,
+			  String savePath )throws Exception{
+		
+		if (multiFiles == null) return null;
+		
+		//저장 -> attachVO -> list.add
+		List<PdsFileVO> pdsFileList = new ArrayList<PdsFileVO>();
+		for (MultipartFile multi : multiFiles) {
+			String uuid = UUID.randomUUID().toString().replace("-", "");
+			String fileName = uuid+"$$"+multi.getOriginalFilename();
+			
+			//파일저장
+			File target = new File(savePath, fileName);
+			target.mkdirs();
+			multi.transferTo(target);
+			
+			//attachVO
+			PdsFileVO pdsFile = new PdsFileVO();
+			pdsFile.setPdsfilename(fileName);
+			pdsFile.setPdsfiletype(fileName.substring(fileName.lastIndexOf('.') + 1)
+					.toUpperCase());
+			
+			pdsFileList.add(pdsFile);
+		}
+		return pdsFileList;
+	}
 	
 	@PostMapping("/tui-editor/image-upload")
 	public ResponseEntity<String> uploadEditorImage(HttpServletRequest request, @RequestParam("image") MultipartFile image) {

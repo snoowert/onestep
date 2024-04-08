@@ -6,24 +6,24 @@
 	<select id="selectPdsFileList" parameterType="int" resultType="pdsfile">
 		select *
 		from PdsFile
-		where PdsId=#{pdsid};
+		where PdsId=#{pdsid}
 	</select>
 	
 	<select id="selectPdsFileById" parameterType="int" resultType="pdsfile">
 		select *
 		from PdsFile
-		where PdsFileId = #{pdsfileid};
+		where PdsFileId = #{pdsfileid}
 	</select>
 	
 	<insert id="insertPdsFile" parameterType="pdsfile">
 		insert into
-		pds(pdsid, pdsfileid, pdsfilename)
-		values(#{pdsid}, PDSFILEID_SEQ.NEXTVAL, #{pdsfilename});
+		pdsFile(pdsid, pdsfileid, pdsfilename, pdsfiletype)
+		values(#{pdsid}, PDSFILEID_SEQ.NEXTVAL, #{pdsfilename}, #{pdsfiletype})
 	</insert>
 	
 	<delete id="deletePdsFile" parameterType="int">
 		delete pdsfile
-		where pdsfileid={pdsfileid};
+		where pdsfileid={pdsfileid}
 	</delete>
 	
 	<delete id="deleteAllFile" parameterType="int">
