@@ -94,7 +94,9 @@ public class PageMaker {
 	public boolean isNext() {
 		return next;
 	}
-
+	public int getStartRow() {
+		return (this.page - 1) * this.perPageNum;
+	}
 	public int getDisplayPageNum() {
 		return displayPageNum;
 	}

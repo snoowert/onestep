@@ -1,14 +1,17 @@
 package com.pds.vo;
 
 import java.util.Date;
+import java.util.List;
 
 public class PdsVO {
-	public int pdsid;
-	public int memberid;
-	public String pdstitle;
-	public String pdscontent;
-	public Date pdsregdate;
-	public int pdsviewpoint;
+	private int pdsid;
+	private int memberid;
+	private String pdstitle;
+	private String pdscontent;
+	private Date pdsregdate;
+	private int pdsviewpoint;
+	
+	List<PdsFileVO> pdsfilelist;
 	public int getPdsid() {
 		return pdsid;
 	}
@@ -44,6 +47,12 @@ public class PdsVO {
 	}
 	public void setPdsviewpoint(int pdsviewpoint) {
 		this.pdsviewpoint = pdsviewpoint;
+	}
+	public List<PdsFileVO> getPdsfilelist() {
+		return pdsfilelist;
+	}
+	public void setPdsfilelist(List<PdsFileVO> pdsfilelist) {
+		this.pdsfilelist = pdsfilelist;
 	}
 	
 	

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 </head>
 <body>
-    <h2 style="text-align: center;">질문 작성</h2>
+    <h2 style="text-align: center;">등록</h2>
 
     <!-- 에디터를 적용할 요소 (컨테이너) -->
     <div id="editor"></div>

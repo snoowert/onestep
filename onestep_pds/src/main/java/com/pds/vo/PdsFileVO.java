@@ -1,10 +1,10 @@
 package com.pds.vo;
 
 public class PdsFileVO {
-	public int pdsfileid;
-	public int pdsid;
-	public int memberid;
-	public String pdsfilename;
+	private int pdsfileid;
+	private int pdsid;
+	private String pdsfilename;
+	private	String pdsfiletype;
 	
 	public int getPdsfileid() {
 		return pdsfileid;
@@ -18,17 +18,17 @@ public class PdsFileVO {
 	public void setPdsid(int pdsid) {
 		this.pdsid = pdsid;
 	}
-	public int getMemberid() {
-		return memberid;
-	}
-	public void setMemberid(int memberid) {
-		this.memberid = memberid;
-	}
 	public String getPdsfilename() {
 		return pdsfilename;
 	}
 	public void setPdsfilename(String pdsfilename) {
 		this.pdsfilename = pdsfilename;
+	}
+	public String getPdsfiletype() {
+		return pdsfiletype;
+	}
+	public void setPdsfiletype(String pdsfiletype) {
+		this.pdsfiletype = pdsfiletype;
 	}
 	
 	

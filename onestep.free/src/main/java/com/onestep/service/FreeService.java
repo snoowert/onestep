@@ -3,6 +3,8 @@ package com.onestep.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.onestep.command.PageMaker;
 import com.onestep.dto.FreeCommentVO;
 import com.onestep.dto.FreeVO;

@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/WEB-INF/views/module/header.jsp" %>
 <%@ include file="/WEB-INF/base.jsp" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <br>
 <br>
     <section class="content-header">
@@ -24,7 +25,6 @@
 					<div class="input-group row">
 	
 						<select class="form-control col-md-3" name="searchType" id="searchType">
-							<option value="tcw" ${pageMaker.searchType eq 'tcw' ? 'selected':'' }>전 체</option>
 							<option value="t" ${pageMaker.searchType eq 't' ? 'selected':'' }>제 목</option>
 							<option value="w" ${pageMaker.searchType eq 'w' ? 'selected':'' }>작성자</option>																		
 						</select>	
@@ -53,19 +53,19 @@
 					</c:if>
 					<c:forEach items="${ freeList }" var="free">
 						<tr style='font-size:0.85em;'>
-							<td>${free.freeId }</td>
+							<td>${free.freeid }</td>
 							<td id="boardTitle" style="text-align:left;max-width: 100px; overflow: hidden;
 										 white-space: nowrap; text-overflow: ellipsis;">
-								<a href="javascript:OpenWindow('detail.do?freeId=${free.freeId }&from=list','상세보기',800,700);">
-									<span class="col-sm-12 ">${free.freeTitle }</span>
+								<a href="detail.do?freeid=${free.freeid }">
+									<span class="col-sm-12 ">${free.freetitle }</span>
 								</a>
 							</td>
 							
-							<td>${free.freeMemberId }</td>
+							<td>${free.memberid }</td>
 							<td>
-								<fmt:formatDate value="${free.freeRegDate }" pattern="yyyy-MM-dd"/>
+								<fmt:formatDate value="${free.freeregdate }" pattern="yyyy-MM-dd"/>
 							</td>
-							<td><span class="badge bg-red">${free.freeViewPoint }</span></td>
+							<td><span class="badge bg-red">${free.freeviewpoint }</span></td>
 						</tr>
 					</c:forEach>	
 				</table>
@@ -74,8 +74,8 @@
 					<%@ include file="/WEB-INF/views/module/pagination.jsp" %>
 				</div>
 			</div>
-			<button type="button" class="btn btn-primary btn float-right" id="registBtn" onclick="OpenWindow('registForm.do','글등록',800,700);">글쓰기</button>
-		</div>
+			<button type="button" class="btn btn-primary btn float-right" id="registBtn" onclick="location='registForm'">글쓰기</button>
+		
 	</section>
 			
 

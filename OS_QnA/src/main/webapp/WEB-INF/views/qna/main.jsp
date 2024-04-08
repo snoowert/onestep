@@ -28,8 +28,10 @@
 							<select class="form-control col-md-3" name="searchType"
 								id="searchType">
 								<option value="">검색구분</option>
-								<option value="n"
-									${pageMaker.searchType eq 'n' ? 'selected':'' }>작성자</option>
+								<option value="t"
+									${pageMaker.searchType eq 't' ? 'selected':'' }>제목</option>
+								<option value="c"
+									${pageMaker.searchType eq 'c' ? 'selected':'' }>내용</option>	
 							</select>
 							<!-- keyword -->
 							<input class="form-control" type="text" name="keyword"

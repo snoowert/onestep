@@ -24,14 +24,15 @@ public class FreeServiceImpl implements FreeService{
 	public List<FreeVO> searchList(PageMaker pageMaker) throws SQLException {
 		List<FreeVO> freeList = FreeDAO.selectFreeList(pageMaker);
 		
-		if(freeList !=null) {
-			for(FreeVO free : freeList) {
-			int freeid = free.getFreeid();
+
+		if (freeList.size() > 0) {
+			for (FreeVO free : freeList) {
+				int freeid = free.getFreeid();
+				List<FreeCommentVO> commentList = FreeCommentDAO.selectFreeCommentList(freeid);
+				free.setCommentlist(commentList);
+			}
 		}
-	}
-				
-		int listTotalCount = FreeDAO.selectFreeListCount(pageMaker);
-		pageMaker.setTotalCount(listTotalCount);
+		pageMaker.setTotalCount(FreeDAO.selectFreeListCount(pageMaker));
 		
 		return freeList;
 	}
@@ -43,7 +44,10 @@ public class FreeServiceImpl implements FreeService{
 
 	@Override
 	public FreeVO detail(int freeid) throws SQLException {
-		return FreeDAO.selectFreeByFreeId(freeid);
+		
+		FreeVO free = FreeDAO.selectFreeByFreeId(freeid);
+		free.setCommentlist(FreeCommentDAO.selectFreeCommentList(freeid));
+		return free;
 	}
 
 	@Override
@@ -56,7 +60,6 @@ public class FreeServiceImpl implements FreeService{
 	@Override
 	public void modify(FreeVO free) throws SQLException {
 		FreeDAO.updateFree(free);
-		int freeid = free.getFreeid();
 		
 	}
 

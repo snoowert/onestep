@@ -14,15 +14,16 @@
 					<div class="card-body pad">
 						<form role="form" method="post" action="regist.do" name="registForm">
 							<div class="form-group">
-								<input type="text" id="title"  title="제목"
-									name='title' class="form-control notNull" placeholder="제목을 쓰세요">
+								<input type="text" id="freetitle"  title="제목"
+									name='freetitle' class="form-control notNull" placeholder="제목을 쓰세요">
 							</div>							
 							<div class="form-group">
 								<input type="text" id="writer" title="작성자" readonly
-									name="writer" class="form-control notNull" value="${loginUser }" >
+									name="writer" class="form-control notNull" value="2" >
+								<input type="hidden" id="memberid" name="memberid" value="2">
 							</div>
 							<div class="form-group">
-								<textarea class="textarea" name="content" id="content" rows="20" style="width:100%"
+								<textarea class="textarea" name="freecontent" id="freecontent" rows="20" style="width:100%"
 									cols="90" placeholder="내용을 입력해주세요." ></textarea>
 							</div>
 							<input type="file" class="real-upload" accept="image/*" required multiple>
