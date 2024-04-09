@@ -22,11 +22,11 @@
                         <span class="font-weight-bold" id="freetitle" style="border: none;font-size: 2rem;">${free.freetitle }</span> <!-- 제목을 진하게 표시 -->
                     </div>
                 </div>
-                <div class="row" style="border-bottom: 1px solid;border-color: var(--color-bd-outer);padding: .5rem .75rem;font-size: 1.2rem;" >
-                    <div class="col-sm-10">
+                <div class="row col-sm-12" style="border-bottom: 1px solid;border-color: var(--color-bd-outer);padding: .5rem .75rem;font-size: 1.2rem;" >
+                    <div class="col-sm-9">
                         <span id="memberid" style="border: none;font-size: 25px;text-align:center">${free.memberid }</span> <!-- 작성자를 진하게 표시 -->
                     </div>
-                    <div class="right">
+                    <div class="right col-sm-2">
                         <span class="form-control" id="freeregdate" style="border: none;text-align:center">
                             <fmt:formatDate value="${free.freeregdate }" pattern="yyyy-MM-dd"/>  
                         </span>
