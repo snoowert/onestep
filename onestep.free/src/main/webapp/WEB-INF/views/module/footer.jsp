@@ -12,4 +12,5 @@
 <!-- AdminLTE App -->
 <script src="<%=request.getContextPath() %>/resources/bootstrap/dist/js/adminlte.min.js"></script>
 </body>
+
 </html>

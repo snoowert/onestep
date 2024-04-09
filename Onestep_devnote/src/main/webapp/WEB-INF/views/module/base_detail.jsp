@@ -10,9 +10,7 @@
 <style>
 	.btn {
 		font-size:20px; 
-		font-weight:bold;
 	}
-	
 	
 </style>
 
