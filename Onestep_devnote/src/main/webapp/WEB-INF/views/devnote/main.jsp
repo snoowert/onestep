@@ -4,14 +4,7 @@
 
 
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-
-<body>
+<%@ include file="/WEB-INF/views/module/header.jsp"%>
 
 <div >
 	&nbsp;&nbsp;
@@ -20,27 +13,22 @@
 	
 	<div class="container-fluid">
 		<!-- 본문 -->
-		<div>
-			<!-- 프로젝트 설명 영역 -->
-			<div>
-				<!-- 설명영역 -->
-				<div>
-					<!-- 제목 -->
-					<div></div>
-					<!-- 설명 -->
-					<div></div>
-				</div>
-				<div>
-					<!-- 참여자 영역-->
-						<!--참여자 (반복)-->
-						<div></div>
-						<!--참여버튼(숨기기?)-->
-						<div></div>
-				</div>
+		<div class="content">
+			<!-- 제목 -->
+			<%@ include file="/WEB-INF/views/module/content_top.jsp" %>
+			<div class="card-body" style="padding-bottom:-20px;">
+				<h3>프로젝트명</h3>
 			</div>
+			<hr style="width:90%;  margin-left : auto; margin-right : auto;">
+			<!-- 설명 -->
+			<div class="card-body"> 
+				프로젝트 설명
+			</div>
+		<%@ include file="/WEB-INF/views/module/content_bottom.jsp" %>
+		<!-- 참여자 목록 -->
+		<%@include file="/WEB-INF/views/module/member.jsp" %>
+
 		</div>		
 	</div>
 	
-	
-</body>
-</html>
+<%@ include file="/WEB-INF/views/module/footer.jsp"%>

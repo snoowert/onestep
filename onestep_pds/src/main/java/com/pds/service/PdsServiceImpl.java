@@ -22,7 +22,11 @@ public class PdsServiceImpl implements PdsService{
 	public List<PdsVO> searchList(PageMaker pageMaker) throws SQLException {
 		// TODO Auto-generated method stub
 		List<PdsVO> PdsList = pdsDAO.selectSearchPdsList(pageMaker);
-		
+		if(PdsList != null) for(PdsVO pds : PdsList) {
+			int pdsid = pds.getPdsid();
+			List<PdsFileVO> pdsFileList = pdsfileDAO.selectPdsFileList(pdsid);
+			pds.setPdsfilelist(pdsFileList);
+		}
 		pageMaker.setTotalCount(pdsDAO.selectSearchPdsListCount(pageMaker));
 		return PdsList;
 	}
@@ -30,7 +34,14 @@ public class PdsServiceImpl implements PdsService{
 	@Override
 	public void regist(PdsVO pds) throws SQLException {
 		// TODO Auto-generated method stub
+		List<PdsFileVO> pdsFileList = pds.getPdsfilelist();
+		pds.setPdsid(pdsDAO.selectPdsidSeqNext());
 		pdsDAO.insertPds(pds);
+		
+		if(pdsFileList != null) for(PdsFileVO pdsFile : pdsFileList) {
+			pdsFile.setPdsid(pds.getPdsid());
+			pdsfileDAO.insertPdsFile(pdsFile);
+		}
 	}
 
 	@Override
@@ -42,13 +53,24 @@ public class PdsServiceImpl implements PdsService{
 	@Override
 	public PdsVO getPds(int pdsid) throws SQLException {
 		// TODO Auto-generated method stub
-		return pdsDAO.selectPdsByPdsid(pdsid);
+		PdsVO pds = pdsDAO.selectPdsByPdsid(pdsid);
+		List<PdsFileVO> pdsFileList = pdsfileDAO.selectPdsFileList(pdsid);
+		pds.setPdsfilelist(pdsFileList);
+		return pds;
 	}
 
 	@Override
 	public void modify(PdsVO pds) throws SQLException {
 		// TODO Auto-generated method stub
 		pdsDAO.updatePds(pds);
+		
+		int pdsid = pds.getPdsid();
+		
+		List<PdsFileVO> pdsFileList = pds.getPdsfilelist();
+		if(pdsFileList != null) for(PdsFileVO pdsFile : pdsFileList) {
+			pdsFile.setPdsid(pdsid);
+			pdsfileDAO.insertPdsFile(pdsFile);
+		}
 	}
 
 	@Override

@@ -61,5 +61,11 @@ public class PdsDAOImpl implements PdsDAO{
 		// TODO Auto-generated method stub
 		sqlsession.delete("Pds-Mapper.deletePds",pdsid);
 	}
+
+	@Override
+	public int selectPdsidSeqNext() throws SQLException {
+		// TODO Auto-generated method stub
+		return sqlsession.selectOne("Pds-Mapper.selectPdsidSeqNext");
+	}
 	
 }
