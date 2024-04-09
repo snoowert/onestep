@@ -31,6 +31,7 @@ import com.pds.service.PdsService;
 import com.pds.vo.PdsFileVO;
 import com.pds.vo.PdsVO;
 import com.spring.command.PageMaker;
+import com.spring.command.PdsModifyCommand;
 import com.spring.command.PdsRegistCommand;
 import com.spring.view.FileDownloadView;
 
@@ -96,21 +97,60 @@ public class PdsController {
 	}
 	//글수정폼
 	@GetMapping("/modifyForm")
-	public ModelAndView modifyForm(ModelAndView mnv) throws SQLException{
+	public ModelAndView modifyForm(ModelAndView mnv, int pdsid) throws SQLException{
 		String url = "/pds/modify";
+		PdsVO pds = pdsService.getPds(pdsid);
 		
+		mnv.addObject("pds", pds);
 		mnv.setViewName(url);
 		return mnv;
 	}
 	//글수정
 	@PostMapping("/modify")
-	public ModelAndView modify(ModelAndView mnv) throws SQLException{
+	public ModelAndView modify(PdsModifyCommand command, ModelAndView mnv) throws Exception{
 		String url = "/pds/modify_success";
+		if(command.getDeleteFile() != null && command.getDeleteFile().length > 0) {
+			for(int pdsFileid : command.getDeleteFile()) {
+				PdsFileVO pdsFile = pdsService.getAttachByAno(pdsFileid);
+				
+				String savedPath = fileUploadDir;
+				
+				File deleteFile = new File(savedPath, pdsFile.getPdsfilename());
+				
+				if(deleteFile.exists()) {
+					deleteFile.delete(); //파일삭제
+				}
+				pdsService.removeAttachByAno(pdsFileid); //DB삭제
+			}
+		}
+		
+		List<PdsFileVO> pdsFileList = saveFileToAttaches(command.getUploadFile(), fileUploadDir);
+		
+		PdsVO pds = command.toPdsVO();
+		pds.setPdsfilelist(pdsFileList);
+		pdsService.modify(pds);
 		
 		mnv.setViewName(url);
 		return mnv;
 	}
 	//글삭제
+	@GetMapping("/delete")
+	public ModelAndView delete(ModelAndView mnv, int pdsid) throws Exception{
+		String url = "/pds/delete_success";
+		
+		List<PdsFileVO> pdsFileList = pdsService.getPds(pdsid).getPdsfilelist();
+		if(pdsFileList!= null) for(PdsFileVO pdsFile : pdsFileList) {
+			File target = new File(fileUploadDir, pdsFile.getPdsfilename());
+			if(target.exists()) {
+				target.delete();
+			}
+			pdsService.removeAttachByAno(pdsFile.getPdsfileid());
+		}
+		pdsService.remove(pdsid);
+		
+		mnv.setViewName(url);
+		return mnv;
+	}
 	//파일불러오기
 	@GetMapping("/getFile")
 	public ModelAndView getFile(int pdsfileid,  ModelAndView mnv)throws Exception{

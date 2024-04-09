@@ -16,6 +16,6 @@ public interface QnADAO {
 	
 	void insertQnA(QnAVO qna) throws SQLException;
 	void updateQnA(QnAVO qna) throws SQLException;
-	void increaseViewCnt(QnAVO qnaid) throws SQLException;
+	void increaseViewCnt(int qnaid) throws SQLException;
 	void deleteQnA(int qnaid) throws SQLException;
 }
