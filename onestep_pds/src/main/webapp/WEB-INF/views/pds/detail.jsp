@@ -41,14 +41,25 @@
 				${pds.pdscontent }
 			</div>
 			<br>
-			<input type="submit" class="btn btn-primary mx-auto" value="수정">
-			<input type="button" class="btn btn-default mx-auto" value="취소">
+			<input type="submit" class="btn btn-primary mx-auto" value="수정" onclick="modify_go();">
+			<input type="button" class="btn btn-default mx-auto" value="삭제" onclick="delete_do();">
 		</div>
 	</dev>
 </section>
 <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
 <script>
 
+function delete_do(){
+	if(confirm("삭제하시겠습니까? ")){
+		location.href ="delete?pdsid=${pds.pdsid}";
+	}else{
+		return;
+	}	
+}
+
+function modify_go(){
+	location.href = "modifyForm?pdsid=${pds.pdsid}";
+}
 </script>
 </body>
 </html>

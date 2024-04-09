@@ -23,7 +23,7 @@
 	
 	<delete id="deletePdsFile" parameterType="int">
 		delete pdsfile
-		where pdsfileid={pdsfileid}
+		where pdsfileid=#{pdsfileid}
 	</delete>
 	
 	<delete id="deleteAllFile" parameterType="int">
