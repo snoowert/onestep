@@ -117,9 +117,9 @@
             alert('에디터 내용을 입력해 주세요.');
             throw new Error('editor content is required!');
         }
-        if($("input[name='title']").val()==""){ //form.title.value
+        if($("input[name='pdstitle']").val()==""){ //form.title.value
     		alert("제목은 필수입니다.");
-    		$("input[name='title']").focus();
+    		$("input[name='pdstitle']").focus();
     		return;
     	}
     	
