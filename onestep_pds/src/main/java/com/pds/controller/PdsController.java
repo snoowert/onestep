@@ -109,7 +109,6 @@ public class PdsController {
 	@PostMapping("/modify")
 	public ModelAndView modify(PdsModifyCommand command, ModelAndView mnv) throws Exception{
 		String url = "/pds/modify_success";
-		System.out.println(command.getPdscontent()+"-------------------------------------");
 		if(command.getDeleteFile() != null && command.getDeleteFile().length > 0) {
 			for(int pdsFileid : command.getDeleteFile()) {
 				PdsFileVO pdsFile = pdsService.getAttachByAno(pdsFileid);
