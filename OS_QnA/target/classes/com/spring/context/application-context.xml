@@ -24,7 +24,7 @@
 	<bean id="QnADAO" class="com.spring.dao.QnADAOImpl"
 		  p:sqlSession-ref="sqlSession" />
 	
-	<bean id="QnAFileDAO" class="com.spring.dao.QnAFileDAOImpl"
+	<bean id="QnAFileDAO" class="com.spring.dao.QnAImageDAOImpl"
 		  p:sqlSession-ref="sqlSession" />
 		  
 	
