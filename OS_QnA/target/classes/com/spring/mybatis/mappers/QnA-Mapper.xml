@@ -2,7 +2,9 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
  <mapper namespace="QnA-Mapper">
+ 
  	<sql id="search">
  		<if test="searchType == 't'.toString()">
  			and title like '%'||#{keyword}||'%'
@@ -20,29 +22,59 @@
  		</if>		
  	</sql>
  	
+ 	<select id="selectSearchQnAList" parameterType="pageMaker" resultType="qna">
+ 		select *
+ 		from qna
+ 		<include refid="search" />
+ 		order by qnaregdate desc
+ 	</select>
+ 	
+ 	<select id="selectSearchQnAListCount" resultType="int">
+ 		select
+ 		count(*)
+ 		from
+ 		qna
+ 		<include refid="search" />
+ 	</select>
+ 	
+ 	<select id="selectQnAByQnAId" parameterType="int" resultType="qna">
+ 		select *
+ 		from qna
+ 		where qnaid=#{qnaid}
+ 	</select>
+ 	
+ 	<select id="selectQnASeqNext" resultType="int">
+ 		select qna_seq.nextval
+ 		as qnaid from dual
+ 	</select>
+ 	 	
  	<insert id="insertQnA" parameterType="qna">
  		insert
  		into
  		qna(memberid,qnaid,qnatitle,qnacontent)
  		values(#{memberid},#{qnaid},#{qnatitle},#{qnacontent})
  	</insert>
- 	
+
  	<update id="increaseViewCnt" parameterType="int">
  		update
  		qna
  		set
- 		viewcnt=viewcnt+1
- 		where qnaviewpoint=#{qnaviewpoint}
+ 		qnaviewpoint = qnaviewpoint+1
+ 		where qnaid=#{qnaid}
  	</update>
  	
  	<update id="updateQnA" parameterType="qna">
  		update
  		qna
  		set
- 		qnatitle=#{qnatitle},qnacontent={qnacontent},updatedate=sysdate
+ 		qnatitle=#{qnatitle}, qnacontent={qnacontent}, updatedate=sysdate
  		where qnaid=#[qnaid]
  	</update>
  	
- 	
+ 	<delete id="deleteQnA" parameterType="int">
+ 		delete
+ 		from qna
+ 		where qnaid=#{qnaid}
+ 	</delete>
  	 		
  </mapper>

@@ -17,6 +17,7 @@
 		  class="com.onestep.service.FreeServiceImpl"
 		  p:freeDAO-ref="FreeDAO"
 		  p:freeCommentDAO-ref="FreeCommentDAO"/>
-
-
+		  
+	
+	
 </beans>

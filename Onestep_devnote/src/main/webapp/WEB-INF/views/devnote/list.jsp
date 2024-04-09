@@ -2,22 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/module/base.jsp"%>
 
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>OneStep</title>
-<style>
-</style>
-</head>
-<body>
+<%@ include file="/WEB-INF/views/module/header.jsp"%>
 	<div class="container-fluid">
 		<!-- 상단박스 -->
 		<div class="card" style="width: 80%; margin: 40px; margin-left: auto; margin-right: auto;">
 			<div class="card-body" style="margin: 30px;">
 				<h3 class="card-title">개발자노트</h3>
-				<br />
+				<br/>
 				<p class="card-text">개발자들이 프로젝트를 ...</p>
 			</div>
 		</div>
@@ -66,6 +57,4 @@
 		</section>
 	</div>
 
-
-</body>
-</html>
+<%@ include file="/WEB-INF/views/module/footer.jsp"%>
