@@ -22,9 +22,9 @@ public class QnAImageDAOImpl implements QnAImageDAO {
 		return session.selectList("QnAImage-Mapper.selectSearchQnAList", qnaid);
 	}
 	@Override
-	public QnAVO selectQnAByQnAImageId(int qnaimageid) throws SQLException {
+	public QnAVO selectQnAImageById(int qnaimageid) throws SQLException {
 		
-		return session.selectOne("QnAImage-Mapper.selectQnAByQnAImageId", qnaimageid);
+		return session.selectOne("QnAImage-Mapper.selectQnAImageByQnAid", qnaimageid);
 	}
 	@Override
 	public void insertQnAimage(QnAImageVO qnaimage) throws SQLException {

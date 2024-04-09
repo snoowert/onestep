@@ -15,7 +15,15 @@ public interface QnAService {
 	void regist(QnAVO qna)throws SQLException;
 	
 	//읽기
-	void increaseViewCnt(int qna)throws SQLException;
+	void increaseViewCnt(int qnaid)throws SQLException;
 	
+	QnAVO getQnA(int qnaid) throws SQLException;
+	
+	//수정
+	void modify(QnAVO qna) throws SQLException;
+	
+	//삭제
+	void remove(int qnaid) throws SQLException;
+	 
 	
 }

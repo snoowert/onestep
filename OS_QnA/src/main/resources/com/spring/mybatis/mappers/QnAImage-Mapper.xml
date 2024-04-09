@@ -10,7 +10,7 @@
 		where qnaid=#{qnaid}
 	</select>
 
-	<select id="selectQnAImageByQnAid" resultType="qnaimage">
+	<select id="selectQnAImageById" resultType="qnaimage">
 		select *
 		from qnaimage
 		where qnaimageid=#{qnaimageid}
