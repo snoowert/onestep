@@ -47,7 +47,7 @@ public class QnAServiceImpl implements QnAService {
 	@Override
 	public QnAVO getQnA(int qnaid) throws SQLException {
 		QnAVO qna = QnADAO.selectQnAByQnAId(qnaid);
-		qna.setAnswerlist(AnswerDAO.selectAnswerList(qnaid))
+		qna.setAnswerlist(AnswerDAO.selectAnswerList(qnaid));
 		return qna;
 	}
 	

@@ -1,6 +1,7 @@
 package com.spring.dto;
 
 import java.util.Date;
+import java.util.List;
 
 public class QnAVO {
 	
@@ -12,6 +13,7 @@ public class QnAVO {
 	private int qnaviewpoint;		// 질문 조회 수
 	private Date qnaupdatedate;		// 질문 수정 일자
 	
+	List<AnswerVO> answerlist;
 	
 	public int getMemberid() {
 		return memberid;
@@ -55,5 +57,12 @@ public class QnAVO {
 	public void setQnaupdatedate(Date qnaupdatedate) {
 		this.qnaupdatedate = qnaupdatedate;
 	}
+	public List<AnswerVO> getAnswerlist() {
+		return answerlist;
+	}
+	public void setAnswerlist(List<AnswerVO> answerlist) {
+		this.answerlist = answerlist;
+	}
+	
 	
 }
