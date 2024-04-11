@@ -22,7 +22,7 @@
  		</if>		
  	</sql>
  	
- 	<select id="selectSearchQnAList" parameterType="pageMaker" resultType="qna">
+ 	<select id="selectSearchQnAList" resultType="qna">
  		select *
  		from qna
  		<include refid="search" />

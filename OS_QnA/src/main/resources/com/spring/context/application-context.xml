@@ -28,8 +28,8 @@
 		  p:sqlSession-ref="sqlSession" />
 		  
 	
-	<bean id="QnAService" class="com.spring.service.QnAServiceImpl"
+<!-- 	<bean id="QnAService" class="com.spring.service.QnAServiceImpl"
 		  p:QnADAO-ref="QnADAO"
-		  p:QnAFileDAO-ref="QnAFileDAO" />
+		  p:QnAImageDAO-ref="QnAImageDAO" /> -->
 
 </beans>
