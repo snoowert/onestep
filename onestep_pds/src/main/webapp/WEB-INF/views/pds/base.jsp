@@ -23,7 +23,7 @@
         <a class="nav-link" href="#">질문게시판</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="list">자료실</a>
+        <a class="nav-link" href="/pds/list">자료실</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">개발자노트</a>

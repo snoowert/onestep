@@ -22,8 +22,12 @@
 		p:sqlSession-ref="sqlSession"/>
 	<bean id="PdsFileDAO" class="com.pds.dao.PdsFileDAOImpl"
 		p:sqlSession-ref="sqlSession" />
+	<bean id="MemberDAO" class="com.member.dao.MemberDAOImpl"
+		p:sqlsessin-ref="sqlSession" />
 	<!-- service -->
 	<bean id="PdsService" class="com.pds.service.PdsServiceImpl"
 		p:pdsDAO-ref="PdsDAO"
 		p:pdsFileDAO-ref="PdsFileDAO"/>
+	<bean id="MemberService" class="com.member.service.MemberServiceImpl"
+		p:memberDAO-ref="MemberDAO" />
 </beans>

@@ -5,13 +5,13 @@
     
 <mapper namespace="Member-Mapper">
 <sql id="search">
-	<if test="searchType == 'n'.toString()">
-		where title like '%'||#{keyword}||'%'
-		and isDelete like
-		'%'||#{Deleteis}||'%' </if>
+	<if test="searchType == 'd'.toString()">
+		where isDelete like 'Y' </if>
+	<if test="searchType == 'nd'.toString()">
+		where isDelete like 'N' </if>
 </sql>
 <!-- 전체조회 -->
-<select id="selectMemberSearchList">
+<select id="selectMemberSearchList" resultType="member">
 	select *
 	from
 	member	  	
@@ -19,39 +19,40 @@
 	order by regdate desc
 </select>
 <!-- 개인조회 -->
-<select id="selectMemberById">
+<select id="selectMemberById" parameterType="int" resultType="member">
 	select *
 	from member
 	where memberid=#{memberid}
 </select>
 <!-- 회원수 카운트 -->
-<select id="selectMemberSearchListCount">
+<select id="selectMemberSearchListCount" resultType="int">
 	select
 	count(*)
 	from
-	pds		  	
+	member		  	
 	<include refid="search" />
 </select>
 <!-- 등록 -->
-<insert id="insertMember">
+<insert id="insertMember" parameterType="member">
 	insert into member(memberid, username, email, password, authority)
 	values(memberid_seq.nextval, #{username}, #{email}, #{password}, #{authority})
 </insert>
 <!-- 수정 -->
-<update id="updateMember">
+<update id="updateMember" parameterType="member">
 	update member
 	set
 	username=#{username}, password=#{password}
+	where memberid=#{memberid}
 </update>
 <!-- 탈퇴처리 -->
-<update id="banMember">
+<update id="banMember" parameterType="int">
 	update member
 	set
 	isDelete = 'Y'
 	where memberid=#{memberid}
 </update>
 <!-- 복구처리 -->
-<update id="restoreMember">
+<update id="restoreMember" parameterType="int">
 	update member
 	set
 	isDelete = 'N'
