@@ -67,7 +67,7 @@
  		update
  		qna
  		set
- 		qnatitle=#{qnatitle}, qnacontent=#{qnacontent}, updatedate=sysdate
+ 		qnatitle=#{qnatitle}, qnacontent=#{qnacontent}, qnaupdatedate=sysdate
  		where qnaid=#{qnaid}
  	</update>
  	

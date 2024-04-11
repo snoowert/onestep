@@ -63,6 +63,7 @@ public class TestQnADAOImpl {
 	@Rollback
 	public void testupdateQnA() throws Exception{
 		int testqnaId = 1;
+		testinsertQnA();
 		String testQnatitle = "질문";
 		QnAVO targetfree = QnADAO.selectQnAByQnAId(testqnaId);
 		
