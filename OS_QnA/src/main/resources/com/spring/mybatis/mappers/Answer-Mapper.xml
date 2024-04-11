@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="Answer-Mapper">
+  
+  	<select id="selectSearchAnswerList" resultType="answer">
+  		select *
+  		from answer
+  		where qnaid=#{qnaid}
+  		order by answerregdate desc
+  	</select>
+  	
+  	<select id ="selectAnswerByAnswerId" parameterType="int" resultType="answer">
+  		select *
+  		from answer
+  		where answerid=#{answerid}
+  	</select>
+  	
+  	<insert id="insertAnswer" parameterType="answer">
+  		insert into
+  		answer(qnaid, answerid, memberid, answercontent)
+  		values(#{qnaid}, #{answerid}, #{memberid}, #{answercontent})
+  	</insert>
+  	
+  	<update id="updateAnswer" parameterType="answer">
+  		update answer
+  		set answercontent=#{answercontent}, memberid=#{memberid}
+  		where answerid=#{answerid}
+  	</update>
+  	
+  	<delete id="deleteAnswer" parameterType="answer">
+  		delete
+  		from answercontent
+  		where answerid=#{answerid}
+  	</delete>
+  	
+  </mapper>
