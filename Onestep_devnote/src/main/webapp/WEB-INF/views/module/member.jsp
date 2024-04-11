@@ -3,7 +3,7 @@
     
     
     
-<div class="" style="padding: 50px; float:right; margin-right: 100px;">  
+<div class="" style="padding: 50px; float:right;">  
 	<!--참여자 (반복)-->
 	<h5>프로젝트 참여자 목록</h5>
 	<div class="card" style="width:250px;">
