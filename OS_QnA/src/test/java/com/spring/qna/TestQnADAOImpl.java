@@ -3,6 +3,7 @@ package com.spring.qna;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,8 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Assert;
 
+import com.spring.command.PageMaker;
 import com.spring.dao.QnADAO;
 import com.spring.dto.QnAVO;
 
@@ -21,10 +22,11 @@ import com.spring.dto.QnAVO;
 public class TestQnADAOImpl {
 
 	@Autowired
-	private QnADAO qnaDAO;
+	private QnADAO QnADAO;
 	
 	@Test
 	public void selectSearchQnaList()throws Exception{
+		PageMaker pageMaker = new PageMaker();
 		List<QnAVO> qnaList = QnADAO.selectSearchQnaList(pageMaker);
 		Assert.assertEquals(4, qnaList.size());
 	}
@@ -75,8 +77,11 @@ public class TestQnADAOImpl {
 	@Rollback
 	public void testdeleteQnA() throws Exception{
 		testinsertQnA();
+		int testqnaId = 2;
+		
 		QnAVO targetfree = QnADAO.selectQnAByQnAId(testqnaId);
-		Assert.assertEquals(insertid);
+		Assert.assertEquals(insertid, targetfree.getQnaid());
+		QnADAO.deleteQnA(insertid);
 		QnAVO deleteQna = QnADAO.selectQnAByQnAId(insertid);
 		Assert.assertNull(deleteQna);
 	}
