@@ -39,9 +39,10 @@ public class AnswerDAOImpl implements AnswerDAO {
 	}
 	
 	@Override
-	public void deleteAnswer(AnswerVO answer) throws SQLException {
-		session.delete("Answer-Mapper.deleteAnswer", answer);
+	public void deleteAnswer(int answerid) throws SQLException {
+		session.delete("Answer-Mapper.deleteAnswer", answerid);
 		
 	}
+
 
 }
