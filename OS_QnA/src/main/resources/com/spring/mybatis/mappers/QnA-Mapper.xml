@@ -67,8 +67,8 @@
  		update
  		qna
  		set
- 		qnatitle=#{qnatitle}, qnacontent={qnacontent}, updatedate=sysdate
- 		where qnaid=#[qnaid]
+ 		qnatitle=#{qnatitle}, qnacontent=#{qnacontent}, updatedate=sysdate
+ 		where qnaid=#{qnaid}
  	</update>
  	
  	<delete id="deleteQnA" parameterType="int">

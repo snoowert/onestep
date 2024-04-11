@@ -8,7 +8,7 @@ import com.spring.dto.QnAVO;
 
 public interface QnADAO {
 
-	List<QnAVO> selectSearchQnaList(PageMaker pageMaker) throws SQLException;
+	List<QnAVO> selectSearchQnAList(PageMaker pageMaker) throws SQLException;
 	int selectSearchQnAListCount(PageMaker pageMaker) throws SQLException;
 	QnAVO selectQnAByQnAId(int qnaid) throws SQLException;
 	int selectQnASeqNext() throws SQLException;

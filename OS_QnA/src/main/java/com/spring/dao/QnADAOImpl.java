@@ -16,12 +16,12 @@ public class QnADAOImpl implements QnADAO{
 		this.session = session;
 	}
 	@Override
-	public List<QnAVO> selectSearchQnaList(PageMaker pageMaker) throws SQLException {
+	public List<QnAVO> selectSearchQnAList(PageMaker pageMaker) throws SQLException {
 		int offset = pageMaker.getStartRow();
 		int limit = pageMaker.getPerPageNum();
 		
 		RowBounds rows = new RowBounds(offset, limit);
-		return session.selectList("QnA-Mapper.selectSearchQnaList", pageMaker, rows);
+		return session.selectList("QnA-Mapper.selectSearchQnAList", pageMaker, rows);
 	}
 	@Override
 	public int selectSearchQnAListCount(PageMaker pageMaker) throws SQLException {
