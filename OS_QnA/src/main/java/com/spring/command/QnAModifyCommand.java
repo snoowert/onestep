@@ -1,5 +1,7 @@
 package com.spring.command;
 
+import com.spring.dto.QnAVO;
+
 public class QnAModifyCommand extends QnARegistCommand {
 	
 	private int qnaid;
@@ -10,6 +12,14 @@ public class QnAModifyCommand extends QnARegistCommand {
 
 	public void setQnaid(int qnaid) {
 		this.qnaid = qnaid;
+	}
+	
+	@Override
+	public QnAVO toQnAVO() {
+		QnAVO qna = super.toQnAVO();
+		qna.setQnaid(this.qnaid);
+		
+		return qna;
 	}
 	
 }
