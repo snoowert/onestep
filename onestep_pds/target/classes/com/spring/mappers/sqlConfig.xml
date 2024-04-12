@@ -9,6 +9,7 @@
 		<typeAlias type="java.lang.String" alias="str"/>
 		<typeAlias type="com.pds.vo.PdsVO" alias="pds"/>
 		<typeAlias type="com.pds.vo.PdsFileVO" alias="pdsfile"/>
+		<typeAlias type="com.member.vo.MemberVO" alias="member" />
 	</typeAliases>
 	
 </configuration>
