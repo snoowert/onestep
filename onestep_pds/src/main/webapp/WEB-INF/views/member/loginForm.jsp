@@ -4,14 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 정보</title>
-<%@ include file="/WEB-INF/views/pds/base.jsp" %>
+<title>로그인</title>
 </head>
 <body>
-<section class="container">
-<div class="col-sm-10">
 
-</div>
-</section>
 </body>
 </html>

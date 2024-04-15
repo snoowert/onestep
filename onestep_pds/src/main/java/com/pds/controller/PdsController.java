@@ -62,7 +62,7 @@ public class PdsController {
 		PdsVO pds = pdsService.getPds(pdsid);
 		if(from != null && from.equals("list")) {
 			pdsService.increaseViewCnt(pdsid);
-			url = "redirect:/detail?pdsid="+pdsid;
+			url = "redirect:/pds/detail?pdsid="+pdsid;
 		}
 		else {
 			pds = pdsService.getPds(pdsid);
@@ -72,6 +72,7 @@ public class PdsController {
 		mnv.setViewName(url);
 		return mnv;
 	}
+	
 	//글작성폼
 	@GetMapping("/registForm")
 	public ModelAndView registForm(ModelAndView mnv) throws SQLException{

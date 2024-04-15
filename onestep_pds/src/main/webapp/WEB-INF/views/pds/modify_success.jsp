@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 <script>
 	alert("수정되었습니다.");
-	location.href="detail?pdsid=${param.pdsid}";
+	location.href="/pds/detail?pdsid=${param.pdsid}";
 </script>
