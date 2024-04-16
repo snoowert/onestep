@@ -32,7 +32,7 @@
         <a class="nav-link" href="#">개발자 노트</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#" style="color:cornflowerblue; font-weight:bold;">질문 게시판 </a>
+        <a class="nav-link" href="/qna/main" style="color:cornflowerblue; font-weight:bold;">질문 게시판 </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">자유 게시판</a>

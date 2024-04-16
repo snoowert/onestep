@@ -98,7 +98,7 @@ public class QnAController {
 		return mnv;
 	}
 	
-//	@PostMapping(value="/registanswer", produces="text/plain;charset=utf-8")
+//	@PostMapping(value="/regist_answer", produces="text/plain;charset=utf-8")
 //	public ModelAndView registAnswer(AnswerRegistCommand answerReg, ModelAndView mnv) throws Exception{
 //		String url = "/qna/registAnswer_success";
 //		AnswerVO answer = answerReg.toAnswerVO();
@@ -121,7 +121,7 @@ public class QnAController {
 //		return mnv;
 //	}
 //	
-//	@GetMapping("/modifyanswer")
+//	@GetMapping("/modify_answer")
 //	public ModelAndView AnswerModifyForm(int answerid, ModelAndView mnv) throws Exception{
 //		String url = "/qna/modifyAnswer";
 //		
@@ -133,7 +133,7 @@ public class QnAController {
 //		return mnv;
 //	}
 //	
-//	@PostMapping(value="modifyanswer", produces="text/plain;charset=urf-8")
+//	@PostMapping(value="modify_answer", produces="text/plain;charset=urf-8")
 //	public ModelAndView modifyAnswer(AnswerModifyForm modifyAnswer ModelAndView mnv) throws Exception{
 //		String url = "/qna/modifyAnswer_success";
 //		AnswerVO answer = answer.readanswer(answerid);
@@ -198,4 +198,5 @@ public class QnAController {
 //            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 //        }
 //    }
+	
 }
