@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Note-Mapper">
+	
+	<select id="selectNoteList" resultType="project">
+		select *
+		from developnote
+		order by noteid desc
+	</select>
+
+	
+	<select id="selectNoteListCount" resultType="int">
+		select count(*) from developnote
+	</select>
+	
+	<select id="selectNoteByDnId" parameterType="int" resultType="note">
+		select *
+		from free
+		where noteid=#{noteid}
+	</select>
+		
+	<insert id="insertNote" parameterType="note">
+		insert into 
+		developnote(NoteId, NoteTitle, NoteContent, NoteViewPoint, MemberId, ProjectId)
+		values(#{noteid}, #{notetitle}, #{noteContent}, #{noteviewpoint},  #{projectid}, #{memberid})
+	</insert>
+		
+	<update id="updateNote" parameterType="note">
+		update developnote
+		set
+		notetitle=#{notetitle}, notecontent=#{notecontent} memberid=#{memberid}
+		where noteid=#{noteid}
+	
+	</update>
+	<update id="increaseNoteViewPoint">
+		update developnote
+		set NoteViewPoint = NoteViewPoint + 1
+		where noteid=#{noteid}
+	</update>
+	
+	
+	<delete id="deleteNote" parameterType="str">
+		delete from developnote
+		where noteid=#{noteid}
+	</delete>
+	
+
+</mapper>
+
