@@ -8,6 +8,6 @@
 		<typeAlias type="java.lang.Integer" alias="int"/>
 		<typeAlias type="java.lang.String" alias="str"/>
 		<typeAlias type="com.spring.dto.QnAVO" alias="qna"/>
-		<typeAlias type="com.spring.dto.QnAImageVO" alias="qnaimage"/>
+		<typeAlias type="com.spring.dto.AnswerVO" alias="answer"/>
 	</typeAliases>
 </configuration>

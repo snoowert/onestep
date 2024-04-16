@@ -11,28 +11,28 @@ import com.spring.dto.QnAVO;
 
 public class QnAServiceImpl implements QnAService {
 
-	private QnADAO QnADAO;
-	public void setqnaDAO(QnADAO qnaDAO) {
-		this.QnADAO = qnaDAO;
+	private QnADAO QnaDAO;
+	public void setQnADAO(QnADAO qnaDAO) {
+		this.QnaDAO = qnaDAO;
 	}
 	
-	private AnswerDAO AnswerDAO;
-	public void setanswerDAO(AnswerDAO answerDAO) {
-		this.AnswerDAO = answerDAO;
+	private AnswerDAO answerDAO;
+	public void setAnswerDAO(AnswerDAO answerDAO) {
+		this.answerDAO = answerDAO;
 	}
 	
 	@Override
 	public List<QnAVO> searchList(PageMaker pageMaker) throws SQLException {
-		List<QnAVO> QnAList = QnADAO.selectSearchQnAList(pageMaker);
+		List<QnAVO> QnAList = QnaDAO.selectSearchQnAList(pageMaker);
 		
 		if(QnAList.size() > 0 ) {
 			for (QnAVO qna : QnAList) {
 				int qnaid = qna.getQnaid();
-				List<AnswerVO> answerList = AnswerDAO.selectAnswerList(qnaid);
+				List<AnswerVO> answerList = answerDAO.selectAnswerList(qnaid);
 				qna.setAnswerlist(answerList);
 			}
 		}
-		pageMaker.setTotalCount(QnADAO.selectSearchQnAListCount(pageMaker));
+		pageMaker.setTotalCount(QnaDAO.selectSearchQnAListCount(pageMaker));
 		
 		return QnAList;
 	}
@@ -40,65 +40,72 @@ public class QnAServiceImpl implements QnAService {
 	@Override
 	public void increaseViewCnt(int qnaid) throws SQLException {
 	
-		QnADAO.increaseViewCnt(qnaid);		
+		QnaDAO.increaseViewCnt(qnaid);		
 	
 	}
 	
 	@Override
 	public QnAVO getQnA(int qnaid) throws SQLException {
-		QnAVO qna = QnADAO.selectQnAByQnAId(qnaid);
-		qna.setAnswerlist(AnswerDAO.selectAnswerList(qnaid));
+		QnAVO qna = QnaDAO.selectQnAByQnAId(qnaid);
+		qna.setAnswerlist(answerDAO.selectAnswerList(qnaid));
 		return qna;
 	}
 	
 	@Override
+	public QnAVO detail(int qnaid) throws SQLException {
+		
+		return QnaDAO.selectQnAByQnAId(qnaid);
+	}
+
+	
+	@Override
 	public void regist(QnAVO qna) throws SQLException {
 		
-		int qnaid = QnADAO.selectQnASeqNext();
+		int qnaid = QnaDAO.selectQnASeqNext();
 		qna.setQnaid(qnaid);
-		QnADAO.insertQnA(qna);
+		QnaDAO.insertQnA(qna);
 		
 	}
 	
 	@Override
 	public void modify(QnAVO qna) throws SQLException {
 		
-		QnADAO.updateQnA(qna);
+		QnaDAO.updateQnA(qna);
 		
 	}
 	
 	@Override
 	public void remove(int qnaid) throws SQLException {
 		
-		QnADAO.deleteQnA(qnaid);
+		QnaDAO.deleteQnA(qnaid);
 		
 	}
 
 	@Override
 	public AnswerVO readanswer(int answerid) throws SQLException {
 		
-		return AnswerDAO.selectAnswerByAnswerId(answerid);
+		return answerDAO.selectAnswerByAnswerId(answerid);
 	}
 
 	@Override
 	public void registAnswer(AnswerVO answer, int answerid) throws SQLException {
 
 		answer.setAnswerid(answerid);
-		AnswerDAO.insertAnswer(answer);
+		answerDAO.insertAnswer(answer);
 		
 	}
 
 	@Override
 	public void modifyAnswer(AnswerVO answer, int answerid) throws SQLException {
 
-		AnswerDAO.updateAnswer(answer);
+		answerDAO.updateAnswer(answer);
 		
 	}
 
 	@Override
 	public void deleteAnswer(int answerid) throws SQLException {
 
-		AnswerDAO.deleteAnswer(answerid);
+		answerDAO.deleteAnswer(answerid);
 		
 	}
 	
