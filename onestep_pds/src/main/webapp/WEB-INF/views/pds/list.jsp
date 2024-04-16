@@ -56,7 +56,7 @@
 					<c:forEach var="pds" items="${pdsList}">
 					<tr>
 						<td>${pds.pdsid}</td>
-						<td><a href="detail?pdsid=${pds.pdsid}&from=list">${pds.pdstitle }'</a></td>
+						<td><a href="/pds/detail?pdsid=${pds.pdsid}&from=list">${pds.pdstitle }'</a></td>
 						<td>${pds.memberid }</td>
 						<td><fmt:formatDate pattern="yyyy.MM.dd" value="${pds.pdsregdate}"/></td>
 						<td>${pds.pdsviewpoint }</td>

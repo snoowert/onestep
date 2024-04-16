@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.member.service.MemberService;
 import com.member.vo.MemberVO;
+import com.spring.command.MemberRegistCommand;
 import com.spring.command.PageMaker;
 
 @Controller
@@ -64,22 +65,34 @@ public class MemberController {
 		mnv.setViewName(url);
 		return mnv;
 	}
-	
-	//회원가입 폼
-	@GetMapping("/registForm")
-	public ModelAndView RegistForm(ModelAndView mnv) {
-		String url ="/member/registForm";
+	@GetMapping("/registSelect")
+	public ModelAndView registSelect(ModelAndView mnv) {
+		String url = "/member/regist_select";
 		
 		mnv.setViewName(url);
 		return mnv;
 	}
-	//회원가입
-	@PostMapping("/regist")
-	public ModelAndView Regist(ModelAndView mnv) {
-		String url = "/member/regist_success";
+	//회원가입 폼
+	@GetMapping("/registForm")
+	public ModelAndView RegistForm(ModelAndView mnv, String authority) {
+		String url ="/member/registForm";
 		
+		mnv.setViewName(url);
+		mnv.addObject("authority",authority);
 		return mnv;
 	}
+	
+	//회원가입
+	@PostMapping("/regist")
+	public ModelAndView Regist(ModelAndView mnv, MemberRegistCommand command) {
+		String url = "/member/regist_success";
+		MemberVO member = command.toMemberVO();
+		memberService.insertMember(member);
+		
+		mnv.setViewName(url);
+		return mnv;
+	}
+	
 	//로그인 폼
 	@GetMapping("/loginForm")
 	public ModelAndView LoginForm(ModelAndView mnv) {
