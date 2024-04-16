@@ -17,7 +17,7 @@
 			<h3>${pds.pdstitle }</h3>
 			<hr>
 			<div class="row">
-				<p class="col-sm-5">${pds.memberid}</p>
+				<p class="col-sm-5">${pds.writer}</p>
 				<p class="col-sm-3">조회수  ${pds.pdsviewpoint }</p>
 				<p class="col-sm-2">작성일자  <fmt:formatDate pattern="yyyy.MM.dd" value="${pds.pdsregdate}"/></p>
 			</div>
@@ -51,14 +51,14 @@
 
 function delete_do(){
 	if(confirm("삭제하시겠습니까? ")){
-		location.href ="delete?pdsid=${pds.pdsid}";
+		location.href ="/pds/delete?pdsid=${pds.pdsid}";
 	}else{
 		return;
 	}	
 }
 
 function modify_go(){
-	location.href = "modifyForm?pdsid=${pds.pdsid}";
+	location.href = "/pds/modifyForm?pdsid=${pds.pdsid}";
 }
 </script>
 </body>

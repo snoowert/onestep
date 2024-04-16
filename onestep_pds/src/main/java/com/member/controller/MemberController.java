@@ -3,10 +3,12 @@ package com.member.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.member.service.MemberService;
@@ -48,7 +50,6 @@ public class MemberController {
 		String url="/member/detail";
 		String isM = "Yes";
 		MemberVO member = memberService.SelectMemberById(memberid);
-		
 		mnv.addObject("isM", isM);
 		mnv.addObject("member", member);
 		mnv.setViewName(url);
@@ -115,7 +116,40 @@ public class MemberController {
 	}
 	//회원수정
 	//비밀번호 확인폼
+	@GetMapping("/passwordCheckForm")
+	public ModelAndView PWcheckForm(ModelAndView mnv, int memberid) {
+		String url = "/member/password_check";
+		
+		mnv.setViewName(url);
+		mnv.addObject("memberid", memberid);
+		return mnv;
+	}
 	//비밀번호 확인
+	@PostMapping("/PWCheck")
+	public ModelAndView PWCheck(ModelAndView mnv, String password) {
+		String url = "/member/detail";
+		
+		return mnv;
+	}
 	//회원탈퇴
+	@PostMapping("/ban")
+    public ResponseEntity<String> banMember(@RequestParam("memberid") int memberid) {
+        memberService.banMember(memberid);
+        return ResponseEntity.ok("Member banned successfully.");
+    }
+	@GetMapping("/banSelf")
+	public ModelAndView banSelf(int memberid, ModelAndView mnv) {
+		String url ="/member/banSelf_success";
+		
+		memberService.banMember(memberid);
+		
+		mnv.setViewName(url);
+		return mnv;
+	}
 	//회원복구
+    @PostMapping("/restore")
+    public ResponseEntity<String> restoreMember(@RequestParam("memberid") int memberid) {
+        memberService.restoreMember(memberid);
+        return ResponseEntity.ok("Member restored successfully.");
+    }
 }

@@ -3,6 +3,7 @@ package com.pds.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.member.dao.MemberDAO;
 import com.pds.dao.PdsDAO;
 import com.pds.dao.PdsFileDAO;
 import com.pds.vo.PdsFileVO;
@@ -18,14 +19,21 @@ public class PdsServiceImpl implements PdsService{
 	public void setPdsFileDAO(PdsFileDAO pdsfiledao) {
 		this.pdsfileDAO = pdsfiledao;
 	}
+	MemberDAO memberDAO;
+	public void setMemberDAO(MemberDAO memberDAO) {
+		this.memberDAO = memberDAO;
+	}
 	@Override
 	public List<PdsVO> searchList(PageMaker pageMaker) throws SQLException {
 		// TODO Auto-generated method stub
 		List<PdsVO> PdsList = pdsDAO.selectSearchPdsList(pageMaker);
 		if(PdsList != null) for(PdsVO pds : PdsList) {
 			int pdsid = pds.getPdsid();
+			int memberid = pds.getMemberid();
 			List<PdsFileVO> pdsFileList = pdsfileDAO.selectPdsFileList(pdsid);
+			String username = memberDAO.selectMemberById(memberid).getUsername();
 			pds.setPdsfilelist(pdsFileList);
+			pds.setWriter(username);
 		}
 		pageMaker.setTotalCount(pdsDAO.selectSearchPdsListCount(pageMaker));
 		return PdsList;
@@ -55,7 +63,9 @@ public class PdsServiceImpl implements PdsService{
 		// TODO Auto-generated method stub
 		PdsVO pds = pdsDAO.selectPdsByPdsid(pdsid);
 		List<PdsFileVO> pdsFileList = pdsfileDAO.selectPdsFileList(pdsid);
+		String writer = memberDAO.selectMemberById(pds.getMemberid()).getUsername();
 		pds.setPdsfilelist(pdsFileList);
+		pds.setWriter(writer);
 		return pds;
 	}
 

@@ -8,7 +8,7 @@ public class MemberVO {
 	public String email;
 	public String password;
 	public Date regdate;
-	public char isDelete;
+	public String isDelete;
 	public String authority;
 	public int getMemberid() {
 		return memberid;
@@ -40,10 +40,10 @@ public class MemberVO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
-	public char getIsDelete() {
+	public String getIsDelete() {
 		return isDelete;
 	}
-	public void setIsDelete(char isDelete) {
+	public void setIsDelete(String isDelete) {
 		this.isDelete = isDelete;
 	}
 	public String getAuthority() {
