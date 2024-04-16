@@ -25,7 +25,7 @@ public class QnAController {
 	@Autowired
 	private QnAService qnaService;
 	
-	@GetMapping("/qnamain")
+	@GetMapping("main")
 	public ModelAndView list(@ModelAttribute PageMaker pageMaker, ModelAndView mnv) throws Exception{
 		String url="/qna/main";
 		List<QnAVO> qnaList = qnaService.searchList(pageMaker);
@@ -35,7 +35,7 @@ public class QnAController {
 		return mnv;
 	}
 	
-	@GetMapping("/registForm")
+	@GetMapping("/regist")
 	public ModelAndView registForm(ModelAndView mnv) {
 		String url = "/qna/regist";
 		
@@ -98,29 +98,29 @@ public class QnAController {
 		return mnv;
 	}
 	
-	@PostMapping(value="/registanswer", produces="text/plain;charset=utf-8")
-	public ModelAndView registAnswer(AnswerRegistCommand answerReg, ModelAndView mnv) throws Exception{
-		String url = "/qna/registAnswer_success";
-		AnswerVO answer = answerReg.toAnswerVO();
-		int qnaid = answer.getAnswerid();
-		
-		qnaService.registAnswer(answer, qnaid);
-		
-		mnv.addObject("qnaid", qnaid);
-		mnv.setViewName(url);
-		return mnv;
-	}
-	
-	@PostMapping("/removeanswer")
-	public ModelAndView removeAnswer(int qnaid, int answerid, ModelAndView mnv) throws Exception{
-		String url = "/qna/removeAnswer_success";
-		ModelAndView answer = new ModelAndView();
-		qnaService.remove(answerid);
-		mnv.addObject("qnaid", qnaid);
-		mnv.setViewName(url);
-		return mnv;
-	}
-	
+//	@PostMapping(value="/registanswer", produces="text/plain;charset=utf-8")
+//	public ModelAndView registAnswer(AnswerRegistCommand answerReg, ModelAndView mnv) throws Exception{
+//		String url = "/qna/registAnswer_success";
+//		AnswerVO answer = answerReg.toAnswerVO();
+//		int qnaid = answer.getAnswerid();
+//		
+//		qnaService.registAnswer(answer, qnaid);
+//		
+//		mnv.addObject("qnaid", qnaid);
+//		mnv.setViewName(url);
+//		return mnv;
+//	}
+//	
+//	@PostMapping("/removeanswer")
+//	public ModelAndView removeAnswer(int qnaid, int answerid, ModelAndView mnv) throws Exception{
+//		String url = "/qna/removeAnswer_success";
+//		ModelAndView answer = new ModelAndView();
+//		qnaService.remove(answerid);
+//		mnv.addObject("qnaid", qnaid);
+//		mnv.setViewName(url);
+//		return mnv;
+//	}
+//	
 //	@GetMapping("/modifyanswer")
 //	public ModelAndView AnswerModifyForm(int answerid, ModelAndView mnv) throws Exception{
 //		String url = "/qna/modifyAnswer";

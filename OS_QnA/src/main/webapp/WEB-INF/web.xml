@@ -5,7 +5,7 @@
   
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>com/spring/context/root-context.xml</param-value>
+    <param-value>classpath:com/spring/context/root-context.xml</param-value>
   </context-param>
   
   <listener>
