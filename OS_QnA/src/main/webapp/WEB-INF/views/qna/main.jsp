@@ -21,7 +21,7 @@
 			<div class="card">
 				<div class="card-header with-border">
 					<button type="button" class="btn btn-primary"
-						onclick="OpenWindow('','',700,800);">글 작성</button>
+						onclick="OpenWindow('registForm','질문작성',700,800);">질문 작성</button>
 					<div id="keyword" class="card-tools" style="width: 550px;">
 						<div class="input-group row">
 							<!-- search bar -->
@@ -55,6 +55,7 @@
 									<th>글 번호</th>
 									<th>글 제목</th>
 									<th>작성자</th>
+									<th>작성일자</th>
 									<!-- yyyy-MM-dd  -->
 								</tr>
 							</table>
