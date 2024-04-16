@@ -28,8 +28,7 @@
 		  p:sqlSession-ref="sqlSession" />	  
 		
  	<bean id="QnAService" class="com.spring.service.QnAServiceImpl"
-		  p:QnADAO-ref="QnADAO"
-		  p:answerDAO-ref="AnswerDAO"
-		   />
+		  p:qnaDAO-ref="QnADAO"
+		  p:answerDAO-ref="AnswerDAO" />
 
 </beans>
