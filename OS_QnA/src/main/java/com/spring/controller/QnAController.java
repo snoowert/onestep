@@ -1,5 +1,7 @@
 package com.spring.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.spring.command.PageMaker;
-import com.spring.command.AnswerModifyCommand;
 import com.spring.command.AnswerRegistCommand;
+import com.spring.command.PageMaker;
 import com.spring.command.QnAModifyCommand;
 import com.spring.command.QnARegistCommand;
 import com.spring.dto.AnswerVO;
@@ -27,7 +28,8 @@ public class QnAController {
 	@GetMapping("/qnamain")
 	public ModelAndView list(@ModelAttribute PageMaker pageMaker, ModelAndView mnv) throws Exception{
 		String url="/qna/main";
-		mnv.addObject("QnAList",qnaList);
+		List<QnAVO> qnaList = qnaService.searchList(pageMaker);
+		mnv.addObject("qnaList",qnaList);
 		mnv.setViewName(url);
 		
 		return mnv;
@@ -42,7 +44,7 @@ public class QnAController {
 	}
 	
 	@PostMapping(value = "/regist", produces ="text/plain;charset=utf-8")
-	public ModelAndView regist(QnARegistCommand regCommand,ModelAndView mnv) {
+	public ModelAndView regist(QnARegistCommand regCommand,ModelAndView mnv) throws Exception{
 		String url ="/member/regist_success";
 		QnAVO qna = regCommand.toQnAVO();
 		
@@ -57,10 +59,7 @@ public class QnAController {
 	public ModelAndView detail(int qnaid, HttpSession session, String from, ModelAndView mnv) throws Exception{
 		String url = "/qna/detail";
 		
-		QnAVO qna = null;
-		qnaService.increaseViewCnt(qnaid);
-		
-		qna = qnaService.detail(qnaid);
+		QnAVO qna = qnaService.detail(qnaid);
 		
 		mnv.addObject("qna", qna);
 		mnv.setViewName(url);
@@ -99,10 +98,10 @@ public class QnAController {
 		return mnv;
 	}
 	
-	@PostMapping("/insertanswer", produces="text/plain;charset=utf-8")
-	public ModelAndView insertAnswer(insertAnswer answer, ModelAndView mnv) throws Exception{
+	@PostMapping(value="/registanswer", produces="text/plain;charset=utf-8")
+	public ModelAndView registAnswer(AnswerRegistCommand answerReg, ModelAndView mnv) throws Exception{
 		String url = "/qna/registAnswer_success";
-		AnswerVO answer = answer.toAnswerVO();
+		AnswerVO answer = answerReg.toAnswerVO();
 		int qnaid = answer.getAnswerid();
 		
 		qnaService.registAnswer(answer, qnaid);
@@ -122,26 +121,27 @@ public class QnAController {
 		return mnv;
 	}
 	
-	@GetMapping("/modifyanswer")
-	public ModelAndView modifyAnswer(int answerid, ModelAndView mnv) throws Exception{
-		String url = "/qna/modifyAnswer";
-		
-		AnswerVO answer = qnaService.readanswer(answerid);
-		
-		mnv.addObject("answer", answer);
-		mnv.setViewName(url);
-		return mnv;
-	}
-	
-	@PostMapping(value="modifyanswer", produces="text/plain;charset=urf-8")
-	public ModelAndView modifyAnswer(modifyAnswer, answer ModelAndView mnv) throws Exception{
-		String url = "/qna/modifyAnswer_success";
-		AnswerVO answer = answer.readanswer(answerid);
-		
-		mnv.addObject("answer", answer);
-		mnv.setViewName(url);
-		return mnv;
-	}
+//	@GetMapping("/modifyanswer")
+//	public ModelAndView AnswerModifyForm(int answerid, ModelAndView mnv) throws Exception{
+//		String url = "/qna/modifyAnswer";
+//		
+//		AnswerVO answer = qnaService.readanswer(answerid);
+//		
+//		mnv.addObject("answer", answer);
+//		mnv.setViewName(url);
+//		
+//		return mnv;
+//	}
+//	
+//	@PostMapping(value="modifyanswer", produces="text/plain;charset=urf-8")
+//	public ModelAndView modifyAnswer(AnswerModifyForm modifyAnswer ModelAndView mnv) throws Exception{
+//		String url = "/qna/modifyAnswer_success";
+//		AnswerVO answer = answer.readanswer(answerid);
+//		
+//		mnv.addObject("answer", answer);
+//		mnv.setViewName(url);
+//		return mnv;
+//	}
 	
 //	//이 아래로는 토스트UI
 //	@PostMapping("/tui-editor/image-upload")
@@ -198,4 +198,4 @@ public class QnAController {
 //            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 //        }
 //    }
-//}
+}

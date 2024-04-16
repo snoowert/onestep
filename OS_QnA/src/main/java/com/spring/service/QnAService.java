@@ -17,6 +17,8 @@ public interface QnAService {
 
 	QnAVO getQnA(int qnaid) throws SQLException;
 	
+	QnAVO detail(int qnaid) throws SQLException;
+	
 	//등록
 	void regist(QnAVO qna)throws SQLException;
 	

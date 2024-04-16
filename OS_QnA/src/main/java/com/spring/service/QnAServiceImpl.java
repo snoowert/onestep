@@ -52,6 +52,13 @@ public class QnAServiceImpl implements QnAService {
 	}
 	
 	@Override
+	public QnAVO detail(int qnaid) throws SQLException {
+		
+		return QnADAO.selectQnAByQnAId(qnaid);
+	}
+
+	
+	@Override
 	public void regist(QnAVO qna) throws SQLException {
 		
 		int qnaid = QnADAO.selectQnASeqNext();
