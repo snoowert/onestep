@@ -26,16 +26,16 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">자료실 </a>
+        <a class="nav-link" href="/pds/list">자료실 </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">개발자 노트</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="/qna/main" style="color:cornflowerblue; font-weight:bold;">질문 게시판 </a>
+        <a class="nav-link" href="/qna/main" style="color:#0072E5; font-weight:bold;">질문 게시판 </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">자유 게시판</a>
+        <a class="nav-link" href="/free/main">자유 게시판</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">체험관</a>

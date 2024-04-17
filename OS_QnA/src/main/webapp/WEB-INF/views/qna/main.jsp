@@ -12,12 +12,12 @@
 		<div
 			style="position: relative;
 				   width: 800px; height: 200px;
-				   margin-left: auto; margin-right: auto;
+				   margin-left: auto; margin-right: auto; margin-top: 20px; margin-bottom: 20px;
 				   background-color: gainsboro; border-radius: 40px 40px 40px 40px;">
 			<div class="col-sm-6"
 				style="position: absolute; top: 50%; transform: translate(0, -50%); ">
 				<br>
-				<h1>Q&A</h1> <h3>질문게시판</h3><br>
+				<h1>질문 게시판</h1> <h3>개발 관련 질문을 자유롭게</h3><br>
 			</div>
 		</div>
 
