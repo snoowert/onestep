@@ -12,21 +12,23 @@
 						<div class ="card-tools">
 							<button type="button" class="btn btn-primary" id="registBtn" onclick="regist_go();">등 록</button>
 							&nbsp;&nbsp;&nbsp;&nbsp;
-							<button type="button" class="btn btn-warning" id="cancelBtn" onclick="location='main'" >취 소</button>
+							<button type="button" class="btn btn-warning" id="cancelBtn" onclick="history.go(-1);" >취 소</button>
 						</div>
 					</div><!--end card-header  -->
 					<div class="card-body pad">
 						<form role="form" method="post" action="regist.do" name="registForm">
 							<div class="form-group">
-								<label for="title">제 목</label> 
-								<input type="text" id="title"  title="제목"
-									name='title' class="form-control notNull" placeholder="제목을 작성해 주세요">
+								<label for="qnatitle">제 목</label> 
+								<input type="text" id="qnatitle"  title="제목"
+									name='qnatitle' class="form-control notNull" placeholder="제목을 작성해 주세요">
 							</div>							
 							<div class="form-group">
 								<label for="writer">작성자</label> 
-								<input type="text" id="writer" title="작성자" name="writer" class="form-control notNull" value="${loginUser }">
+								<input type="text" id="writer" title="작성자" readonly
+									name="writer" class="form-control notNull" value="2" >
+								<input type="hidden" id="memberid" name="memberid" value="2">
 							</div>
-							<div class="form-group" id="content">
+							<div class="form-group" id="qnacontent">
 								
 								
 							</div>
@@ -43,14 +45,14 @@
 <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
 <script>
 function modify_submit(){
-	document.querySelector("#freecontent").value = editor.getHTML();
+	document.querySelector("#qnacontent").value = editor.getHTML();
 	document.querySelector("form[role='form']").submit();	
 }
 const editor = new toastui.Editor({
-    el: document.querySelector('#content'), // 에디터를 적용할 요소 (컨테이너)
+    el: document.querySelector('#qnacontent'), // 에디터를 적용할 요소 (컨테이너)
     height: '500px',                        // 에디터 영역의 높이 값 (OOOpx || auto)
     initialEditType: 'wysiwyg',            // 최초로 보여줄 에디터 타입 (markdown || wysiwyg)
-    initialValue: '${free.freecontent}',     // 내용의 초기 값으로, 반드시 마크다운 문자열 형태여야 함
+    initialValue: '${qna.qnacontent}',     // 내용의 초기 값으로, 반드시 마크다운 문자열 형태여야 함
     previewStyle: 'vertical',                // 마크다운 프리뷰 스타일 (tab || vertical)
     hooks: {
         async addImageBlobHook(blob, callback) {
@@ -60,7 +62,7 @@ const editor = new toastui.Editor({
                 formData.append('image', blob);
 
                 // 서버로 이미지 업로드
-                const response = await fetch('/free/tui-editor/image-upload', {
+                const response = await fetch('/qna/tui-editor/image-upload', {
                     method: 'POST',
                     body: formData
                 });
@@ -68,7 +70,7 @@ const editor = new toastui.Editor({
                 // 서버에서 반환된 파일명
                 const filename = await response.text();
              	// 이미지 URL 생성
-                const imageUrl = '/free/tui-editor/image-print?filename=' + filename;
+                const imageUrl = '/qna/tui-editor/image-print?filename=' + filename;
 
                 // 에디터에 이미지 삽입
                 callback(imageUrl, 'image');

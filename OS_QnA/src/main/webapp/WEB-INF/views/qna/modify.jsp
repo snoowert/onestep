@@ -2,12 +2,37 @@
 	pageEncoding="UTF-8"%>
 
 <%@ include file="/WEB-INF/views/module/header.jsp"%>
-<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" /> 
+<link rel="stylesheet"
+	href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+<div class="card-header">
+	<h3 class="card-title">공지 수정</h3>
+	<div class="card-tools">
+		<div class="float-right">
+			<button type="button" class="btn btn-warning" id="modifyBtn"
+				onclick="modify_submit();">수 정</button>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<button type="button" class="btn btn-default " id="cancelBtn"
+				onclick="history.go(-1);">취 소</button>
+		</div>
+	</div>
+</div>
+<div class="card-body">
+	<form role="form" method="post" action="modify.do" name="modifyForm"
+		onsubmit="return false;">
+		<input type="hidden" name="" value="${ }" />
+		<div class="form-group">
+			<label for="title">제 목</label> <input type="text" id="title"
+				name='title' class="form-control" value="${answertitle }">
+		</div>
+		<div class="form-group">
+			<label for="writer">작성자</label> <input type="text" id="writer"
+				readonly name="writer" class="form-control" value="${ }">
+		</div>
+		<div class="form-group" id="content"></div>
 
-
-
-<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
-<script>
+		<script
+			src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+		<script>
 function modify_submit(){
 	document.querySelector("#freecontent").value = editor.getHTML();
 	document.querySelector("form[role='form']").submit();	
@@ -44,6 +69,11 @@ const editor = new toastui.Editor({
         }
     }
 });
+
+function modify_submit(){
+	document.querySelector("form[role='form']").submit();	
+}
+
 </script>
 
-<%@ include file="/WEB-INF/views/module/footer.jsp"%>
+		<%@ include file="/WEB-INF/views/module/footer.jsp"%>
