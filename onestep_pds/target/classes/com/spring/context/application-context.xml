@@ -27,7 +27,8 @@
 	<!-- service -->
 	<bean id="PdsService" class="com.pds.service.PdsServiceImpl"
 		p:pdsDAO-ref="PdsDAO"
-		p:pdsFileDAO-ref="PdsFileDAO"/>
+		p:pdsFileDAO-ref="PdsFileDAO"
+		p:memberDAO-ref="MemberDAO"/>
 	<bean id="MemberService" class="com.member.service.MemberServiceImpl"
 		p:memberDAO-ref="MemberDAO" />
 </beans>

@@ -3,6 +3,7 @@ package com.spring.pds;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -66,7 +67,7 @@ public class PdsTest2 {
 		memberDAO.banMember(5);
 		MemberVO member = memberDAO.selectMemberById(5);
 		
-		Assert.assertEquals('N', member.getIsDelete());
+		Assert.assertThat(member.getIsDelete(), CoreMatchers.is('N'));
 	}
 	@Test
 	public void redeleteTest() throws SQLException{

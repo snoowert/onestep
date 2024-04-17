@@ -12,6 +12,7 @@ public class PdsVO {
 	private int pdsviewpoint;
 	
 	List<PdsFileVO> pdsfilelist;
+	String writer;
 	public int getPdsid() {
 		return pdsid;
 	}
@@ -53,6 +54,12 @@ public class PdsVO {
 	}
 	public void setPdsfilelist(List<PdsFileVO> pdsfilelist) {
 		this.pdsfilelist = pdsfilelist;
+	}
+	public String getWriter() {
+		return writer;
+	}
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
 	
 	

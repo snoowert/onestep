@@ -12,11 +12,6 @@
 		order by noteid desc
 	</select>
 
-	
-	<select id="selectNoteListCount" resultType="int">
-		select count(*) from developnote
-	</select>
-	
 	<select id="selectNoteByDnId" parameterType="int" resultType="note">
 		select *
 		from free
