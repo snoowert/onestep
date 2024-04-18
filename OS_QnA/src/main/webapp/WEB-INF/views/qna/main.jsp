@@ -67,8 +67,7 @@
 								</tr>
 								<c:if test="${not empty qnaList }">
 									<c:forEach var="member" items="${qnaList }">
-										<tr
-											onclick="OpenWindow('detail?id=${qna.qnaid}','상세보기',700,800);"
+										<tr onclick="OpenWindow('detail?id=${qna.qnaid}','상세보기',700,800);"
 											style="cursor: pointer;">
 											<td style="margin: 0; padding: 0; padding-top: 5px;"><span
 												style="display: block; width: 40px; height: 40px; margin: 0 auto;"></span>
@@ -99,7 +98,6 @@
 		<%@ include file="/WEB-INF/views/module/pagination.jsp" %>
 	</div>
 </div>
-<!-- ./wrapper -->
 
 
 
