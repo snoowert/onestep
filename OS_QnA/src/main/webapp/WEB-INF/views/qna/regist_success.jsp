@@ -3,7 +3,7 @@
     
 <%@ include file="/WEB-INF/views/module/header.jsp" %>
 <script>
-	alert("질문 등록을 성공했습니다.");
+	alert("등록 되었습니다.");
 	window.close();
 	window.opener.location.reload();
 </script>

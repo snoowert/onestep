@@ -18,13 +18,17 @@
 </div>
 <div class="card-body">
 	<form role="form" method="post" action="modify.do" name="modifyForm" onsubmit="return false;">
+		<input type="hidden" id="qnaid" name="qnaid">
 		<input type="hidden" id="qnacontent" name="qnacontent">
+		
 		<div class="form-group">
-			<label for="title">제 목</label> <input type="text" id="title"
-				name='title' class="form-control" value="${answertitle }">
+			<label for="qnatitle">제 목</label> <input type="text" id="qnatitle"
+				name='qnatitle' class="form-control" value="${answertitle }">
 		</div>
 		<div class="form-group">
-			<label for="writer">작성자</label> <input type="text" id="writer"
+			<label for="writer">작성자</label> 
+			<input type="hidden" value="${qna.memberid }" id="memberid" name="memberid">
+			<input type="text" id="writer"
 				readonly name="writer" class="form-control" value="${qna.memberid }">
 		</div>
 		<div class="form-group" id="content">
@@ -35,10 +39,7 @@
 
 <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
 <script>
-function modify_submit(){
-	document.querySelector("#qnacontent").value = editor.getHTML();
-	document.querySelector("form[role='form']").submit();	
-}
+
 const editor = new toastui.Editor({
     el: document.querySelector('#content'), // 에디터를 적용할 요소 (컨테이너)
     height: '500px',                        // 에디터 영역의 높이 값 (OOOpx || auto)
