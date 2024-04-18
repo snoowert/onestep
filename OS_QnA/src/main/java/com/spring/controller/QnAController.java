@@ -151,7 +151,10 @@ public class QnAController {
 	@PostMapping(value="modify_answer", produces="text/plain;charset=utf-8")
 	public ModelAndView modifyAnswer(AnswerModifyCommand answerMod, ModelAndView mnv) throws Exception{
 		String url = "/qna/modifyanswer_success";
-		AnswerVO answer = answer.readanswer(answerid);
+		AnswerVO answer = answerMod.toAnswerVO();
+		int answerid = answer.getAnswerid();
+		
+		qnaService.registAnswer(answer, answerid);
 		
 		mnv.addObject("answer", answer);
 		mnv.setViewName(url);
