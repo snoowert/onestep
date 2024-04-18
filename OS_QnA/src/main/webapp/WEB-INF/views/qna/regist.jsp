@@ -28,7 +28,7 @@
 									name="writer" class="form-control notNull" value="2" >
 								<input type="hidden" id="memberid" name="memberid" value="2">
 							</div>
-							<div class="form-group" id="qnacontent">
+							<div class="form-group" id="qnacontent" name="qnacontent">
 								
 								
 							</div>
