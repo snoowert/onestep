@@ -44,15 +44,15 @@
  	</select>
  	
  	<select id="selectQnASeqNext" resultType="int">
- 		select qna_seq.nextval
+ 		select qnaid_seq.nextval
  		as qnaid from dual
  	</select>
  	 	
  	<insert id="insertQnA" parameterType="qna">
  		insert
  		into
- 		qna(memberid,qnaid,qnatitle,qnacontent)
- 		values(#{memberid},#{qnaid},#{qnatitle},#{qnacontent})
+ 		qna(qnaid,qnatitle,qnacontent,memberid)
+ 		values(#{qnaid},#{qnatitle},#{qnacontent},#{memberid})
  	</insert>
 
  	<update id="increaseViewCnt" parameterType="int">

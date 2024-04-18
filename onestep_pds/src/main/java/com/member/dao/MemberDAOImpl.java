@@ -58,5 +58,10 @@ public class MemberDAOImpl implements MemberDAO{
 		// TODO Auto-generated method stub
 		sqlsession.update("Member-Mapper.restoreMember",memberid);
 	}
+	@Override
+	public MemberVO selectMemberByEmail(String email) {
+		// TODO Auto-generated method stub
+		return sqlsession.selectOne("Member-Mapper.selectMemberByEmail",email);
+	}
 
 }

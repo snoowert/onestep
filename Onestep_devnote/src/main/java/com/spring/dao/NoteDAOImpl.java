@@ -20,8 +20,8 @@ public class NoteDAOImpl implements NoteDAO {
 	}
 
 	@Override
-	public NoteVO selectNoteByNoteId(int noteId) throws SQLException {
-		return sqlsession.selectOne("Note-Mapper.selectNoteById");
+	public NoteVO selectNoteByDnId(int noteId) throws SQLException {
+		return sqlsession.selectOne("Note-Mapper.selectNoteByDnId");
 	}
 
 	@Override
@@ -40,8 +40,8 @@ public class NoteDAOImpl implements NoteDAO {
 	}
 
 	@Override
-	public void increaseNoteViewPoint(int noteId) throws SQLException {
-		sqlsession.update("Note-Mapper.increaeNoteViewPoint", noteId);
+	public void increaseNoteViewPoint(int dnId) throws SQLException {
+		sqlsession.update("Note-Mapper.increaseNoteViewPoint", dnId);
 		
 	}
 

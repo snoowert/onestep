@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 정보</title>
-<%@ include file="/WEB-INF/views/pds/base.jsp" %>
+<%@ include file="/WEB-INF/views/base.jsp" %>
 </head>
 <body>
 <section class="container">
@@ -33,7 +33,7 @@
 		<p style="font-size:larger;font-weight: bolder;">${member.authority }</p>
 	</div>
 	<div class="row">
-		<button class="col-sm-5 btn btn-primary mx-auto">수정</button>
+		<button class="col-sm-5 btn btn-primary mx-auto" onclick="modifyForm();")>수정</button>
 		<button class="col-sm-5 btn btn-warning mx-auto" onclick="banSelf();">탈퇴</button>
 	</div>
 	<div class="row">
@@ -43,6 +43,9 @@
 	    </button>
 	</div>
 	<input type="hidden" value="${member.isDelete }" name="memberisD" id="memberisD">
+	<form id="modifyForm" action="/member/modifyForm" method="GET">
+		<input type="hidden" name="memberid" value="${member.memberid }">
+	</form>
 </div>
 </section>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -56,6 +59,10 @@
 		else{
 			banMember(${member.memberid});
 		}
+	}
+	function modifyForm(){
+		var form = $("form[id='modifyForm']");
+		form.submit();
 	}
 	// 밴 요청을 보내는 함수
 	function banMember(memberid) {

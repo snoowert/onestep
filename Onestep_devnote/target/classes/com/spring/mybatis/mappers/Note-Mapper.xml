@@ -6,7 +6,7 @@
   
 <mapper namespace="Note-Mapper">
 	
-	<select id="selectNoteList" resultType="project">
+	<select id="selectNoteList" resultType="note">
 		select *
 		from developnote
 		order by noteid desc
@@ -14,14 +14,13 @@
 
 	<select id="selectNoteByDnId" parameterType="int" resultType="note">
 		select *
-		from free
+		from developnote
 		where noteid=#{noteid}
 	</select>
-		
 	<insert id="insertNote" parameterType="note">
 		insert into 
-		developnote(NoteId, NoteTitle, NoteContent, NoteViewPoint, MemberId, ProjectId)
-		values(#{noteid}, #{notetitle}, #{noteContent}, #{noteviewpoint},  #{projectid}, #{memberid})
+		developnote(Noteid, Notetitle, Notecontent, Noteviewpoint, NoteRegdate, memberid, Projectid)
+		values(#{noteId}, #{noteTitle}, #{noteContent}, #{noteViewPoint}, #{noteRegDate}, #{memberId}, #{projectId})
 	</insert>
 		
 	<update id="updateNote" parameterType="note">
@@ -31,14 +30,14 @@
 		where noteid=#{noteid}
 	
 	</update>
-	<update id="increaseNoteViewPoint">
+	<update id="increaseNoteViewPoint" parameterType="int">
 		update developnote
 		set NoteViewPoint = NoteViewPoint + 1
 		where noteid=#{noteid}
 	</update>
 	
 	
-	<delete id="deleteNote" parameterType="str">
+	<delete id="deleteNote" parameterType="int">
 		delete from developnote
 		where noteid=#{noteid}
 	</delete>
