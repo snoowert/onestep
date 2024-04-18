@@ -4,7 +4,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-
 <c:if test="${from eq 'remove' }">
 	<script>
 		alert("${param.qnaid} 번 글이 삭제되었습니다.");
@@ -65,14 +64,14 @@
 						</div>		
 						
 						<div class="form-group col-sm-4" >
-							<label for="regDate">작성일</label>
+							<label for="qnaregdate">작성일</label>
 							<span class="form-control" id="qnaregdate">
 								<fmt:formatDate value="${qna.qnaregdate }" pattern="yyyy-MM-dd"/>  
 							</span>
 						
 						</div>
 						<div class="form-group col-sm-4" >
-							<label for="viewcnt">조회수</label>
+							<label for="qnaviewcnt">조회수</label>
 							<span class="form-control" id="viewcnt" >${qna.qnaviewcnt }</span>
 						</div>
 					</div>		

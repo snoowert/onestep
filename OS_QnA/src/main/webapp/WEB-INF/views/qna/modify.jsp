@@ -34,6 +34,7 @@
 		<div class="form-group" id="content">
 		
 		</div>
+		<input type="file" class="real-upload" accept="image/*" required multiple>
 	</form>
 </div>
 

@@ -25,9 +25,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.command.AnswerModifyCommand;
+import com.spring.command.AnswerRegistCommand;
 import com.spring.command.PageMaker;
 import com.spring.command.QnAModifyCommand;
 import com.spring.command.QnARegistCommand;
+import com.spring.dto.AnswerVO;
 import com.spring.dto.QnAVO;
 import com.spring.service.QnAService;
 
@@ -110,50 +113,50 @@ public class QnAController {
 		return mnv;
 	}
 	
-//	@PostMapping(value="/regist_answer", produces="text/plain;charset=utf-8")
-//	public ModelAndView registAnswer(AnswerRegistCommand answerReg, ModelAndView mnv) throws Exception{
-//		String url = "/qna/registanswer_success";
-//		AnswerVO answer = answerReg.toAnswerVO();
-//		int qnaid = answer.getAnswerid();
-//		
-//		qnaService.registAnswer(answer, qnaid);
-//		
-//		mnv.addObject("qnaid", qnaid);
-//		mnv.setViewName(url);
-//		return mnv;
-//	}
-//	
-//	@PostMapping("/removeanswer")
-//	public ModelAndView removeAnswer(int qnaid, int answerid, ModelAndView mnv) throws Exception{
-//		String url = "/qna/removeanswer_success";
-//		ModelAndView answer = new ModelAndView();
-//		qnaService.remove(answerid);
-//		mnv.addObject("qnaid", qnaid);
-//		mnv.setViewName(url);
-//		return mnv;
-//	}
-//	
-//	@GetMapping("/modify_answer")
-//	public ModelAndView AnswerModifyForm(int answerid, ModelAndView mnv) throws Exception{
-//		String url = "/qna/modifyanswer";
-//		
-//		AnswerVO answer = qnaService.readanswer(answerid);
-//		
-//		mnv.addObject("answer", answer);
-//		mnv.setViewName(url);
-//		
-//		return mnv;
-//	}
-//	
-//	@PostMapping(value="modify_answer", produces="text/plain;charset=urf-8")
-//	public ModelAndView modifyAnswer(AnswerModifyForm modifyAnswer ModelAndView mnv) throws Exception{
-//		String url = "/qna/modifyanswer_success";
-//		AnswerVO answer = answer.readanswer(answerid);
-//		
-//		mnv.addObject("answer", answer);
-//		mnv.setViewName(url);
-//		return mnv;
-//	}
+	@PostMapping(value="/regist_answer", produces="text/plain;charset=utf-8")
+	public ModelAndView registAnswer(AnswerRegistCommand answerReg, ModelAndView mnv) throws Exception{
+		String url = "/qna/registanswer_success";
+		AnswerVO answer = answerReg.toAnswerVO();
+		int qnaid = answer.getAnswerid();
+		
+		qnaService.registAnswer(answer, qnaid);
+		
+		mnv.addObject("qnaid", qnaid);
+		mnv.setViewName(url);
+		return mnv;
+	}
+	
+	@PostMapping("/removeanswer")
+	public ModelAndView removeAnswer(int qnaid, int answerid, ModelAndView mnv) throws Exception{
+		String url = "/qna/removeanswer_success";
+		ModelAndView answer = new ModelAndView();
+		qnaService.remove(answerid);
+		mnv.addObject("qnaid", qnaid);
+		mnv.setViewName(url);
+		return mnv;
+	}
+	
+	@GetMapping("/modify_answer")
+	public ModelAndView AnswerModifyForm(int answerid, ModelAndView mnv) throws Exception{
+		String url = "/qna/modifyanswer";
+		
+		AnswerVO answer = qnaService.readanswer(answerid);
+		
+		mnv.addObject("answer", answer);
+		mnv.setViewName(url);
+		
+		return mnv;
+	}
+	
+	@PostMapping(value="modify_answer", produces="text/plain;charset=utf-8")
+	public ModelAndView modifyAnswer(AnswerModifyCommand answerMod, ModelAndView mnv) throws Exception{
+		String url = "/qna/modifyanswer_success";
+		AnswerVO answer = answer.readanswer(answerid);
+		
+		mnv.addObject("answer", answer);
+		mnv.setViewName(url);
+		return mnv;
+	}
 	
 	@PostMapping("/tui-editor/image-upload")
 	public ResponseEntity<String> uploadEditorImage(HttpServletRequest request, @RequestParam("image") MultipartFile image) {
