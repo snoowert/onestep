@@ -14,9 +14,10 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;
 							<button type="button" class="btn btn-warning" id="cancelBtn" onclick="history.go(-1);" >취 소</button>
 						</div>
-					</div><!--end card-header  -->
+					</div>
 					<div class="card-body pad">
 						<form role="form" method="post" action="regist.do" name="registForm">
+							<input type="hidden" id="qnacontent" name="qnacontent">
 							<div class="form-group">
 								<label for="qnatitle">제 목</label> 
 								<input type="text" id="qnatitle"  title="제목"
@@ -28,10 +29,11 @@
 									name="writer" class="form-control notNull" value="2" >
 								<input type="hidden" id="memberid" name="memberid" value="2">
 							</div>
-							<div class="form-group" id="qnacontent" name="qnacontent">
+							<div class="form-group" id="content" >
 								
 								
 							</div>
+							
 						</form>
 					</div><!--end card-body  -->
 					<div class="card-footer" style="display:none">
