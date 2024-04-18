@@ -3,13 +3,8 @@
     
 <%@ include file="/WEB-INF/views/module/header.jsp" %>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+<script>
+	alert("질문 수정을 성공했습니다.");
+	window.close();
+	window.opener.location.reload();
+</script>

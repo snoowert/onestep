@@ -7,8 +7,8 @@ public class QnAVO {
 	
 	private int memberid; 			// 회원 번호
 	private int qnaid;	 			// 글 번호
-	private String qnatitle=""; 	// 질문 제목
-	private String qnacontent=""; 	// 질문 내용
+	private String qnatitle; 	// 질문 제목
+	private String qnacontent; 	// 질문 내용
 	private Date qnaregdate;		// 질문 등록 일자
 	private int qnaviewpoint;		// 질문 조회 수
 	private Date qnaupdatedate;		// 질문 수정 일자
