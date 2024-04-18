@@ -57,13 +57,13 @@ public class QnAController {
 	
 	@PostMapping(value = "/regist", produces ="text/plain;charset=utf-8")
 	public ModelAndView regist(QnARegistCommand regCommand,ModelAndView mnv) throws Exception{
-		String url ="/member/regist_success";
+		String url ="/qna/regist_success";
 		QnAVO qna = regCommand.toQnAVO();
 		
 		qna.getQnaregdate();
 		qnaService.regist(qna);
 		mnv.setViewName(url);
-		
+		System.out.println(regCommand.getQnacontent());
 		return mnv;
 	}
 	
@@ -112,7 +112,7 @@ public class QnAController {
 	
 //	@PostMapping(value="/regist_answer", produces="text/plain;charset=utf-8")
 //	public ModelAndView registAnswer(AnswerRegistCommand answerReg, ModelAndView mnv) throws Exception{
-//		String url = "/qna/registAnswer_success";
+//		String url = "/qna/registanswer_success";
 //		AnswerVO answer = answerReg.toAnswerVO();
 //		int qnaid = answer.getAnswerid();
 //		
@@ -125,7 +125,7 @@ public class QnAController {
 //	
 //	@PostMapping("/removeanswer")
 //	public ModelAndView removeAnswer(int qnaid, int answerid, ModelAndView mnv) throws Exception{
-//		String url = "/qna/removeAnswer_success";
+//		String url = "/qna/removeanswer_success";
 //		ModelAndView answer = new ModelAndView();
 //		qnaService.remove(answerid);
 //		mnv.addObject("qnaid", qnaid);
@@ -135,7 +135,7 @@ public class QnAController {
 //	
 //	@GetMapping("/modify_answer")
 //	public ModelAndView AnswerModifyForm(int answerid, ModelAndView mnv) throws Exception{
-//		String url = "/qna/modifyAnswer";
+//		String url = "/qna/modifyanswer";
 //		
 //		AnswerVO answer = qnaService.readanswer(answerid);
 //		
@@ -147,7 +147,7 @@ public class QnAController {
 //	
 //	@PostMapping(value="modify_answer", produces="text/plain;charset=urf-8")
 //	public ModelAndView modifyAnswer(AnswerModifyForm modifyAnswer ModelAndView mnv) throws Exception{
-//		String url = "/qna/modifyAnswer_success";
+//		String url = "/qna/modifyanswer_success";
 //		AnswerVO answer = answer.readanswer(answerid);
 //		
 //		mnv.addObject("answer", answer);
