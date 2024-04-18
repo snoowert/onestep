@@ -27,7 +27,6 @@
 		insert into
 		project(projectid, projectname, projectdescription)
 		values(#{projectId}, #{projectName}, #{projectDesc})
-	
 	</insert>
 	
 	<update id="updateProject" parameterType="project">

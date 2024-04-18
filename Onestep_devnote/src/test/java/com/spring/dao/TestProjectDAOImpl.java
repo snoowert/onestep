@@ -26,18 +26,18 @@ public class TestProjectDAOImpl {
 	@Test
 	public void testSelectProjectList() throws Exception {
 		List<ProjectVO> pjList = projectDAO.selectProjectList();
-		Assert.assertEquals(1, pjList.size());
+		Assert.assertEquals(2, pjList.size());
 	}
 	
 	
 	@Test
 	public void testSelectProjectByProejctId() throws SQLException {
-		int testProjectId = 1;
+		int testProjectId = 12;
 		ProjectVO pj = projectDAO.selectProjectByProjectId(testProjectId);
 		Assert.assertEquals(pj.getProjectId(), testProjectId);
 	}
 	
-	int insertProjectId = 2;
+	int insertProjectId = 3;
 	@Test
 	@Rollback
 	
@@ -48,12 +48,31 @@ public class TestProjectDAOImpl {
 		 pj.setProjectDesc("프로젝트 상세설명");
 		 
 		 projectDAO.insertProject(pj);
-		 String p = projectDAO.selectProjectByProjectId(2).getProjectName();
+		 System.out.println(pj);
 		 
-		 Assert.assertEquals(pj.getProjectId(), p );
+		 Assert.assertEquals(pj.getProjectId(), projectDAO.selectProjectByProjectId(1).getProjectName());
+		 
 		 
 	}
 	
+	public void testUpdateProject() throws SQLException {
+		
+		ProjectVO pj = projectDAO.selectProjectByProjectId(2);
+		pj.setProjectName("제목다시고치기");
+		pj.setProjectDesc("상세설명다시고치기");
+		
+	
+		projectDAO.updateProject(pj);
+		Assert.assertEquals(pj.getProjectName(), projectDAO.selectProjectByProjectId(2).getProjectName());
+		
+	}
+	
+	
+	
+	
+	public void testDeleteProject() throws SQLException {
+		
+	}
 	 
 }
  

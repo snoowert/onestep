@@ -8,7 +8,7 @@ public class ProjectVO {
 	private String projectDesc;
 	
 	
-	
+	 
 	public int getProjectId() {
 		return projectId;
 	}
