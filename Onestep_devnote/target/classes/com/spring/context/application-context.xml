@@ -7,4 +7,8 @@
 	<bean id="NoteDAO"
 		  class="com.spring.dao.NoteDAOImpl"
 		  p:sqlSession-ref="sqlSession" />
+		  
+	<bean id="projectDAO"
+		  class="com.spring.dao.ProjectDAOImpl"
+		  p:sqlSession-ref="sqlSession" />
 </beans>

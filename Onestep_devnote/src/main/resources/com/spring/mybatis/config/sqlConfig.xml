@@ -10,7 +10,9 @@
 		<typeAlias type="java.lang.String" alias="str"/>
 		<typeAlias type="java.lang.Integer" alias="int"/>
 		
+		<typeAlias type="com.spring.dto.ProjectVO" alias="project"/>
 		<typeAlias type="com.spring.dto.NoteVO" alias="note" />
+		
 	
 	</typeAliases>
 	

@@ -14,9 +14,10 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;
 							<button type="button" class="btn btn-warning" id="cancelBtn" onclick="history.go(-1);" >취 소</button>
 						</div>
-					</div><!--end card-header  -->
+					</div>
 					<div class="card-body pad">
 						<form role="form" method="post" action="regist.do" name="registForm">
+							<input type="hidden" id="qnacontent" name="qnacontent">
 							<div class="form-group">
 								<label for="qnatitle">제 목</label> 
 								<input type="text" id="qnatitle"  title="제목"
@@ -28,10 +29,11 @@
 									name="writer" class="form-control notNull" value="2" >
 								<input type="hidden" id="memberid" name="memberid" value="2">
 							</div>
-							<div class="form-group" id="qnacontent">
+							<div class="form-group" id="content" >
 								
 								
 							</div>
+							<input type="file" class="real-upload" accept="image/*" required multiple>
 						</form>
 					</div><!--end card-body  -->
 					<div class="card-footer" style="display:none">
@@ -49,7 +51,7 @@ function modify_submit(){
 	document.querySelector("form[role='form']").submit();	
 }
 const editor = new toastui.Editor({
-    el: document.querySelector('#qnacontent'), // 에디터를 적용할 요소 (컨테이너)
+    el: document.querySelector('#content'), // 에디터를 적용할 요소 (컨테이너)
     height: '500px',                        // 에디터 영역의 높이 값 (OOOpx || auto)
     initialEditType: 'wysiwyg',            // 최초로 보여줄 에디터 타입 (markdown || wysiwyg)
     initialValue: '${qna.qnacontent}',     // 내용의 초기 값으로, 반드시 마크다운 문자열 형태여야 함
@@ -83,7 +85,7 @@ const editor = new toastui.Editor({
 
 function regist_go(){
 	var form = document.registForm;
-	
+	document.querySelector("#qnacontent").value = editor.getHTML();
 	var inputNotNull = document.querySelectorAll("input.notNull");
 	for(var input of inputNotNull){
 		if(!input.value){
