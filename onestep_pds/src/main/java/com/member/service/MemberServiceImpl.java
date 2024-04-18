@@ -1,10 +1,13 @@
 package com.member.service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.member.dao.MemberDAO;
 import com.member.vo.MemberVO;
 import com.spring.command.PageMaker;
+import com.spring.exception.InvalidPasswordException;
+import com.spring.exception.NotFoundIdentityException;
 
 public class MemberServiceImpl implements MemberService{
 	private MemberDAO memberDAO;
@@ -25,7 +28,18 @@ public class MemberServiceImpl implements MemberService{
 		MemberVO member = memberDAO.selectMemberById(memberid);
 		return member;
 	}
-
+	
+	@Override
+	public MemberVO login(String email, String password) throws NotFoundIdentityException, InvalidPasswordException, SQLException {
+		
+		MemberVO member = memberDAO.selectMemberByEmail(email);
+		
+		if(member==null) throw new NotFoundIdentityException();
+		if(!password.equals(member.getPassword())) throw new InvalidPasswordException();
+		
+		
+		return member;
+	}
 	@Override
 	public void insertMember(MemberVO member) {
 		// TODO Auto-generated method stub

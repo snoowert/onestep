@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원목록</title>
-<%@ include file="/WEB-INF/views/pds/base.jsp" %>
+<%@ include file="/WEB-INF/views/base.jsp" %>
 </head>
 <body>
 <section class="container">

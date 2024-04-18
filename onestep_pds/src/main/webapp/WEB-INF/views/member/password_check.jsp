@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>비밀번호 확인</title>
-<%@ include file="/WEB-INF/views/pds/base.jsp" %>
+<%@ include file="/WEB-INF/views/base.jsp" %>
 </head>
 <body>
 <section class="container">
@@ -30,6 +30,10 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+	var error = "${error}";
+	if(error){
+		alert(error);
+	}
 	function onChecking(){
 		form = $("form[name='checkForm']");
 		

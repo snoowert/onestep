@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>자료 등록</title>
-<%@ include file="/WEB-INF/views/pds/base.jsp" %>
+<%@ include file="/WEB-INF/views/base.jsp" %>
 <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 </head>
 <body>

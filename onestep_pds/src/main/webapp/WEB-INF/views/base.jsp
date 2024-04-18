@@ -17,10 +17,10 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">자유게시판</a>
+        <a class="nav-link" href="/free/main">자유게시판</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">질문게시판</a>
+        <a class="nav-link" href="/qna/main">질문게시판</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/pds/list">자료실</a>
