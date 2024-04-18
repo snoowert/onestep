@@ -126,9 +126,15 @@ public class MemberController {
 	}
 	//비밀번호 확인
 	@PostMapping("/PWCheck")
-	public ModelAndView PWCheck(ModelAndView mnv, String password) {
-		String url = "/member/detail";
-		
+	public ModelAndView PWCheck(ModelAndView mnv, String password, int memberid) {
+		MemberVO member = memberService.SelectMemberById(memberid);
+		mnv.addObject("memberid", memberid);
+		if(password.equals(member.getPassword())) {
+			mnv.setViewName("redirect:/member/loginForm");
+		}
+		else {
+			mnv.setViewName("redirect:/member/passwordCheckForm");
+		}
 		return mnv;
 	}
 	//회원탈퇴
