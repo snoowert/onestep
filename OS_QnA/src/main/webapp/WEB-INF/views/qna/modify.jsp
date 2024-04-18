@@ -17,7 +17,7 @@
 	</div>
 </div>
 <div class="card-body">
-	<form role="form" method="post" action="modify.do" name="modifyForm" onsubmit="return false;">
+	<form role="form" method="post" action="modify.do" name="modifyForm" onsubmit="return false;" enctype="multipart/form-data">
 		<input type="hidden" id="qnaid" name="qnaid">
 		<input type="hidden" id="qnacontent" name="qnacontent">
 		

@@ -16,7 +16,7 @@
 						</div>
 					</div>
 					<div class="card-body pad">
-						<form role="form" method="post" action="regist.do" name="registForm">
+						<form role="form" method="post" action="regist.do" name="registForm" enctype="multipart/form-data">
 							<input type="hidden" id="qnacontent" name="qnacontent">
 							<div class="form-group">
 								<label for="qnatitle">제 목</label> 

@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -39,6 +40,11 @@ public class QnAController {
 	
 	@Autowired
 	private QnAService qnaService;
+	
+	@Resource(name = "imageUploadPath")
+	private String uploadDir;
+	@Resource(name = "fileUploadPath")
+	private String fileUploadDir;
 	
 	@GetMapping("main")
 	public ModelAndView list(@ModelAttribute PageMaker pageMaker, ModelAndView mnv) throws Exception{
