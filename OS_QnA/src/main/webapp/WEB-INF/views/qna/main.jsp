@@ -74,12 +74,12 @@
 
 									<c:forEach var="qna" items="${qnaList }">
 										<tr>
-										<td>${qna.qnaid }</td>
-										<td><a href="/qna/detail?qnaid=${qna.qnaid}&from=list">${qna.qnatitle }</a></td>
-										<td>${qna.memberid }</td>
-										<td><fmt:formatDate value="${qna.qnaregdate }"
-												pattern="yyyy-MM-dd" /></td>
-										<td>${qna.qnaviewpoint }</td>
+											<td>${qna.qnaid }</td>
+											<td><a href="/qna/detail?qnaid=${qna.qnaid}&from=list">${qna.qnatitle }</a></td>
+											<td>${qna.memberid }</td>
+											<td><fmt:formatDate value="${qna.qnaregdate }"
+													pattern="yyyy-MM-dd" /></td>
+											<td>${qna.qnaviewpoint }</td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -92,6 +92,36 @@
 				</div>
 
 			</div>
+			<nav aria-label="Navigation" class="row col-sm-10">
+				<ul class="pagination justify-content-center my-2"
+					style="width: 80%; margin-left: 5rem">
+					<li class="page-item"><a class="page-link"
+						href="javascript:search_list(1);"> <i
+							class="fas fa-angle-double-left"></i>
+					</a></li>
+
+					<li class="page-item"><a class="page-link"
+						href="javascript:search_list(${pageMaker.prev ? pageMaker.startPage-1 : pageMaker.page});">
+							<i class="fas fa-angle-left"></i>
+					</a></li>
+					<c:forEach var="pageNum" begin="${pageMaker.startPage }"
+						end="${pageMaker.endPage }">
+						<li class="page-item ${pageMaker.page == pageNum?'active':''}">
+							<a class="page-link" href="javascript:search_list(${pageNum });">
+								${pageNum } </a>
+						</li>
+					</c:forEach>
+
+					<li class="page-item"><a class="page-link"
+						href="javascript:search_list(${pageMaker.next ? pageMaker.endPage+1 :pageMaker.page});">
+							<i class="fas fa-angle-right"></i>
+					</a></li>
+					<li class="page-item"><a class="page-link"
+						href="javascript:search_list(${pageMaker.realEndPage});"> <i
+							class="fas fa-angle-double-right"></i>
+					</a></li>
+				</ul>
+			</nav>
 		</section>
 		<%@ include file="/WEB-INF/views/module/pagination.jsp"%>
 	</div>

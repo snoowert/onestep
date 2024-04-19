@@ -64,10 +64,8 @@
  	</update>
  	
  	<update id="updateQnA" parameterType="qna">
- 		update
- 		qna
- 		set
- 		qnatitle=#{qnatitle}, qnacontent=#{qnacontent}, qnaupdatedate=sysdate
+ 		update qna set
+ 		qnatitle=#{qnatitle}, memberid=#{memberid}, qnacontent=#{qnacontent}, qnaupdatedate=sysdate
  		where qnaid=#{qnaid}
  	</update>
  	

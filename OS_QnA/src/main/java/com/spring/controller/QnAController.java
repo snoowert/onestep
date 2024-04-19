@@ -82,6 +82,14 @@ public class QnAController {
 		
 		QnAVO qna = qnaService.detail(qnaid);
 		
+		if(from != null && from.equals("main")) {
+			qnaService.increaseViewCnt(qnaid);
+			url = "redirect:/qna/detail?qnaid="+qnaid;
+		}
+		else {
+			qna = qnaService.getQnA(qnaid);
+		}
+		
 		mnv.addObject("qna", qna);
 		mnv.setViewName(url);
 		return mnv;

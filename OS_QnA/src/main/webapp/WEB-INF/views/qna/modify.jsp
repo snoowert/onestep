@@ -18,31 +18,36 @@
 </div>
 <div class="card-body">
 	<form role="form" method="post" action="modify.do" name="modifyForm"
-		onsubmit="return false;" enctype="multipart/form-data">
-		<input type="hidden" id="qnaid" name="qnaid"> <input
-			type="hidden" id="qnacontent" name="qnacontent">
-
+		onsubmit="return false;">
+		<input type="hidden" name="qnaid" value="${qna.qnaid }" />
 		<div class="form-group">
 			<label for="qnatitle">제 목</label> <input type="text" id="qnatitle"
 				name='qnatitle' class="form-control" value="${qna.qnatitle }">
 		</div>
 		<div class="form-group">
-			<label for="writer">작성자</label> <input type="hidden"
-				value="${qna.memberid }" id="memberid" name="memberid"> <input
-				type="text" id="writer" readonly name="writer" class="form-control"
+			<label for="memberid">작성자</label> <input type="text" id="memberid"
+				readonly name="memberid" class="form-control"
 				value="${qna.memberid }">
 		</div>
-		<div class="form-group" id="content"></div>
+		<div class="form-group">
+			<label for="content">내 용</label>
+			<div id="content"></div>
+			<input type="hidden" name="qnacontent" id="qnacontent" />
+
+		</div>
 		<input type="file" class="real-upload" accept="image/*" required
 			multiple>
 	</form>
+</div>
+<!--end card-body  -->
+<div class="card-footer" style="display: none"></div>
 </div>
 
 <script
 	src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	
+
 <script>
 
 const editor = new toastui.Editor({
@@ -79,8 +84,11 @@ const editor = new toastui.Editor({
 });
 
 function modify_submit(){
+	
 	var form = document.modifyForm;
+	
 	document.querySelector("#qnacontent").value = editor.getHTML();
+	
 	var inputNotNull = document.querySelectorAll("input.notNull");
 	for(var input of inputNotNull){
 		if(!input.value){
