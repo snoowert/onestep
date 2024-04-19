@@ -30,6 +30,11 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
+	public MemberVO selectMemberByUsername(String username) {
+		// TODO Auto-generated method stub
+		return sqlsession.selectOne("Member-Mapper.selectMemberByUsername",username);
+	}
+	@Override
 	public int selectMemberSearchListCount(PageMaker pageMaker) {
 		// TODO Auto-generated method stub
 		return sqlsession.selectOne("Member-Mapper.selectMemberSearchListCount",pageMaker);

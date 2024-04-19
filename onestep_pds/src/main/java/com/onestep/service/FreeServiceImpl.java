@@ -27,8 +27,6 @@ public class FreeServiceImpl implements FreeService{
 	@Override
 	public List<FreeVO> searchList(PageMaker pageMaker) throws SQLException {
 		List<FreeVO> freeList = FreeDAO.selectFreeList(pageMaker);
-		
-
 		if (freeList.size() > 0) {
 			for (FreeVO free : freeList) {
 				int freeid = free.getFreeid();

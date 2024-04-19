@@ -16,7 +16,7 @@
 			<input id="pdstitle" name="pdstitle" type="text" class="form-control" placeholder="자료명">
 			<br>
 			<input type="hidden" id="pdscontent" name="pdscontent">
-			<input type="hidden" id="memberid" name="memberid" value="2">
+			<input type="hidden" id="memberid" name="memberid" value="${loginUser.memberid}">
 			<!-- 
 			<div class="row">
 			&nbsp;&nbsp;<label class="form-label">파일</label>&nbsp;&nbsp;&nbsp;
@@ -133,7 +133,7 @@
     			return;
     		}
     	}	
-       	
+       	alert("${LoginUser}");
     	document.querySelector("#pdscontent").value = editor.getHTML();
     	
     	$("form[name='pdsform']").submit();

@@ -11,9 +11,22 @@
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
+		<listener-class>com.spring.listener.LoginSessionListener</listener-class>
+	</listener>
+	
+	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-
+	
+	<filter>
+		<filter-name>sessionExpiredCheckFilter</filter-name>
+		<filter-class>com.spring.filter.SessionExpiredCheckFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>sessionExpiredCheckFilter</filter-name>
+		<url-pattern>/member/loginExpired</url-pattern>
+	</filter-mapping>
+	
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter

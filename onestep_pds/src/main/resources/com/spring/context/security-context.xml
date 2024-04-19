@@ -8,38 +8,36 @@
 
 	<beans:bean id="customAuthenticationProvider" 
 	            class="com.spring.security.CustomAuthenticationProvider"
-	            p:memberService-ref="memberService"
+	            p:memberService-ref="MemberService"
 	            />
-       
-	<authentication-manager id="root_auth_manager">
-		<authentication-provider ref="customAuthenticationProvider">
-		</authentication-provider>
-	</authentication-manager>
-
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider ref="customAuthenticationProvider" />
+    </authentication-manager>
+	
 	<!-- 인허가 -->
 	<http pattern="/resources/**" security="none" />
-	<http use-expressions="true" pattern="/**" authentication-manager-ref="root_auth_manager">
+	<http use-expressions="true" pattern="/**">
 		<access-denied-handler error-page="/security/accessDenied" />
 		
 		<intercept-url pattern="/index.do*" access="isAuthenticated()"/>	
 		<intercept-url pattern="/**" access="permitAll"/>
 		
-		<form-login login-page="/common/loginForm.do"
-		            login-processing-url="/common/login.do"
-		            username-parameter="id"
-		            password-parameter="pwd"
+		<form-login login-page="/member/loginForm.do"
+		            login-processing-url="/member/login.do"
+		            username-parameter="email"
+		            password-parameter="password"
 		            authentication-success-handler-ref="loginSuccessHandler"
 		            authentication-failure-handler-ref="loginFailureHandler"
 		            
 		            />
-		<logout logout-url="/common/logout.do"
+		<logout logout-url="/member/logout.do"
 		        invalidate-session="true"
 		        logout-success-url="/"
 				delete-cookies="JSESSIONID"/>
 		        
-		<session-management invalid-session-url="/common/loginTimeOut" >
+		<session-management invalid-session-url="/member/loginTimeOut" >
 			<concurrency-control					
-				expired-url="/common/loginExpired"
+				expired-url="/member/loginExpired"
 				max-sessions="1"
 				session-registry-ref="sessionRegistry"
 			/>		
@@ -54,7 +52,7 @@
  	
 	<beans:bean id="loginSuccessHandler"
 		 	class="com.spring.security.LoginSuccessHandler"
-		 	p:defaultTargetUrl="/index.do" 
+		 	p:defaultTargetUrl="/pds/list" 
 		 	p:loginUserLogSavePath-ref="loginUserLogPath" 
 		 	p:loginUserLogSaveFileName-ref="loginUserLogFileName"
 		 	/>  

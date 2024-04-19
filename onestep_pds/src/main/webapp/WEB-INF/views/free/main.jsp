@@ -31,7 +31,7 @@
 										
 						<input  class="form-control" type="text" name="keyword" placeholder="검색어를 입력하세요." value="${pageMaker.keyword }"/>
 						<span class="input-group-append">
-							<button class="btn btn-primary" type="button" id="searchBtn" data-card-widget="search" onclick="searchList_go(1);">
+							<button class="btn btn-primary" type="button" id="searchBtn" data-card-widget="search" onclick="search_list(1);">
 								<i class="fa fa-fw fa-search"></i>
 							</button>
 						</span>
@@ -56,7 +56,7 @@
 							<td>${free.freeid }</td>
 							<td id="boardTitle" style="text-align:left;max-width: 100px; overflow: hidden;
 										 white-space: nowrap; text-overflow: ellipsis;">
-								<a href="detail.do?freeid=${free.freeid }">
+								<a href="detail.do?freeid=${free.freeid }&from=list">
 									<span class="col-sm-12 ">${free.freetitle }</span>
 								</a>
 							</td>
