@@ -78,13 +78,14 @@ public class QnAController {
 	
 	@GetMapping("/detail")
 	public ModelAndView detail(int qnaid, HttpSession session, String from, ModelAndView mnv) throws Exception{
+		
 		String url = "/qna/detail";
 		
-		QnAVO qna = qnaService.detail(qnaid);
-		
-		if(from != null && from.equals("main")) {
+		QnAVO qna = null;
+
+		if(from != null && from.equals("list")) {
 			qnaService.increaseViewCnt(qnaid);
-			url = "redirect:/qna/detail?qnaid="+qnaid;
+			url = "redirect:/detail?qnaid="+qnaid;
 		}
 		else {
 			qna = qnaService.getQnA(qnaid);
