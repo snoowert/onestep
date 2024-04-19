@@ -66,11 +66,11 @@
 									<!-- yyyy-MM-dd  -->
 								</tr>
 								<c:if test="${not empty qnaList }">
-									<c:forEach var="qnaList" items="${qnaList }">
+									<c:forEach items="${qnaList }">
 										<tr onclick="OpenWindow('detail?id=${qna.qnaid}','상세보기',700,800);"
 											style="cursor: pointer;">
-											<td style="margin: 0; padding: 0; padding-top: 5px;"><span
-												style="display: block; width: 40px; height: 40px; margin: 0 auto;"></span>
+											<td style="margin: 0; padding: 0; padding-top: 5px;">
+											<span style="display: block; width: 40px; height: 40px; margin: 0 auto;"></span>
 											</td>
 											<td>${qna.qnaid }</td>
 											<td>${qna.qnatitle }</td>
@@ -78,7 +78,7 @@
 											<td><fmt:formatDate value="${qna.qnaregdate }"
 													pattern="yyyy-MM-dd" /></td>
 											<td>${qna.qnaviewpoint }</td>
-										</tr>
+										
 									</c:forEach>
 								</c:if>
 								<c:if test="${empty qnaList }">

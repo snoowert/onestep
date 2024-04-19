@@ -5,6 +5,5 @@
 
 <script>
 	alert("수정 되었습니다.");
-	window.close();
-	window.opener.location.reload();
+	location.href="detail?qnaid=${param.qnaid}";
 </script>

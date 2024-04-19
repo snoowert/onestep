@@ -72,7 +72,7 @@ public class QnAController {
 		qna.getQnaregdate();
 		qnaService.regist(qna);
 		mnv.setViewName(url);
-		System.out.println(regCommand.getQnacontent());
+		
 		return mnv;
 	}
 	
