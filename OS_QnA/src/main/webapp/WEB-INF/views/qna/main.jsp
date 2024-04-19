@@ -65,37 +65,35 @@
 									<th>조회수</th>
 									<!-- yyyy-MM-dd  -->
 								</tr>
-								<c:if test="${not empty qnaList }">
-									<c:forEach items="${qnaList }">
-										<tr onclick="OpenWindow('detail?id=${qna.qnaid}','상세보기',700,800);"
-											style="cursor: pointer;">
-											<td style="margin: 0; padding: 0; padding-top: 5px;">
-											<span style="display: block; width: 40px; height: 40px; margin: 0 auto;"></span>
-											</td>
-											<td>${qna.qnaid }</td>
-											<td>${qna.qnatitle }</td>
-											<td>${qna.memberid }</td>
-											<td><fmt:formatDate value="${qna.qnaregdate }"
-													pattern="yyyy-MM-dd" /></td>
-											<td>${qna.qnaviewpoint }</td>
-										
+								<tbody>
+									<c:if test="${empty qnaList }">
+										<tr>
+											<td colspan="5" class="text-center">해당내용이 없습니다.</td>
+										</tr>
+									</c:if>
+
+									<c:forEach var="qna" items="${qnaList }">
+
+										<td>${qna.qnaid }</td>
+										<td><a href="/qna/detail?qnaid=${qna.qnaid}&from=list">${qna.qnatitle }</a></td>
+										<td>${qna.memberid }</td>
+										<td><fmt:formatDate value="${qna.qnaregdate }"
+												pattern="yyyy-MM-dd" /></td>
+										<td>${qna.qnaviewpoint }</td>
+
 									</c:forEach>
-								</c:if>
-								<c:if test="${empty qnaList }">
-									<tr>
-										<td colspan="5" class="text-center">해당내용이 없습니다.</td>
-				            		</tr>
-				              	</c:if>
+								</tbody>
+
 							</table>
 						</div>
-						
+
 					</div>
-					
+
 				</div>
-				
+
 			</div>
 		</section>
-		<%@ include file="/WEB-INF/views/module/pagination.jsp" %>
+		<%@ include file="/WEB-INF/views/module/pagination.jsp"%>
 	</div>
 </div>
 
