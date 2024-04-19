@@ -58,28 +58,34 @@
 						</div>
 					</div>
 					<div class="row">	
-						<div class="form-group col-sm-4" >
+						<div class="form-group col-sm-2" >
 							<label for="writer">작성자</label>
 							<span class="form-control" id="writer">${qna.memberid }</span>
 						</div>		
 						
-						<div class="form-group col-sm-4" >
+						<div class="form-group col-sm-3" >
 							<label for="qnaregdate">작성일</label>
 							<span class="form-control" id="qnaregdate">
 								<fmt:formatDate value="${qna.qnaregdate }" pattern="yyyy-MM-dd"/>  
 							</span>
+					</div>		
+							
+							<div class="form-group col-sm-3" >
+							<label for="qnaregdate">수정일</label>
+							<span class="form-control" id="qnaupdatedate">
+								<fmt:formatDate value="${qna.qnaupdatedate }" pattern="yyyy-MM-dd"/>  
+							</span>
 						
 						</div>
-						<div class="form-group col-sm-4" >
+						<div class="form-group col-sm-3" >
 							<label for="qnaviewcnt">조회수</label>
-							<span class="form-control" id="viewcnt" >${qna.qnaviewcnt }</span>
+							<span class="form-control" id="viewcnt" >${qna.qnaviewpoint }</span>
 						</div>
-					</div>		
+				</div>													
 					<div class="form-group col-sm-12">
 						<label for="content">내 용</label>
 						<div id="content">${qna.qnacontent }</div>	
 					</div>
-				</div>													
 			</div><!-- end card -->				
 		</div><!-- end col-md-12 -->
 	</div><!-- end row  -->

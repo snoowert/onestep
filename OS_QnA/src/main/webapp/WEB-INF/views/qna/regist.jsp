@@ -16,7 +16,7 @@
 						</div>
 					</div>
 					<div class="card-body pad">
-						<form role="form" method="post" action="regist.do" name="registForm">
+						<form role="form" method="post" action="regist.do" name="registForm" enctype="multipart/form-data">
 							<input type="hidden" id="qnacontent" name="qnacontent">
 							<div class="form-group">
 								<label for="qnatitle">제 목</label> 
@@ -45,7 +45,9 @@
     </section>
 
 <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+
 <script>
+
 function modify_submit(){
 	document.querySelector("#qnacontent").value = editor.getHTML();
 	document.querySelector("form[role='form']").submit();	

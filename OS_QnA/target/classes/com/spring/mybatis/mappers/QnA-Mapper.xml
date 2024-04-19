@@ -7,17 +7,17 @@
  
  	<sql id="search">
  		<if test="searchType == 't'.toString()">
- 			and title like '%'||#{keyword}||'%'
+ 			where qnatitle like '%'||#{keyword}||'%'
  		</if>
  		<if test="searchType == 'c'.toString()">
- 			and content like '%'||#{keyword}||'%'
+ 			where qnacontent like '%'||#{keyword}||'%'
  		</if>
  		<if test ="searchType =='tc'.toString()">
- 			and
+ 			where
  			(
- 			title like '%'||#{keyword}||'%'
+ 			qnatitle like '%'||#{keyword}||'%'
  			or
- 			content like '%'||#{keyword}||'%'
+ 			qnacontent like '%'||#{keyword}||'%'
  			)
  		</if>		
  	</sql>
@@ -64,10 +64,8 @@
  	</update>
  	
  	<update id="updateQnA" parameterType="qna">
- 		update
- 		qna
- 		set
- 		qnatitle=#{qnatitle}, qnacontent=#{qnacontent}, qnaupdatedate=sysdate
+ 		update qna set
+ 		qnatitle=#{qnatitle}, memberid=#{memberid}, qnacontent=#{qnacontent}, qnaupdatedate=sysdate
  		where qnaid=#{qnaid}
  	</update>
  	

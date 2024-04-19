@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -40,6 +41,11 @@ public class QnAController {
 	@Autowired
 	private QnAService qnaService;
 	
+	@Resource(name = "imageUploadPath")
+	private String uploadDir;
+	@Resource(name = "fileUploadPath")
+	private String fileUploadDir;
+	
 	@GetMapping("main")
 	public ModelAndView list(@ModelAttribute PageMaker pageMaker, ModelAndView mnv) throws Exception{
 		String url="/qna/main";
@@ -66,15 +72,24 @@ public class QnAController {
 		qna.getQnaregdate();
 		qnaService.regist(qna);
 		mnv.setViewName(url);
-		System.out.println(regCommand.getQnacontent());
+		
 		return mnv;
 	}
 	
 	@GetMapping("/detail")
 	public ModelAndView detail(int qnaid, HttpSession session, String from, ModelAndView mnv) throws Exception{
+		
 		String url = "/qna/detail";
 		
-		QnAVO qna = qnaService.detail(qnaid);
+		QnAVO qna = null;
+
+		if(from != null && from.equals("list")) {
+			qnaService.increaseViewCnt(qnaid);
+			url = "redirect:/detail?qnaid="+qnaid;
+		}
+		else {
+			qna = qnaService.getQnA(qnaid);
+		}
 		
 		mnv.addObject("qna", qna);
 		mnv.setViewName(url);
