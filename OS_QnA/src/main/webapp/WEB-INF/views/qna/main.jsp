@@ -28,7 +28,7 @@
 				<div class="card-header with-border">
 					<button type="button" class="btn btn-primary"
 						onclick="location='regist'">질문 작성</button>
-					<div id="keyword" class="card-tools" style="width: 550px;">
+					<div id="keyword" class="card-tools" style="width: 450px;">
 						<div class="input-group row">
 							<!-- search bar -->
 							<select class="form-control col-md-3" name="searchType"
@@ -92,36 +92,7 @@
 				</div>
 
 			</div>
-			<nav aria-label="Navigation" class="row col-sm-10">
-				<ul class="pagination justify-content-center my-2"
-					style="width: 80%; margin-left: 5rem">
-					<li class="page-item"><a class="page-link"
-						href="javascript:search_list(1);"> <i
-							class="fas fa-angle-double-left"></i>
-					</a></li>
 
-					<li class="page-item"><a class="page-link"
-						href="javascript:search_list(${pageMaker.prev ? pageMaker.startPage-1 : pageMaker.page});">
-							<i class="fas fa-angle-left"></i>
-					</a></li>
-					<c:forEach var="pageNum" begin="${pageMaker.startPage }"
-						end="${pageMaker.endPage }">
-						<li class="page-item ${pageMaker.page == pageNum?'active':''}">
-							<a class="page-link" href="javascript:search_list(${pageNum });">
-								${pageNum } </a>
-						</li>
-					</c:forEach>
-
-					<li class="page-item"><a class="page-link"
-						href="javascript:search_list(${pageMaker.next ? pageMaker.endPage+1 :pageMaker.page});">
-							<i class="fas fa-angle-right"></i>
-					</a></li>
-					<li class="page-item"><a class="page-link"
-						href="javascript:search_list(${pageMaker.realEndPage});"> <i
-							class="fas fa-angle-double-right"></i>
-					</a></li>
-				</ul>
-			</nav>
 		</section>
 		<%@ include file="/WEB-INF/views/module/pagination.jsp"%>
 	</div>
