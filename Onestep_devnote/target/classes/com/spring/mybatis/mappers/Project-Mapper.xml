@@ -6,11 +6,19 @@
   
   
 <mapper namespace="Project-Mapper">
-
+	
+	<sql id="search">
+		<if test="searchType == 'n'.toString()">
+			and projectname like '%'||#{keyword}||'%'
+		</if>
+	</sql>
 
 	<select id="selectProjectList" resultType="project">
 		select *
 		from project
+		<where>
+			<include refid="search" />
+		</where>
 		order by projectid desc
 	</select>
 	
@@ -21,26 +29,38 @@
 	
 	</select>
 	
+	<select id="selectProjectListCount" parameterType="int">
+		select count(*)
+		from project
+		<where>
+			<include refid="search"/>
+		</where>
+	</select>
+	
+	<select id="selectProjectSeqNext" resultType="int">
+		select projectid_sql.nextval as projectid from dual	
+	</select>
+	
 	
 	
 	<insert id="insertProject" parameterType="project">
 		insert into
 		project(projectid, projectname, projectdescription)
-		values(#{projectId}, #{projectName}, #{projectDesc})
+		values(PROJECTID_SEQ.NEXTVAL, #{projectName}, #{projectDesc})
 	</insert>
 	
 	<update id="updateProject" parameterType="project">
 		update project
 		set 
-		projectname=#{projectname}, projectdescription=#{projectdesc}
-		where projectid=#{projectid}
+		projectname=#{projectName}, projectdescription=#{projectDesc}
+		where projectid=#{projectId}
 	</update>
 	
 	
 	<delete id="deleteProject" parameterType="int">	
 		delete
 		from project
-		where projectid=#{projectid}
+		where projectid=#{projectId}
 	
 	</delete>
 

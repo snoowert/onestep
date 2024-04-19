@@ -1,10 +1,9 @@
-package com.spring.dto;
+ package com.spring.dto;
 
 public class ProjectVO {
 	
 	private int projectId;
 	private String projectName;
-	
 	private String projectDesc;
 	
 	

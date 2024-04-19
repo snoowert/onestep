@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/WEB-INF/views/module/base.jsp"%>
 
 <%@ include file="/WEB-INF/views/module/header.jsp"%>
@@ -30,29 +31,22 @@
 
 				</div>
 				<div>
-					<button type="button" class="btn btn-secondary" style="float:right;">새 프로젝트</button>
+					<button type="button" class="btn btn-secondary" style="float:right;" onclick="location='registProject'">새 프로젝트</button>
 				</div>
-
 
 
 				<div style="margin: 40px; margin-left: 1px; margin-right: 100px;">
 					<!-- 프로젝트 목록-->
-					<div class="card"
-						style="width: 200px; height:140px; float: left; margin-right: 50px;">
-						<div class="card-body">
-							<h5 class="card-title" style="font-size: 20px;">프로젝트 제목</h5>
-							<p class="card-text">프로젝트 설명</p>
+					<c:forEach var="project" items="${projectList }">
+						<div class="card"
+							style="width: 200px; height:140px; float: left; margin-right: 50px;">
+							<div class="card-body">
+								<h5 class="card-title" style="font-size: 20px;">${project.projectName }</h5>
+								<h5 class="card-subtitle">${project.projectDesc }</h5>
+							</div>
 						</div>
-					</div>
-					<div class="card"
-						style="width: 200px; height:140px; float: left; margin-right: 50px;">
-						<div class="card-body">
-							<h5 class="card-title" style="font-size: 20px;">프로젝트 제목</h5>
-							<p class="card-text">프로젝트 설명</p>
-						</div>
-					</div>
-
-				</div>
+					</c:forEach>
+				</div> 
 			</div>
 		</section>
 	</div>
