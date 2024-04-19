@@ -45,7 +45,9 @@
     </section>
 
 <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+
 <script>
+
 function modify_submit(){
 	document.querySelector("#qnacontent").value = editor.getHTML();
 	document.querySelector("form[role='form']").submit();	
