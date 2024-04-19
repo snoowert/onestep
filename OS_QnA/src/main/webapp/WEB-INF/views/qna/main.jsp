@@ -73,14 +73,14 @@
 									</c:if>
 
 									<c:forEach var="qna" items="${qnaList }">
-
+										<tr>
 										<td>${qna.qnaid }</td>
 										<td><a href="/qna/detail?qnaid=${qna.qnaid}&from=list">${qna.qnatitle }</a></td>
 										<td>${qna.memberid }</td>
 										<td><fmt:formatDate value="${qna.qnaregdate }"
 												pattern="yyyy-MM-dd" /></td>
 										<td>${qna.qnaviewpoint }</td>
-
+										</tr>
 									</c:forEach>
 								</tbody>
 

@@ -23,7 +23,7 @@
 		
 		<div class="form-group">
 			<label for="qnatitle">제 목</label> <input type="text" id="qnatitle"
-				name='qnatitle' class="form-control" value="${answertitle }">
+				name='qnatitle' class="form-control" value="${qnatitle }">
 		</div>
 		<div class="form-group">
 			<label for="writer">작성자</label> 
@@ -73,8 +73,16 @@ const editor = new toastui.Editor({
         }
     }
 });
-function modify_go() {
-	var form = $('form[role="form"]');
+function modify_submit() {
+	let form = $('form[role="form"]');
+	
+	if(!input.value){
+		alert(input.getAttribute("title")+"은 필수입니다.");
+		input.focus();
+		return;
+	}
+	
+	document.qnerySelector("#qnacontent").value = editor.getHTML();
 	form.submit();
 }
 </script>

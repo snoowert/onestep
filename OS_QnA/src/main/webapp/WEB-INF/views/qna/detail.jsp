@@ -72,7 +72,7 @@
 						</div>
 						<div class="form-group col-sm-4" >
 							<label for="qnaviewcnt">조회수</label>
-							<span class="form-control" id="viewcnt" >${qna.qnaviewcnt }</span>
+							<span class="form-control" id="viewcnt" >${qna.qnaviewpoint }</span>
 						</div>
 					</div>		
 					<div class="form-group col-sm-12">
