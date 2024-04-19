@@ -44,7 +44,7 @@
 
 
 <script>
-	function searchList_go(page,url){
+	function search_list(page,url){
 		//alert("click search btn");
 		if(!url) url="main.do";
 		

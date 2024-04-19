@@ -77,7 +77,7 @@
 											<td>${qna.qnaid }</td>
 											<td><a href="/qna/detail?qnaid=${qna.qnaid}&from=list">${qna.qnatitle }</a></td>
 											<td>${qna.memberid }</td>
-											<td><fmt:formatDate value="${qna.qnaregdate }"
+											<td><fmt:formatDate value="${qna.qnaupdatedate }"
 													pattern="yyyy-MM-dd" /></td>
 											<td>${qna.qnaviewpoint }</td>
 										</tr>
