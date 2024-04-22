@@ -17,6 +17,7 @@
 
 <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" /> 
 
+
 <section class="content-header">
 	<div class="container-fluid">
 		<div class="row md-2">
@@ -25,9 +26,8 @@
 			</div>
 			<div class="col-sm-6">
 				<ol class="breadcrumb float-sm-right">
-					<li class="breadcrumb-item"><a href="main"> <i
-							class="fa fa-dashboard"></i>QnA
-					</a></li>
+					<li class="breadcrumb-item"><a href="main">
+						<i class="fa fa-dashboard"></i>QnA</a></li>
 					<li class="breadcrumb-item active">상세보기</li>
 				</ol>
 			</div>
@@ -44,52 +44,44 @@
 				<div class="card-header">
 					<h3 class="card-title">상세보기</h3>
 					<div class="card-tools">
-						<button type="button" id="modifyBtn" class="btn btn-warning"
-							onclick="submit_go('modifyForm.do');">수정하기</button>
-						<button type="button" id="removeBtn" class="btn btn-danger"
-							onclick="submit_go('remove.do');">삭 제</button>
-						<button type="button" id="listBtn" class="btn btn-primary"
-							onclick="CloseWindow();">닫 기</button>
+						<button type="button" id="modifyBtn" class="btn btn-warning" onclick="submit_go('modifyForm.do');">수정하기</button>
+						<button type="button" id="removeBtn" class="btn btn-danger" onclick="submit_go('remove.do');">삭 제</button>
+						<button type="button" id="listBtn" class="btn btn-primary" onclick="CloseWindow();">닫 기</button>
 					</div>
 				</div>
 				<div class="card-body">
 					<div class="row">
 						<div class="form-group col-sm-12">
-							<label for="qnatitle">제 목</label> <span class="form-control"
-								id="qnatitle">${qna.qnatitle }</span>
+							<label for="qnatitle">제 목</label> <span class="form-control" id="qnatitle">${qna.qnatitle }</span>
 						</div>
 					</div>
 					<div class="row">
 						<div class="form-group col-sm-2">
-							<label for="writer">작성자</label> <span class="form-control"
-								id="writer">${qna.memberid }</span>
+							<label for="writer">작성자</label> <span class="form-control" id="writer">${qna.memberid }</span>
 						</div>
 
 						<div class="form-group col-sm-3">
-							<label for="qnaregdate">작성일</label> <span class="form-control"
-								id="qnaregdate"> <fmt:formatDate
-									value="${qna.qnaregdate }" pattern="yyyy-MM-dd" />
+							<label for="qnaregdate">작성일</label> <span class="form-control" id="qnaregdate">
+								<fmt:formatDate value="${qna.qnaregdate }" pattern="yyyy-MM-dd" />
 							</span>
 						</div>
 
 						<div class="form-group col-sm-3">
-							<label for="qnaregdate">수정일</label> <span class="form-control"
-								id="qnaupdatedate"> <fmt:formatDate
-									value="${qna.qnaupdatedate }" pattern="yyyy-MM-dd" />
+							<label for="qnaregdate">수정일</label> <span class="form-control" id="qnaupdatedate">
+								<fmt:formatDate value="${qna.qnaupdatedate }" pattern="yyyy-MM-dd" />
 							</span>
 
 						</div>
 						<div class="form-group col-sm-3">
-							<label for="qnaviewcnt">조회수</label> <span class="form-control"
-								id="viewcnt">${qna.qnaviewpoint }</span>
+							<label for="qnaviewcnt">조회수</label> <span class="form-control" id="viewcnt">${qna.qnaviewpoint }</span>
 						</div>
 					</div>
 					<div class="form-group col-sm-12">
 						<label for="content">내 용</label>
 						<div id="content">${qna.qnacontent }</div>
 					</div>
-
-						<div class ="card-tools">
+					
+					<div class ="card-tools">
 							<button type="button" id="answerBtn" class="btn btn-primary" 
 									onclick="document.getElementById('hiddenContent01').style.display=(document.getElementById('hiddenContent01').style.display=='block') ? 'none' : 'block';">답변 작성</button>
 						</div>
@@ -110,48 +102,50 @@
 									name="writer" class="form-control notNull" value="2" >
 								<input type="hidden" id="memberid" name="memberid" value="2">
 							</div>
+								<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+							<button type="button" class="btn btn-primary" id="registBtn" onclick="regist_go();">등 록</button>
 							<div class="form-group" id="content" >
-
 							</div>
 	
-							<input type="file" class="real-upload" accept="image/*" required multiple>
 						</form>
 					</div>
 					</div><!--end card-body  -->
 					<div class="card-footer" style="display:none">
+					
+					
 					
 				</div><!-- end card -->				
 			</div><!-- end col-md-12 -->
 		</div><!-- end row -->
     	</div>
     </section>
-
-<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+						
 <!-- /.content -->
 <!-- REQUIRED SCRIPTS -->
-<form role="form">
+<form role="qnaform">
 	<input type="hidden" name="qnaid" value="${qna.qnaid }" />
 </form>
 
 
 
 <script>
+	var formQna = document.querySelector("form[role='qnaform']");
 	var formObj = document.querySelector("form[role='form']");
 
 	function submit_go(url) {
 		if (url == "remove.do" && !confirm("정말로 삭제하시겠습까?")) {
 			return;
 		}
-		formObj.action = url;
-		formObj.submit();
+		formQna.action = url;
+		formQna.submit();
 	}
 
 	function modify_submit(){
-		document.querySelector("#answercontent").value = editor.getHTML();
+		document.querySelector("#qnacontent").value = editor.getHTML();
 		document.querySelector("form[role='form']").submit();	
 	}
 	const editor = new toastui.Editor({
-	    el: document.querySelector('#answercontent'), // 에디터를 적용할 요소 (컨테이너)
+	    el: document.querySelector('#content'), // 에디터를 적용할 요소 (컨테이너)
 	    height: '500px',                        // 에디터 영역의 높이 값 (OOOpx || auto)
 	    initialEditType: 'wysiwyg',            // 최초로 보여줄 에디터 타입 (markdown || wysiwyg)
 	    initialValue: '${answer.answercontent}',     // 내용의 초기 값으로, 반드시 마크다운 문자열 형태여야 함
@@ -183,6 +177,22 @@
 	    }
 	});
 
+	function regist_go(){
+		var form = document.registForm;
+		document.querySelector("#answercontent").value = editor.getHTML();
+		var inputNotNull = document.querySelectorAll("input.notNull");
+		for(var input of inputNotNull){
+			if(!input.value){
+				alert(input.getAttribute("title")+"은 필수입니다.");
+				input.focus();
+				return;
+			}
+		}
+		
+		form.action="regist.do";
+		form.method="post";
+		form.submit();
+	}
 </script>
 
 
