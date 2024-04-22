@@ -20,14 +20,14 @@
 							</div>							
 							<div class="form-group">
 								<input type="text" id="writer" title="작성자" readonly
-									name="writer" class="form-control notNull" value="2" >
-								<input type="hidden" id="memberid" name="memberid" value="2">
+									name="writer" class="form-control notNull" value="${loginUser.username }" >
+								<input type="hidden" id="memberid" name="memberid" value="${loginUser.memberid }">
 							</div>
 							<div class="form-group" id="content">
 								
 							
 							</div>
-							<input type="file" class="real-upload" accept="image/*" required multiple>
+							
 						</form>
 					</div><!--end card-body  -->
 					<div class="card-footer" style="display:none">

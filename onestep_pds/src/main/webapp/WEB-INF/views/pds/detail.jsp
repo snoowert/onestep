@@ -27,7 +27,7 @@
 			</div>		
 			<c:forEach items="${pds.pdsfilelist }" var="pdsfile">
 			<div class="col-md-4 col-sm-2 col-xs-12"  style="cursor:pointer;"
-					 onclick="location.href='<%=request.getContextPath()%>/getFile.do?pdsfileid=${pdsfile.pdsfileid }';">
+					 onclick="location.href='<%=request.getContextPath()%>/pds/getFile.do?pdsfileid=${pdsfile.pdsfileid }';">
 					<div class="info-box">	
 					 	<span class="info-box-icon bg-yellow"><i class="fa fa-copy"></i></span>
 						<div class="info-box-content">
@@ -41,8 +41,10 @@
 				${pds.pdscontent }
 			</div>
 			<br>
+			<c:if test="${loginUser.memberid == pds.memberid }">
 			<input type="submit" class="btn btn-primary mx-auto" value="수정" onclick="modify_go();">
 			<input type="button" class="btn btn-default mx-auto" value="삭제" onclick="delete_do();">
+			</c:if>
 		</div>
 	</dev>
 </section>

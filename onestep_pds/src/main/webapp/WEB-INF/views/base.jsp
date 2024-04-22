@@ -50,12 +50,20 @@
     </ul>
     <ul class="navbar-nav mr-auto">
     	<sec:authorize access="isAnonymous()">
-    	<li class="nav-item">
-    		<a class="nav-link" href="/member/registSelect">회원가입</a>
-    	</li>
-    	<li class="nav-item">
-    		<a class="nav-link" href="/member/loginForm">로그인</a>
-    	</li>
+	    	<li class="nav-item">
+	    		<a class="nav-link" href="/member/registSelect">회원가입</a>
+	    	</li>
+	    	<li class="nav-item">
+	    		<a class="nav-link" href="/member/loginForm">로그인</a>
+	    	</li>
+    	</sec:authorize>
+    	<sec:authorize access="isAuthenticated()">
+    		<li class="nav-item">
+	    		<a class="nav-link" href="/member/mypage">${loginUser.username }</a>
+	    	</li>
+	    	<li class="nav-item">
+	    		<a class="nav-link" href="/member/logout">로그아웃</a>
+	    	</li>
     	</sec:authorize>
     </ul>
   </div>

@@ -133,7 +133,6 @@
     			return;
     		}
     	}	
-       	alert("${LoginUser}");
     	document.querySelector("#pdscontent").value = editor.getHTML();
     	
     	$("form[name='pdsform']").submit();
