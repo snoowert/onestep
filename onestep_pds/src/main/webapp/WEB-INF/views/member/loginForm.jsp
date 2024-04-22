@@ -13,14 +13,24 @@
 <section class="container">
 <div class="col-sm-10 mx-auto">
 	<h3>로그인</h3>
-	<form action="<sec:authorize url='/login' />" method="POST">
-        <label for="username">이메일</label>
-        <input type="text" id="email" name="email" required><br>
-        <label for="password">비밀번호</label>
-        <input type="password" id="password" name="password" required><br>
-        <button type="button" onclick="location('/member/registForm')">회원가입</button>
-        <button type="submit">로그인</button>
-    </form>
+	<form action="/member/login.do"	method="post">
+				<input name="retUrl" value="${retUrl }" type="hidden" />
+				<div class="form-group has-feedback">
+					<input type="text" class="form-control" name="email" placeholder="이메일을 입력하세요." value="">
+					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+				</div>
+				<div class="form-group has-feedback">
+					<input type="password" class="form-control" name="password" placeholder="패스워드를 입력하세요."  value="">
+					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+				</div>
+				<div class="row">
+					<!-- /.col -->
+					<div class="col-sm-4">
+						<button type="submit" class="btn btn-primary btn-block btn-flat">로그인</button>
+					</div>
+					<!-- /.col -->
+				</div>
+			</form>
     <!-- 로그인 실패 시 에러 메시지 표시 -->
     <c:if test="${param.error != null}">
         <p style="color: red;">아이디 또는 비밀번호가 맞지 않습니다.</p>

@@ -2,31 +2,36 @@ package com.member.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.member.dao.MemberDAO;
 import com.member.service.MemberService;
 import com.member.vo.MemberVO;
 import com.spring.command.MemberModifyCommand;
 import com.spring.command.MemberRegistCommand;
 import com.spring.command.PageMaker;
+import com.spring.exception.InvalidPasswordException;
+import com.spring.exception.NotFoundIdentityException;
 
 @Controller
 @RequestMapping("/member")
 public class MemberController {
 	@Autowired
 	MemberService memberService;
+	@Autowired
+	MemberDAO memberDAO;
 	@Autowired
 	private AuthenticationManager authenticationManager;
 	//마이페이지(회원목록 or 내정보 메뉴확인)
@@ -103,31 +108,70 @@ public class MemberController {
 	
 	//로그인 폼
 	@GetMapping("/loginForm")
-	public ModelAndView LoginForm(ModelAndView mnv) {
+	public ModelAndView LoginForm(ModelAndView mnv, String retUrl) {
 		String url = "/member/loginForm";
 		
+		mnv.addObject("retUrl", retUrl);
 		mnv.setViewName(url);
 		return mnv;
 	}
 	//로그인
-	@PostMapping("/login")
-	public String loginProcess(@RequestParam("email") String email, 
-	            @RequestParam("password") String password) {
-		try {
-            // 사용자 인증을 위해 UsernamePasswordAuthenticationToken 생성
-            UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(email, password);
-            // AuthenticationManager를 통해 인증을 시도하고 인증 객체를 반환
-            Authentication authentication = authenticationManager.authenticate(authToken);
-            // 인증 성공 시 SecurityContextHolder에 인증 객체를 저장
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-            // 로그인 성공 후 리다이렉트할 페이지 반환
-            return "redirect:/pds/list";
-        } catch (AuthenticationException e) {
-            // 인증 실패 시 로그인 페이지로 다시 이동
-            return "redirect:/member/loginForm?error";
-        }
-	}
+//	@PostMapping("/login")
+//	public ModelAndView loginPost(String email, String password, String retUrl,
+//								  HttpSession session, 
+//								  RedirectAttributes rttr,
+//								  ModelAndView mnv)throws Exception{
+//		String url="redirect:/pds/list.do";
+//		
+//		try {
+//			memberService.login(email, password);
+//			
+//			MemberVO member = memberDAO.selectMemberByEmail(email);
+//			
+//			session.setAttribute("loginUser", member);
+//			session.setMaxInactiveInterval(60*6);
+//			
+//			session.getServletContext().setAttribute("loginUser", member.getMemberid());
+//			
+//			if(retUrl!=null && !retUrl.isEmpty()) {
+//				url="redirect:"+retUrl;
+//			}
+//			
+//		}catch(NotFoundIdentityException | InvalidPasswordException e) {
+//			url="redirect:/member/loginForm?retUrl="+retUrl;
+//			// rttr.addAttribute(attributeValue) : 주소줄 데이터 전달
+//			rttr.addFlashAttribute("message",e.getMessage()); //requset 전달방식
+//		}
+//		
+//		mnv.setViewName(url);
+//		return mnv;
+//	}
+//	@PostMapping("/login")
+//	public String loginProcess(@RequestParam("email") String email, 
+//	            @RequestParam("password") String password) {
+//		try {
+//            // 사용자 인증을 위해 UsernamePasswordAuthenticationToken 생성
+//            UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(email, password);
+//            // AuthenticationManager를 통해 인증을 시도하고 인증 객체를 반환
+//            Authentication authentication = authenticationManager.authenticate(authToken);
+//            // 인증 성공 시 SecurityContextHolder에 인증 객체를 저장
+//            SecurityContextHolder.getContext().setAuthentication(authentication);
+//            // 로그인 성공 후 리다이렉트할 페이지 반환
+//            return "redirect:/pds/list";
+//        } catch (AuthenticationException e) {
+//            // 인증 실패 시 로그인 페이지로 다시 이동
+//            return "redirect:/member/loginForm?error";
+//        }
+//	}
 	//로그아웃
+	@GetMapping("/loginTimeOut")
+	public String loginTimeOut(Model model) throws Exception {
+
+		String url = "/security/sessionOut";
+
+		model.addAttribute("message", "세션이 만료되었습니다.\\n다시 로그인 하세요!");
+		return url;
+	}
 	//회원수정 폼
 	@GetMapping("/modifyForm")
 	public ModelAndView ModifyForm(ModelAndView mnv, int memberid) {

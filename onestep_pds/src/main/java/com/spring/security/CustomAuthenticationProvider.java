@@ -33,10 +33,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 			
 			UserDetails authUser = new User(member);
 			
-			boolean invalidCheck = authUser.isAccountNonExpired() 
-					&& authUser.isAccountNonLocked()
-					&& authUser.isCredentialsNonExpired() 
-					&& authUser.isEnabled();
+			boolean invalidCheck = authUser.isEnabled();
 			if (invalidCheck) {
 				//로그인 성공
 				// 스프링 시큐리티 내부 클래스로 인증 토큰 생성한다.

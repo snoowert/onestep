@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.spring.command.PageMaker;
 import com.spring.dto.ProjectVO;
 
 public class ProjectDAOImpl implements ProjectDAO{
@@ -15,13 +16,13 @@ public class ProjectDAOImpl implements ProjectDAO{
 	}
 
 	@Override
-	public List<ProjectVO> selectProjectList() throws SQLException {
-		return sqlsession.selectList("Project-Mapper.selectProjectList");
+	public List<ProjectVO> selectProjectList(PageMaker pageMaker) throws SQLException {
+		return sqlsession.selectList("Project-Mapper.selectProjectList", pageMaker);
 	}
 
 	@Override
 	public ProjectVO selectProjectByProjectId(int projectId) throws SQLException {
-		return sqlsession.selectOne("Project-Mapper.selectProjectByProjectId");
+		return sqlsession.selectOne("Project-Mapper.selectProjectByProjectId",projectId);
 	}
 
 	@Override
@@ -33,7 +34,7 @@ public class ProjectDAOImpl implements ProjectDAO{
 
 	@Override
 	public void updateProject(ProjectVO pj) throws SQLException {
-		sqlsession.update("Project-Mapper.updateproject", pj);
+		sqlsession.update("Project-Mapper.updateProject", pj);
 		
 	
 	}
@@ -41,6 +42,17 @@ public class ProjectDAOImpl implements ProjectDAO{
 	@Override
 	public void deleteProject(int projectId) throws SQLException {
 		sqlsession.update("Project-Mapper.deleteProject", projectId);
+	}
+
+	@Override
+	public int selectProjectListCount(PageMaker pageMaker) throws SQLException {
+		return sqlsession.selectOne("Project-Mapper.selectProjectListCount", pageMaker);
+	}
+
+	@Override
+	public int selectProjectSeqNext() throws SQLException {
+		int seq = sqlsession.selectOne("Project-Mapper.selectProjectSeqNext");
+		return seq;
 	}
 	
 	

@@ -29,6 +29,11 @@
 	from member
 	where email=#{email}
 </select>
+<select id="selectMemberByUsername" parameterType="str" resultType="member">
+	select *
+	from member
+	where username=#{username}
+</select>
 <!-- 회원수 카운트 -->
 <select id="selectMemberSearchListCount" resultType="int">
 	select

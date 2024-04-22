@@ -83,10 +83,14 @@ public class Freecontroller {
 	    String url = "/free/detail";
 
 	    FreeVO free = null;
-	    freeService.increaseFreeViewPoint(freeid);
-        
-	  
-	    free = freeService.detail(freeid);
+	    
+	    if(from != null && from.equals("list")) {
+	    	freeService.increaseFreeViewPoint(freeid);
+			url = "redirect:/free/detail?freeid="+freeid;
+		}
+		else {
+			free = freeService.detail(freeid);
+		}
 	  
 	    mnv.addObject("free", free);
 	    mnv.setViewName(url);

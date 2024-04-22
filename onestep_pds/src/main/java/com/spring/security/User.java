@@ -22,11 +22,9 @@ public class User implements UserDetails {
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<GrantedAuthority> roles = new ArrayList<GrantedAuthority>();
 		
-		List<String> authorities = member.getAuthority();
+		String authority = member.getAuthority();
 		
-		if(authorities!=null) for(String authority : authorities) {
-			roles.add(new SimpleGrantedAuthority(authority));
-		} 
+		roles.add(new SimpleGrantedAuthority(authority));
 		
 		return roles;
 	}
@@ -42,27 +40,30 @@ public class User implements UserDetails {
 	}
 
 	@Override
-	public boolean isAccountNonExpired() { // 기간제 계정의 경우 기간만료 여부 : enabled =4
-		return member.getEnabled()!=4;
-	}
-
-	@Override
-	public boolean isAccountNonLocked() { // 사용 정지 혹은 휴먼계정 : enabled =3
-		return member.getEnabled()!=3;
-	}
-
-	@Override
-	public boolean isCredentialsNonExpired() {  // 인증정보 만료 여부 : enabled =2
-		return member.getEnabled()!=2;
-	}
-
-	@Override
 	public boolean isEnabled() { // 탈퇴 혹은 삭제 : enabled = 0
-		return member.getEnabled()!=0;
+		return member.getIsDelete().equals("N");
 	}
 	
 	public MemberVO getMemberVO() {
 		return this.member;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 
