@@ -130,7 +130,7 @@ public class QnAController {
 	
 	@PostMapping(value="/regist_answer", produces="text/plain;charset=utf-8")
 	public ModelAndView registAnswer(AnswerRegistCommand answerReg, ModelAndView mnv) throws Exception{
-		String url = "/qna/registanswer_success";
+		String url = "/qna/regist_success";
 		AnswerVO answer = answerReg.toAnswerVO();
 		int qnaid = answer.getAnswerid();
 		
@@ -143,7 +143,7 @@ public class QnAController {
 	
 	@PostMapping("/removeanswer")
 	public ModelAndView removeAnswer(int qnaid, int answerid, ModelAndView mnv) throws Exception{
-		String url = "/qna/removeanswer_success";
+		String url = "/qna/remove_success";
 		ModelAndView answer = new ModelAndView();
 		qnaService.remove(answerid);
 		mnv.addObject("qnaid", qnaid);

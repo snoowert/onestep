@@ -25,7 +25,7 @@
 			</div>
 			<div class="col-sm-6">
 				<ol class="breadcrumb float-sm-right">
-					<li class="breadcrumb-item"><a href="list.do"> <i
+					<li class="breadcrumb-item"><a href="main"> <i
 							class="fa fa-dashboard"></i>QnA
 					</a></li>
 					<li class="breadcrumb-item active">상세보기</li>
@@ -123,6 +123,7 @@
 				</div><!-- end card -->				
 			</div><!-- end col-md-12 -->
 		</div><!-- end row -->
+    	</div>
     </section>
 
 <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
