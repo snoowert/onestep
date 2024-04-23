@@ -85,12 +85,12 @@
 							<button type="button" id="answerBtn" class="btn btn-primary" 
 									onclick="document.getElementById('hiddenContent01').style.display=(document.getElementById('hiddenContent01').style.display=='block') ? 'none' : 'block';">답변 작성</button>
 						</div>
-					</div>
 					
 					<div id="hiddenContent01" class="example01" style="display: block;">
 					<div class="card-body pad">
+					</div>
 						<form role="form" method="post" action="regist.do" name="registForm" enctype="multipart/form-data">
-							<input type="hidden" id="answercontent" name="answercontent">
+							<input type="hidden" id="anscontent" name="anscontent">
 							<div class="form-group">
 								<label for="answertitle">제 목</label> 
 								<input type="text" id="answertitle"  title="제목"
@@ -104,7 +104,7 @@
 							</div>
 								<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
 							<button type="button" class="btn btn-primary" id="registBtn" onclick="regist_go();">등 록</button>
-							<div class="form-group" id="content" >
+							<div class="form-group" id="anscontent" >
 							</div>
 	
 						</form>
@@ -122,30 +122,30 @@
 						
 <!-- /.content -->
 <!-- REQUIRED SCRIPTS -->
-<form role="qnaform">
+<form role="form">
 	<input type="hidden" name="qnaid" value="${qna.qnaid }" />
 </form>
 
 
 
 <script>
-	var formQna = document.querySelector("form[role='qnaform']");
 	var formObj = document.querySelector("form[role='form']");
+	var formAns = document.querySelector("form[role='ansform']");
 
 	function submit_go(url) {
 		if (url == "remove.do" && !confirm("정말로 삭제하시겠습까?")) {
 			return;
 		}
-		formQna.action = url;
-		formQna.submit();
+		form.action = url;
+		form.submit();
 	}
 
 	function modify_submit(){
-		document.querySelector("#qnacontent").value = editor.getHTML();
+		document.querySelector("#content").value = editor.getHTML();
 		document.querySelector("form[role='form']").submit();	
 	}
 	const editor = new toastui.Editor({
-	    el: document.querySelector('#content'), // 에디터를 적용할 요소 (컨테이너)
+	    el: document.querySelector('#anscontent'), // 에디터를 적용할 요소 (컨테이너)
 	    height: '500px',                        // 에디터 영역의 높이 값 (OOOpx || auto)
 	    initialEditType: 'wysiwyg',            // 최초로 보여줄 에디터 타입 (markdown || wysiwyg)
 	    initialValue: '${answer.answercontent}',     // 내용의 초기 값으로, 반드시 마크다운 문자열 형태여야 함
