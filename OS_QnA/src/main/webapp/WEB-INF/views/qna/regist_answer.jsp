@@ -3,7 +3,7 @@
 
 <%@ include file="/WEB-INF/views/module/header.jsp"%>
 
-<%@ include file="/WEB-INF/views/qna/detail.jsp"%>
+
 
 <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" /> 
     <section class="content container-fluid">
@@ -92,7 +92,7 @@ function regist_go(){
 		}
 	}
 	
-	form.action="ansregist";
+	form.action="regist_answer";
 	form.method="post";
 	form.submit();
 	
