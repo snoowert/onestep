@@ -3,20 +3,16 @@
 
 <%@ include file="/WEB-INF/views/module/header.jsp"%>
 
+
+
 <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" /> 
     <section class="content container-fluid">
 		<div class="row justify-content-center">
 			<div class="col-md-9" style="max-width:760px;">
 				<div class="card card-outline card-info">
 
-						<div class ="card-tools">
-							<button type="button" id="answerBtn" class="btn btn-primary" onclick="document.getElementById('hiddenContent01').style.display=(document.getElementById('hiddenContent01').style.display=='block') ? 'none' : 'block';">답변달기</button>
-						</div>
-					</div>
-					
-					<div id="hiddenContent01" class="example01" style="display: block;">
 					<div class="card-body pad">
-						<form role="form" method="post" action="regist.do" name="registForm" enctype="multipart/form-data">
+						<form role="form" method="post" action="ansregist" name="ansregistForm" enctype="multipart/form-data">
 							<input type="hidden" id="answercontent" name="answercontent">
 							<div class="form-group">
 								<label for="answertitle">제 목</label> 
@@ -29,11 +25,10 @@
 									name="writer" class="form-control notNull" value="2" >
 								<input type="hidden" id="memberid" name="memberid" value="2">
 							</div>
-							<div class="form-group" id="content" >
+							<div class="form-group" id="anscontent" >
 
 							</div>
-	
-							<input type="file" class="real-upload" accept="image/*" required multiple>
+
 						</form>
 					</div>
 					</div><!--end card-body  -->
@@ -53,10 +48,10 @@ function modify_submit(){
 	document.querySelector("form[role='form']").submit();	
 }
 const editor = new toastui.Editor({
-    el: document.querySelector('#answercontent'), // 에디터를 적용할 요소 (컨테이너)
+    el: document.querySelector('#anscontent'), // 에디터를 적용할 요소 (컨테이너)
     height: '500px',                        // 에디터 영역의 높이 값 (OOOpx || auto)
     initialEditType: 'wysiwyg',            // 최초로 보여줄 에디터 타입 (markdown || wysiwyg)
-    initialValue: '${qna.answercontent}',     // 내용의 초기 값으로, 반드시 마크다운 문자열 형태여야 함
+    initialValue: '${answer.answercontent}',     // 내용의 초기 값으로, 반드시 마크다운 문자열 형태여야 함
     previewStyle: 'vertical',                // 마크다운 프리뷰 스타일 (tab || vertical)
     hooks: {
         async addImageBlobHook(blob, callback) {
@@ -85,6 +80,23 @@ const editor = new toastui.Editor({
     }
 });
 
+function regist_go(){
+	var form = document.registForm;
+	document.querySelector("#answercontent").value = editor.getHTML();
+	var inputNotNull = document.querySelectorAll("input.notNull");
+	for(var input of inputNotNull){
+		if(!input.value){
+			alert(input.getAttribute("title")+"은 필수입니다.");
+			input.focus();
+			return;
+		}
+	}
+	
+	form.action="regist_answer";
+	form.method="post";
+	form.submit();
+	
+}
 
 </script>
 

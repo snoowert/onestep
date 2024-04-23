@@ -128,8 +128,16 @@ public class QnAController {
 		return mnv;
 	}
 	
+	@GetMapping("/regist_answer")
+	public ModelAndView ansregistForm(ModelAndView mnv) {
+		String url = "/qna/regist_answer";
+		
+		mnv.setViewName(url);
+		return mnv;
+	}
+	
 	@PostMapping(value="/regist_answer", produces="text/plain;charset=utf-8")
-	public ModelAndView registAnswer(AnswerRegistCommand answerReg, ModelAndView mnv) throws Exception{
+	public ModelAndView ansregist(AnswerRegistCommand answerReg, ModelAndView mnv) throws Exception{
 		String url = "/qna/regist_success";
 		AnswerVO answer = answerReg.toAnswerVO();
 		int qnaid = answer.getAnswerid();
@@ -176,6 +184,8 @@ public class QnAController {
 		return mnv;
 	}
 	
+	
+	//toastUI
 	@PostMapping("/tui-editor/image-upload")
 	public ResponseEntity<String> uploadEditorImage(HttpServletRequest request, @RequestParam("image") MultipartFile image) {
      try {
