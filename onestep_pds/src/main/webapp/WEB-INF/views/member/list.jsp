@@ -22,8 +22,8 @@
 			<form action="" role="form">
 				<div class="input-group">
 					<select style="width:150px; height:50px; font-size: large;"  name="searchType" onchange="search_list(1)">
-						<option value="d" ${pageMaker.searchType eq 'd' ? 'selected':'' }>탈퇴회원</option>
 						<option value="nd" ${pageMaker.searchType eq 'nd' ? 'selected':'' }>이용중인 회원</option>
+						<option value="d" ${pageMaker.searchType eq 'd' ? 'selected':'' }>탈퇴회원</option>
 					</select>
 					<input type="hidden" class="form-control form-control-lg" placeholder="검색어" name="keyword" value="">
 					
@@ -96,6 +96,6 @@
 		
 	</nav>  
 </section>
-<%@ include file="/WEB-INF/views/modules/pagination.jsp" %>
+<%@ include file="/WEB-INF/views/modules/pagination1.jsp" %>
 </body>
 </html>

@@ -13,8 +13,10 @@
             <div class="card card-outline card-info"></div>
             <div class="card-body">
             <div class="row justify-content-end" style="margin-right: 10px;"> <!-- 수정 및 삭제 버튼을 오른쪽으로 정렬 -->
+            	<c:if test="${loginUser.memberid == free.memberid }">
 			    <button type="button" id="modify" style="width:80px; height:40px; margin-right: 10px;background-color: transparent;text-decoration: none;border-color: transparent;" onclick="submit_go('modifyForm.do');">수정</button> <!-- 버튼 텍스트 및 스타일 수정 -->
 			    <button type="button" id="remove" style="width:80px; height:40px; margin-right: 10px;background-color: transparent;text-decoration: none;border-color: transparent;" onclick="submit_go('remove.do');">삭제</button> <!-- 버튼 텍스트 및 스타일 수정 -->
+				</c:if>
 			</div>
 
                 <div class="row" style="padding: 1px; background-color: aliceblue;">
@@ -51,12 +53,13 @@
 				        <span class="font-weight-bold" style="font-size: 1.3rem; padding-left: 10px;padding-top: 5px;">${comment.writer}&nbsp;</span>
 				        <div class="right" style="font-size: .85rem; margin-left: auto;">
 				            <fmt:formatDate value="${comment.commentregdate}" pattern="yyyy-MM-dd"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				            <c:if test="${loginUser.memberid == comment.memberid }">
 				            <span class="sep"></span>
 				            <button type="button" style="width:80px; height:40px; margin-right: 10px; background-color: transparent; text-decoration: none; border-color: transparent;" onclick="window.open('modifycommentForm?commentid=${comment.commentid}', '_blank', 'width=600,height=400')"><span class="icon ion-compose"></span>수정</button>
 				            
 				            <span class="sep"></span>&nbsp;&nbsp;
 				            <button type="button" style="width:80px; height:40px; margin-right: 10px; background-color: transparent; text-decoration: none; border-color: transparent;" onclick="deleteComment(${comment.commentid})"><span class="icon ion-trash-b"></span>삭제</button>
-				            
+				            </c:if>
 				            <span class="sep"></span>
 				        </div>
 				    </div>
@@ -71,7 +74,8 @@
                         <form class="comment-form insert-form" action="commentregist" method="post" style="width: 100%;">
 						    <div class="row" style="border: 1px solid #dee2e6;">
 						        <input type="hidden" name="freeid" value="${free.freeid}" />
-						        <input class="font-weight-bold" name="memberid" style="border: none; padding-left: 10px;font-size: 1.2rem;margin-top: auto;" value="${free.memberid}" />
+						        <input type="hidden" name="memberid" value="${loginUser.memberid}" />
+						        <input class="font-weight-bold" readonly name="username" style="border: none; padding-left: 10px;font-size: 1.2rem;margin-top: auto;" value="${loginUser.username}" />
 						    </div>                  
 						
 						    <div class="row" style="margin-bottom: 10px;"> <!-- 댓글 텍스트 입력 영역 -->

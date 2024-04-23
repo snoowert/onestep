@@ -71,7 +71,7 @@
 				</table>
 			</div>
 			<div class="card-footer">
-					<%@ include file="/WEB-INF/views/modules/pagination.jsp" %>
+					<%@ include file="/WEB-INF/views/modules/pagination2.jsp" %>
 				</div>
 			</div>
 			<button type="button" class="btn btn-primary btn float-right" id="registBtn" onclick="location='registForm'">글쓰기</button>

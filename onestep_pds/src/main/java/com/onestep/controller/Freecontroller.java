@@ -157,7 +157,9 @@ public class Freecontroller {
 		String url = "/free/modifyComment";
 
 		FreeCommentVO comment = freeService.readcomment(commentid);
-
+		int id = comment.getFreeid();
+		String name = freeService.detail(id).getWriter();
+		comment.setWriter(name);
 		mnv.addObject("comment", comment);
 		mnv.setViewName(url);
 		return mnv;

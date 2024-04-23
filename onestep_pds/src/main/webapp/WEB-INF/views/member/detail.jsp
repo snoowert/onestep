@@ -33,14 +33,19 @@
 		<p style="font-size:larger;font-weight: bolder;">${member.authority }</p>
 	</div>
 	<div class="row">
-		<button class="col-sm-5 btn btn-primary mx-auto" onclick="modifyForm();")>수정</button>
+		<c:if test="${loginUser.memberid == member.memberid}">
+		<button class="col-sm-5 btn btn-primary mx-auto" onclick="modifyForm();">수정</button>
 		<button class="col-sm-5 btn btn-warning mx-auto" onclick="banSelf();">탈퇴</button>
+		</c:if>
 	</div>
+	<br>
 	<div class="row">
+		<c:if test="${loginUser.authority eq 'manager' }">
 		<button class="col-sm-10 btn btn-danger mx-auto" name="Mbutton" id="Mbutton" onclick="ManagerDeleteGo();">
 	        <c:if test="${member.isDelete eq 'N'}">탈퇴 처리</c:if>
     		<c:if test="${member.isDelete eq 'Y'}">탈퇴 복구</c:if>
 	    </button>
+	    </c:if>
 	</div>
 	<input type="hidden" value="${member.isDelete }" name="memberisD" id="memberisD">
 	<form id="modifyForm" action="/member/modifyForm" method="GET">
