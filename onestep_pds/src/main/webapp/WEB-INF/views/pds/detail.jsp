@@ -36,11 +36,11 @@
 					</div>
 				 </div>				
 			</c:forEach>
-			<br>
+			<hr>
 			<div id="viewer" class="">
 				${pds.pdscontent }
 			</div>
-			<br>
+			<hr>
 			<c:if test="${loginUser.memberid == pds.memberid }">
 			<input type="submit" class="btn btn-primary mx-auto" value="수정" onclick="modify_go();">
 			<input type="button" class="btn btn-default mx-auto" value="삭제" onclick="delete_do();">

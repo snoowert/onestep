@@ -97,6 +97,9 @@ public class MemberController {
 	@PostMapping("/regist")
 	public ModelAndView Regist(ModelAndView mnv, MemberRegistCommand command) {
 		String url = "/member/regist_success";
+		if(command.getDevlan().isEmpty()) {
+			command.setDevlan("none");
+		}
 		MemberVO member = command.toMemberVO();
 		memberService.insertMember(member);
 		

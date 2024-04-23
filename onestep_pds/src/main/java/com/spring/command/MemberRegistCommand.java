@@ -7,6 +7,7 @@ public class MemberRegistCommand {
 	private String username;
 	private String authority;
 	private String password;
+	private String devlan;
 	public String getEmail() {
 		return email;
 	}
@@ -32,13 +33,19 @@ public class MemberRegistCommand {
 		this.password = password;
 	}
 	
+	public String getDevlan() {
+		return devlan;
+	}
+	public void setDevlan(String devlan) {
+		this.devlan = devlan;
+	}
 	public MemberVO toMemberVO() {
 		MemberVO member = new MemberVO();
 		member.setEmail(this.email);
 		member.setAuthority(this.authority);
 		member.setUsername(this.username);
 		member.setPassword(this.password);
-		
+		member.setDevlan(this.devlan);
 		return member;
 	}
 }

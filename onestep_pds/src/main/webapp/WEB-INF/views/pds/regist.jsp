@@ -17,21 +17,7 @@
 			<br>
 			<input type="hidden" id="pdscontent" name="pdscontent">
 			<input type="hidden" id="memberid" name="memberid" value="${loginUser.memberid}">
-			<!-- 
-			<div class="row">
-			&nbsp;&nbsp;<label class="form-label">파일</label>&nbsp;&nbsp;&nbsp;
-			<input type="button" class="btn btn-default" value="업로드">
-			</div>		
-			<ul>
-				<div class="row">
-					<li>11</li>&nbsp;
-					<a href="">x</a>
-				</div>
-			</ul>
-			<br>
-			<label class="form-label">자료 설명</label>
-			<textarea  id="content" class="form-control" rows="5" placeholder="내용을 입력해주세요."></textarea>
-			<br>-->
+			
 			<div id="content">
 			</div>
 			<div class="form-group">								

@@ -10,6 +10,7 @@ public class MemberVO {
 	public Date regdate;
 	public String isDelete;
 	public String authority;
+	public String devlan;
 	public int getMemberid() {
 		return memberid;
 	}
@@ -51,6 +52,12 @@ public class MemberVO {
 	}
 	public void setAuthority(String authority) {
 		this.authority = authority;
+	}
+	public String getDevlan() {
+		return devlan;
+	}
+	public void setDevlan(String devlan) {
+		this.devlan = devlan;
 	}
 	
 	

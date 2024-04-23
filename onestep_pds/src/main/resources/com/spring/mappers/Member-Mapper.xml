@@ -44,8 +44,8 @@
 </select>
 <!-- 등록 -->
 <insert id="insertMember" parameterType="member">
-	insert into member(memberid, username, email, password, authority)
-	values(memberid_seq.nextval, #{username}, #{email}, #{password}, #{authority})
+	insert into member(memberid, username, email, password, authority, devlan)
+	values(memberid_seq.nextval, #{username}, #{email}, #{password}, #{authority}, #{devlan})
 </insert>
 <!-- 수정 -->
 <update id="updateMember" parameterType="member">

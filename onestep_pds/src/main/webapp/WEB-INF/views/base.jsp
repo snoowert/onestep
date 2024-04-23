@@ -9,7 +9,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/bootstrap/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/bootstrap/plugins/summernote/summernote-bs4.min.css">
-  
+  <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/banner.css">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">OneStep</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,27 +28,13 @@
         <a class="nav-link" href="/pds/list">자료실</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">개발자노트</a>
+        <a class="nav-link" href="/devnote/list">개발자노트</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">체험관</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <a class="nav-link" href="/arduino/main">체험관</a>
       </li>
     </ul>
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav ml-auto">
     	<sec:authorize access="isAnonymous()">
 	    	<li class="nav-item">
 	    		<a class="nav-link" href="/member/registSelect">회원가입</a>
@@ -68,4 +54,26 @@
     </ul>
   </div>
 </nav>
-<br><br>
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="<%=request.getContextPath() %>/resources/img/ONESTEP1.png" class="d-block w-100" style="height: calc(100vh / 3); object-fit: cover;" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img src="<%=request.getContextPath() %>/resources/img/ONESTEP1.png" class="d-block w-100" style="height: calc(100vh / 3); object-fit: cover;" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img src="<%=request.getContextPath() %>/resources/img/ONESTEP1.png" class="d-block w-100" style="height: calc(100vh / 3); object-fit: cover;" alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<script src="<%=request.getContextPath() %>/resources/js/banner.js"></script>
