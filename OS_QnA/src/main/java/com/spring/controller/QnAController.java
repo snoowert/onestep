@@ -130,7 +130,7 @@ public class QnAController {
 	
 	@GetMapping("/regist_answer")
 	public ModelAndView ansregistForm(ModelAndView mnv) {
-		String url = "/qna/registanswer";
+		String url = "/qna/regist_answer";
 		
 		mnv.setViewName(url);
 		return mnv;
@@ -184,6 +184,8 @@ public class QnAController {
 		return mnv;
 	}
 	
+	
+	//toastUI
 	@PostMapping("/tui-editor/image-upload")
 	public ResponseEntity<String> uploadEditorImage(HttpServletRequest request, @RequestParam("image") MultipartFile image) {
      try {

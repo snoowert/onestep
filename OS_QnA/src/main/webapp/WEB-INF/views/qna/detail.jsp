@@ -102,7 +102,7 @@
 <script>
 var formObj = document.querySelector("form[role='form']");
 function submit_go(url){
-	if(url=="remove.do" && !confirm("정말로 삭제하시겠습까?")){
+	if(url=="remove.do" && !confirm("정말로 삭제하시겠습니까?")){
 		return;
 	}
 	formObj.action=url;

@@ -12,7 +12,7 @@
 				<div class="card card-outline card-info">
 
 					<div class="card-body pad">
-						<form role="form" method="post" action="regist.do" name="registForm" enctype="multipart/form-data">
+						<form role="form" method="post" action="ansregist" name="ansregistForm" enctype="multipart/form-data">
 							<input type="hidden" id="answercontent" name="answercontent">
 							<div class="form-group">
 								<label for="answertitle">제 목</label> 
@@ -51,7 +51,7 @@ const editor = new toastui.Editor({
     el: document.querySelector('#anscontent'), // 에디터를 적용할 요소 (컨테이너)
     height: '500px',                        // 에디터 영역의 높이 값 (OOOpx || auto)
     initialEditType: 'wysiwyg',            // 최초로 보여줄 에디터 타입 (markdown || wysiwyg)
-    initialValue: '${ans.answercontent}',     // 내용의 초기 값으로, 반드시 마크다운 문자열 형태여야 함
+    initialValue: '${answer.answercontent}',     // 내용의 초기 값으로, 반드시 마크다운 문자열 형태여야 함
     previewStyle: 'vertical',                // 마크다운 프리뷰 스타일 (tab || vertical)
     hooks: {
         async addImageBlobHook(blob, callback) {
@@ -92,7 +92,7 @@ function regist_go(){
 		}
 	}
 	
-	form.action="regist.do";
+	form.action="ansregist";
 	form.method="post";
 	form.submit();
 	
