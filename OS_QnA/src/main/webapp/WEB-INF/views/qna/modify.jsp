@@ -35,8 +35,7 @@
 			<input type="hidden" name="qnacontent" id="qnacontent" />
 
 		</div>
-		<input type="file" class="real-upload" accept="image/*" required
-			multiple>
+
 	</form>
 </div>
 <!--end card-body  -->

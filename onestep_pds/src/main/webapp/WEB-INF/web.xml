@@ -18,6 +18,7 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	
+	
 	<filter>
 		<filter-name>sessionExpiredCheckFilter</filter-name>
 		<filter-class>com.spring.filter.SessionExpiredCheckFilter</filter-class>
@@ -26,7 +27,14 @@
 		<filter-name>sessionExpiredCheckFilter</filter-name>
 		<url-pattern>/member/loginExpired</url-pattern>
 	</filter-mapping>
-	
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter
@@ -36,7 +44,6 @@
 			<param-value>utf-8</param-value>
 		</init-param>
 	</filter>
-	
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>

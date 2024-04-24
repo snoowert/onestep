@@ -30,7 +30,7 @@
 		            authentication-failure-handler-ref="loginFailureHandler"
 		            
 		            />
-		<logout logout-url="/member/logout.do"
+		<logout logout-url="/member/logout"
 		        invalidate-session="true"
 		        logout-success-url="/"
 				delete-cookies="JSESSIONID"/>

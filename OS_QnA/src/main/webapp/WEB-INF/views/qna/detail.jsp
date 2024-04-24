@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <c:if test="${from eq 'remove' }">
 	<script>
 		alert("${param.qnaid} 번 글이 삭제되었습니다.");
@@ -11,9 +9,7 @@
 		window.close();
 	</script>
 </c:if>
-
 <%@ include file="/WEB-INF/views/module/header.jsp"%>
-
 <section class="content-header">
   	<div class="container-fluid">
   		<div class="row md-2">
@@ -62,7 +58,7 @@
 							<label for="writer">작성자</label>
 							<span class="form-control" id="writer">${qna.memberid }</span>
 						</div>		
-						
+
 						<div class="form-group col-sm-3" >
 							<label for="qnaregdate">작성일</label>
 							<span class="form-control" id="qnaregdate">
@@ -75,17 +71,25 @@
 							<span class="form-control" id="qnaupdatedate">
 								<fmt:formatDate value="${qna.qnaupdatedate }" pattern="yyyy-MM-dd"/>  
 							</span>
-						
+
 						</div>
 						<div class="form-group col-sm-3" >
 							<label for="qnaviewcnt">조회수</label>
 							<span class="form-control" id="viewcnt" >${qna.qnaviewpoint }</span>
 						</div>
+					</div>		
 				</div>													
 					<div class="form-group col-sm-12">
 						<label for="content">내 용</label>
-						<div id="content">${qna.qnacontent }</div>	
-					</div>
+						<div id="content">${qna.qnacontent }</div>
+						
+						<div class="card-header">
+							<div class="card-tools">
+								<button type="button" class="btn btn-primary" onclick="location='regist_answer'">답변 작성</button>
+							</div>
+						</div>
+								
+				</div>													
 			</div><!-- end card -->				
 		</div><!-- end col-md-12 -->
 	</div><!-- end row  -->
@@ -95,20 +99,14 @@
 <form role="form">
 	<input type="hidden" name="qnaid" value="${qna.qnaid }" />
 </form>
-
-
-
 <script>
 var formObj = document.querySelector("form[role='form']");
-
 function submit_go(url){
-	if(url=="remove.do" && !confirm("정말로 삭제하시겠습까?")){
+	if(url=="remove.do" && !confirm("정말로 삭제하시겠습니까?")){
 		return;
 	}
 	formObj.action=url;
 	formObj.submit();
 }
 </script>
-
-
 <%@ include file="/WEB-INF/views/module/footer.jsp"%>

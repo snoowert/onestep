@@ -32,8 +32,6 @@ public class MemberController {
 	MemberService memberService;
 	@Autowired
 	MemberDAO memberDAO;
-	@Autowired
-	private AuthenticationManager authenticationManager;
 	//마이페이지(회원목록 or 내정보 메뉴확인)
 	@GetMapping("/mypage")
 	public ModelAndView myPage(ModelAndView mnv) {
@@ -99,6 +97,9 @@ public class MemberController {
 	@PostMapping("/regist")
 	public ModelAndView Regist(ModelAndView mnv, MemberRegistCommand command) {
 		String url = "/member/regist_success";
+		if(command.getDevlan().isEmpty()) {
+			command.setDevlan("none");
+		}
 		MemberVO member = command.toMemberVO();
 		memberService.insertMember(member);
 		
@@ -146,23 +147,7 @@ public class MemberController {
 //		mnv.setViewName(url);
 //		return mnv;
 //	}
-//	@PostMapping("/login")
-//	public String loginProcess(@RequestParam("email") String email, 
-//	            @RequestParam("password") String password) {
-//		try {
-//            // 사용자 인증을 위해 UsernamePasswordAuthenticationToken 생성
-//            UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(email, password);
-//            // AuthenticationManager를 통해 인증을 시도하고 인증 객체를 반환
-//            Authentication authentication = authenticationManager.authenticate(authToken);
-//            // 인증 성공 시 SecurityContextHolder에 인증 객체를 저장
-//            SecurityContextHolder.getContext().setAuthentication(authentication);
-//            // 로그인 성공 후 리다이렉트할 페이지 반환
-//            return "redirect:/pds/list";
-//        } catch (AuthenticationException e) {
-//            // 인증 실패 시 로그인 페이지로 다시 이동
-//            return "redirect:/member/loginForm?error";
-//        }
-//	}
+
 	//로그아웃
 	@GetMapping("/loginTimeOut")
 	public String loginTimeOut(Model model) throws Exception {

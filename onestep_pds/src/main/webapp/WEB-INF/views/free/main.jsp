@@ -4,8 +4,7 @@
 <%@ include file="/WEB-INF/views/modules/header.jsp" %>
 <%@ include file="/WEB-INF/views/base.jsp" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<br>
-<br>
+    <!-- 
     <section class="content-header">
     	<div class="row">
     		<div class="w-75 p-3 justify-content-center mx-auto">
@@ -17,7 +16,7 @@
 		    </div>  	
       	</div>
     </section>
-    
+    -->
     <section class="content w-75 p-3 mx-auto">
 		<div class="card">
 			<div class="card-header with-border">
@@ -71,7 +70,7 @@
 				</table>
 			</div>
 			<div class="card-footer">
-					<%@ include file="/WEB-INF/views/modules/pagination.jsp" %>
+					<%@ include file="/WEB-INF/views/modules/pagination2.jsp" %>
 				</div>
 			</div>
 			<button type="button" class="btn btn-primary btn float-right" id="registBtn" onclick="location='registForm'">글쓰기</button>

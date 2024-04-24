@@ -13,7 +13,7 @@
 <section class="container">
 <div class="col-sm-10 mx-auto">
 	<h3>로그인</h3>
-	<form action="/member/login.do"	method="post">
+	<form action="login.do"	method="post">
 				<input name="retUrl" value="${retUrl }" type="hidden" />
 				<div class="form-group has-feedback">
 					<input type="text" class="form-control" name="email" placeholder="이메일을 입력하세요." value="">

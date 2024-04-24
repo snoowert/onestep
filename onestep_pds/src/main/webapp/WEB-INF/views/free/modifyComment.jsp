@@ -13,8 +13,9 @@
 		<div class="card-body">
 			<div class="form-group">
 				<label for="memberid">작성자</label> <input readonly
-					type="text" class="form-control" id="memberid" name="memberid" 
-					value="${comment.memberid }">
+					type="text" class="form-control" id="writer" name="writer" 
+					value="${comment.writer }">
+				<input type="hidden" id="memberid" name="memberid" value="${comment.memberid }">
 			</div>
 			<div class="form-group">
 				<label for="commentcontent">내용</label> 

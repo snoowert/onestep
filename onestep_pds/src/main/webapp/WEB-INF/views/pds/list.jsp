@@ -56,7 +56,7 @@
 					<c:forEach var="pds" items="${pdsList}">
 					<tr>
 						<td>${pds.pdsid}</td>
-						<td><a href="/pds/detail?pdsid=${pds.pdsid}&from=list">${pds.pdstitle }'</a></td>
+						<td><a href="/pds/detail?pdsid=${pds.pdsid}&from=list">${pds.pdstitle }</a></td>
 						<td>${pds.writer }</td>
 						<td><fmt:formatDate pattern="yyyy.MM.dd" value="${pds.pdsregdate}"/></td>
 						<td>${pds.pdsviewpoint }</td>
@@ -99,10 +99,11 @@
 				</a>
 			</li>
 		</ul>
+		<c:if test="${loginUser.authority eq 'manager' or loginUser.authority eq 'developer' }">
 		<input type="button"style="WIDTH: 70pt; HEIGHT: 30pt" class="btn btn-primary linkBtn my-2" value="자료 등록" onclick="location='registForm'"/>
-		
+		</c:if>
 	</nav>  
 </section>
-<%@ include file="/WEB-INF/views/modules/pagination.jsp" %>
+<%@ include file="/WEB-INF/views/modules/pagination1.jsp" %>
 </body>
 </html>

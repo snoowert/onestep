@@ -26,18 +26,15 @@
 		<section class="content">
 			<div class="card">
 				<div class="card-header with-border">
-					<button type="button" class="btn btn-primary"
-						onclick="location='regist'">질문 작성</button>
+					<button type="button" class="btn btn-primary" onclick="location='regist'">질문 작성</button>
 					<div id="keyword" class="card-tools" style="width: 450px;">
 						<div class="input-group row">
 							<!-- search bar -->
 							<select class="form-control col-md-3" name="searchType"
 								id="searchType">
 								<option value="">검색구분</option>
-								<option value="t"
-									${pageMaker.searchType eq 't' ? 'selected':'' }>제목</option>
-								<option value="c"
-									${pageMaker.searchType eq 'c' ? 'selected':'' }>내용</option>
+								<option value="t" ${pageMaker.searchType eq 't' ? 'selected':'' }>제목</option>
+								<option value="c" ${pageMaker.searchType eq 'c' ? 'selected':'' }>내용</option>
 							</select>
 							<!-- keyword -->
 							<input class="form-control" type="text" name="keyword"
@@ -77,8 +74,7 @@
 											<td>${qna.qnaid }</td>
 											<td><a href="/qna/detail?qnaid=${qna.qnaid}&from=list">${qna.qnatitle }</a></td>
 											<td>${qna.memberid }</td>
-											<td><fmt:formatDate value="${qna.qnaupdatedate }"
-													pattern="yyyy-MM-dd" /></td>
+											<td><fmt:formatDate value="${qna.qnaupdatedate }" pattern="yyyy-MM-dd" /></td>
 											<td>${qna.qnaviewpoint }</td>
 										</tr>
 									</c:forEach>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,9 +16,11 @@
 			<br><br><br><br><br><br><br><br><br>
 		</div>	
 		<div class="bg-secondary col-sm-10">
-			<a href="/member/detail"><h1 style="font-weight: bolder;">회원 정보</h1></a>
+			<a href="/member/passwordCheckForm?memberid=${loginUser.memberid }"><h1 style="font-weight: bolder;">회원 정보</h1></a>
 			<br><br><br>
+			<c:if test="${loginUser.authority eq 'manager' }">
 			<a href="/member/list"><h1 style="font-weight: bolder;">회원 목록</h1></a>
+			</c:if>
 		</div>
 	</div>
 </section>
