@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/views/module/base.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/bootstrap/dist/css/adminlte.min.css">
 
 <!DOCTYPE html>
 <html> 
@@ -9,7 +11,7 @@
 <title>OneStep</title>
 <style>
 .dt-pjc-main {
-	width: 900px;
+	width: 100%;
 	margin-top: 45px;
 }
 
@@ -54,19 +56,19 @@
 		<!-- 카드? -->
 	<div class="card dt-pjc-main" style="margin-left:auto; margin-right:auto;">
 		<div class="dt-pjc-create">
-			<header> 새 프로젝트 만들기</header>
+			<header> 프로젝트 정보 수정 </header>
 			<hr style="box-shadow: 1px 1px 1px 1px rgba(32, 0, 31, 0.04)"/>
 			<div class="container-fluid" style="margin-top:50px;">
 				<section>
 					<!-- 입력란 -->
-					<form role="form" method="post" action="regist.do" name="registForm">
+					<form role="form" method="post" action="modify.do" name="modifyForm">
 						<div class="form-group">
 							<label for="projectname"> 프로젝트 이름 </label>
-							<input type="text" id="projectName" name="projectName" class="form-control" placeholder="프로젝트 명">
+							<input type="text" id="projectName" name="projectName" class="form-control" value="${project.projectName }" placeholder="프로젝트 명">
 						</div>
 						<div class="form-group">
-							<label for="projectdesc"> 프로젝트 설명</label>
-							<input type="text" id="projectDescription" name="projectDescription" class="form-control" placeholder="프로젝트 상세설명" >
+							<label for="projectdesc"> 프로젝트 상세 설명</label>
+							<input type="text" id="projectDescription" name="projectDescription" class="form-control" value="${project.projectDescription }" placeholder="프로젝트 상세설명" >
 						</div>
 					</form>
 					<!-- 생성버튼 -->

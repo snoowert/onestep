@@ -2,6 +2,6 @@
     pageEncoding="UTF-8"%>
 <script>
 	alert("프로젝트 생성에 성공했습니다.");
-    window.location.href = 'main';
+    window.location.href = 'list';
 	window.opener.location.reload();
 </script>

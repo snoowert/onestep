@@ -69,20 +69,36 @@ public class DevnoteController {
 	public ModelAndView detail(int projectId, HttpSession session, String form, ModelAndView mnv) throws SQLException {
 		String url = "/devnote/main";
 		
-		ProjectVO project = null;
+		ProjectVO project = projectService.detail(projectId);
 		
 		System.out.println(projectId);
-		
 		mnv.addObject("project", project);
 		mnv.setViewName(url);
 		return mnv;
 		
 	}
 	
-	@GetMapping("/feed")
-	public ModelAndView feed(NoteVO pj, ModelAndView mnv) throws SQLException {
-		String url = "/devnote/feed";
+	@GetMapping("/modifyProject")
+	public ModelAndView modifyForm(ProjectVO pj, ModelAndView mnv) throws SQLException {
+		String url = "/project/modifyProject";
 		
+		
+
+		mnv.setViewName(url);
+		return mnv;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	@GetMapping("/feed")
+	public ModelAndView feed(NoteVO note, ModelAndView mnv) throws SQLException {
+		String url = "/devnote/feed";
+
 		mnv.setViewName(url);
 		return mnv;
 	}

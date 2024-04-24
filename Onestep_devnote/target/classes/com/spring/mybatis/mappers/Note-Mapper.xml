@@ -12,10 +12,10 @@
 		order by noteid desc
 	</select>
 
-	<select id="selectNoteB아이티코리아yDnId" parameterType="int" resultType="note">
+	<select id="selectNoteByDnId" parameterType="int" resultType="note">
 		select *
 		from developnote
-		where noteid=#{noteid}
+		where noteid=#{noteId}
 	</select>
 	<insert id="insertNote" parameterType="note">
 		insert into 

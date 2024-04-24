@@ -63,7 +63,7 @@ public class TestProjectDAOImpl {
 		 ProjectVO pj = new ProjectVO();
 		 pj.setProjectId(1);
 		 pj.setProjectName("수정된프로젝트제목");
-		 pj.setProjectDesc("수정된상세설명");
+		 pj.setProjectDescription("수정된상세설명");
 		 
 		 projectDAO.insertProject(pj);
 		 System.out.println(pj);
@@ -79,7 +79,7 @@ public class TestProjectDAOImpl {
 		
 		ProjectVO pj = projectDAO.selectProjectByProjectId(1);
 		pj.setProjectName("제목다시고치기");
-		pj.setProjectDesc("상세설명다시고치기");
+		pj.setProjectDescription("상세설명다시고치기");
 		
 	
 		projectDAO.updateProject(pj);

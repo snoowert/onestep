@@ -37,10 +37,10 @@
 				<div style="margin: 40px; margin-left: 1px; margin-right: 100px;">
 					<!-- 프로젝트 목록-->
 					<c:forEach var="project" items="${projectList }">
-						<div class="card" style="width: 200px; height:140px; float: left; margin-right: 50px;">							
+						<div class="card" style="width: 280px; height:180px; float: left; margin-right: 50px;">							
 								<div class="card-body">
-									<h5 class="card-title" style="font-size: 20px;"><a href="/devnote/main?projectId=${project.projectId}">${project.projectName }</a></h5>
-									<h5 class="card-subtitle"> ${project.projectDescription }</h5>
+									<h5 class="card-title" style="font-size: 20px;"><a href="/devnote/main?projectId=${project.projectId}">${project.projectName }</a></h5>					
+									<p class="card-text" style="margin-top: 50px; white-space : nowrap; overflow: hidden; text-overflow:ellipsis;"> ${project.projectDescription }</p>
 								</div>
 
 						</div>
@@ -51,6 +51,8 @@
 	</div>
 	
 
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 
 <%@ include file="/WEB-INF/views/module/footer.jsp"%>

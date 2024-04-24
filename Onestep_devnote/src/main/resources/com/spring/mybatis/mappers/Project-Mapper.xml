@@ -9,7 +9,7 @@
 	
 	<sql id="search">
 		<if test="searchType == 'n'.toString()">
-			and projectname like '%'||#{keyword}||'%'
+			where projectname like '%'||#{keyword}||'%'
 		</if>
 	</sql>
 
