@@ -49,6 +49,7 @@
 			<artifactId>spring-test</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
+
 		<!--oracle/ojdbc6 -->
 		<dependency>
 			<groupId>oracle</groupId>

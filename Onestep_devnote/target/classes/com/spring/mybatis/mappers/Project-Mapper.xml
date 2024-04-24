@@ -46,13 +46,13 @@
 	<insert id="insertProject" parameterType="project">
 		insert into
 		project(projectid, projectname, projectdescription)
-		values(PROJECTID_SEQ.NEXTVAL, #{projectName}, #{projectDesc})
+		values(PROJECTID_SEQ.NEXTVAL, #{projectName}, #{projectDescription})
 	</insert>
 	
 	<update id="updateProject" parameterType="project">
 		update project
 		set 
-		projectname=#{projectName}, projectdescription=#{projectDesc}
+		projectname=#{projectName}, projectdescription=#{projectDescription}
 		where projectid=#{projectId}
 	</update>
 	

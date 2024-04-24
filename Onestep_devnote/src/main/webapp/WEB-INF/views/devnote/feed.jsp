@@ -16,27 +16,7 @@
 }
 </style>
 <!-- 상세상단바 -->
-<div>&nbsp;&nbsp;</div>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	<div class="collapse navbar-collapse">
-		<ul class="navbar-nav">
-			<li class="nav-item"><a class="nav-link" href="#">프로젝트 홈</a></li>
-			<li class="nav-item active"><a class="nav-link" href="#">피드</a>
-			</li>
-			<li class="nav-item"><a class="nav-link" href="#">캘린더</a></li>
-			<li class="nav-item"><a class="nav-link" href="#">파일&nbsp;</a></li>
-		</ul>
-		<div class="dropdown">
-			<button class="btn btn-light rounded-circle" type="button"
-				data-bs-toggle="dropdown" aria-expanded="false">
-				&nbsp;⋮&nbsp;</button>
-			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-				<a class="dropdown-item" href="#">프로젝트 삭제</a> <a
-					class="dropdown-item" href="#">프로젝트 탈퇴</a>
-			</div>
-		</div>
-	</div>
-</nav>
+<%@ include file="/WEB-INF/views/module/subbar.jsp" %>
 <!-- 상세상단바 끝 -->
 
 
@@ -73,12 +53,19 @@
 		<div class="modal fade" id="exampleModal" tabindex="-1"
 			aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
 			<div class="modal-dialog modal-xl">
-				<div class="modal-content">
+				<div class="modal-content" style="padding:30px;">
 					<div class="modal-header">
 						<h1 class="modal-title fs-5" id="exampleModalLabel">피드 게시글 작성</h1>
 						<button type="button" class="btn-close" data-bs-dismiss="modal"
 							aria-label="Close"></button>
 					</div>
+					
+					
+					<div class="form-group" style="margin:15px;">
+							<label for=""> 피드 이름 </label>
+							<input type="text" id="" name="" class="form-control" placeholder="피드 제목">
+					</div>
+					
 					<div class="modal-body">
 						<div id="content">
 		

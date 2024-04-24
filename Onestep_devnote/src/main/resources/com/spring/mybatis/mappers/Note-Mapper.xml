@@ -12,7 +12,7 @@
 		order by noteid desc
 	</select>
 
-	<select id="selectNoteByDnId" parameterType="int" resultType="note">
+	<select id="selectNoteB아이티코리아yDnId" parameterType="int" resultType="note">
 		select *
 		from developnote
 		where noteid=#{noteid}
@@ -26,20 +26,20 @@
 	<update id="updateNote" parameterType="note">
 		update developnote
 		set
-		notetitle=#{notetitle}, notecontent=#{notecontent} memberid=#{memberid}
-		where noteid=#{noteid}
+		notetitle=#{noteTitle}, notecontent=#{noteContent} memberid=#{memberId}
+		where noteid=#{noteId}
 	
 	</update>
 	<update id="increaseNoteViewPoint" parameterType="int">
 		update developnote
 		set NoteViewPoint = NoteViewPoint + 1
-		where noteid=#{noteid}
+		where noteid=#{noteId}
 	</update>
 	
 	
 	<delete id="deleteNote" parameterType="int">
 		delete from developnote
-		where noteid=#{noteid}
+		where noteid=#{noteId}
 	</delete>
 	
 

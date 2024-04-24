@@ -13,6 +13,11 @@ public class NoteVO {
 	private String noteContent;
 	private int noteViewPoint;
 	private Date noteRegDate;
+	
+	
+	
+	
+	
 	public int getNoteId() {
 		return noteId;
 	}

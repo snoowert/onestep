@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/module/base.jsp"%>
 
 
@@ -60,14 +59,14 @@
 			<div class="container-fluid" style="margin-top:50px;">
 				<section>
 					<!-- 입력란 -->
-					<form role="form" method="post" action="regist.do" name="registProject">
+					<form role="form" method="post" action="regist.do" name="registForm">
 						<div class="form-group">
-							<label for="projecttitle"> 프로젝트 명 </label>
-							<input type="text" id="projecttitle" name="projecttitle" class="form-control" placeholder="프로젝트 명을 입력해주세요.">
+							<label for="projectname"> 프로젝트 이름 </label>
+							<input type="text" id="projectName" name="projectName" class="form-control" placeholder="프로젝트 명">
 						</div>
 						<div class="form-group">
-							<label for="projectdetail"> 프로젝트 설명</label>
-							<input type="text" id="projectdetail" name="projectdetail" class="form-control" placeholder="프로젝트 설명을 입력해주세요." >
+							<label for="projectdesc"> 프로젝트 설명</label>
+							<input type="text" id="projectdesc" name="projectDesc" class="form-control" placeholder="프로젝트 상세설명" >
 						</div>
 					</form>
 					<!-- 생성버튼 -->
@@ -87,7 +86,21 @@
 
 <script>
 function regist_go(){
-	document.querySelector("form[role='form']").submit();
+	if($("input[name='projectName']").val()==""){
+		alert("이름은 필수입니다.");
+		$("input[name='projectName']").focus();
+		return;
+	}
+	
+	if($("input[name='projectDesc']").val()=="") {
+		alert("상세설명은 필수입니다.");
+		$("input[name='projectDesc']").focus();
+		return;
+	}
+	
+	
+	var form = $("form[role='form']");
+	form.submit();
 
 }
 

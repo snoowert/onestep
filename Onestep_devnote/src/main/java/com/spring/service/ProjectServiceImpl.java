@@ -42,4 +42,10 @@ public class ProjectServiceImpl implements ProjectService{
 		
 	}
 
+	@Override
+	public ProjectVO detail(int projectId) throws SQLException {
+		return projectDAO.selectProjectByProjectId(projectId);
+		
+	}
+
 }

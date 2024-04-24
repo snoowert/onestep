@@ -19,11 +19,10 @@
 				<div id="keyword" class="card-tools" style="width: 450px;">
 					<div class="input-group row">
 						<select class="form-control col-md-3">
-							<option>제목</option>
-						</select> &nbsp;&nbsp; <input class="form-control" type="text"
-							placeholder="검색어를 입력하시오" /> &nbsp;&nbsp;
-						<button class="btn btn-primary" type="button" id="searchBtn"
-							data-card-widget="search" onclick="">
+							<option value="n" ${pageMaker.searchType eq 'n' ? 'selected':'' }>제목</option>
+						</select> &nbsp;&nbsp; 
+						<input class="form-control" type="text" placeholder="검색어를 입력하시오" /> &nbsp;&nbsp;
+						<button class="btn btn-primary" type="button" id="searchBtn" data-card-widget="search" onclick="search_list(1)">
 							<i class="fa fa-fw fa-search"></i>
 						</button>
 
@@ -38,17 +37,21 @@
 				<div style="margin: 40px; margin-left: 1px; margin-right: 100px;">
 					<!-- 프로젝트 목록-->
 					<c:forEach var="project" items="${projectList }">
-						<div class="card"
-							style="width: 200px; height:140px; float: left; margin-right: 50px;">
-							<div class="card-body">
-								<h5 class="card-title" style="font-size: 20px;">${project.projectName }</h5>
-								<h5 class="card-subtitle">${project.projectDesc }</h5>
-							</div>
+						<div class="card" style="width: 200px; height:140px; float: left; margin-right: 50px;">							
+								<div class="card-body">
+									<h5 class="card-title" style="font-size: 20px;"><a href="/devnote/main?projectId=${project.projectId}">${project.projectName }</a></h5>
+									<h5 class="card-subtitle"> ${project.projectDescription }</h5>
+								</div>
+
 						</div>
 					</c:forEach>
 				</div> 
 			</div>
 		</section>
 	</div>
+	
+
+
 
 <%@ include file="/WEB-INF/views/module/footer.jsp"%>
+<%@ include file="/WEB-INF/views/module/pagination.jsp"%>

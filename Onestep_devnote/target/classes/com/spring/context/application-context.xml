@@ -15,6 +15,5 @@
 	<bean id="ProjectService" 
 		  class="com.spring.service.ProjectServiceImpl"
 		  p:projectDAO-ref="ProjectDAO"
-		
 		/>
 </beans>

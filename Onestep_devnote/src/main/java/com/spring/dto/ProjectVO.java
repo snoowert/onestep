@@ -4,7 +4,7 @@ public class ProjectVO {
 	
 	private int projectId;
 	private String projectName;
-	private String projectDesc;
+	private String projectDescription;
 	
 	
 	 
@@ -21,12 +21,17 @@ public class ProjectVO {
 	public void setProjectName(String projectName) {
 		this.projectName = projectName;
 	}
-	
-	public String getProjectDesc() {
-		return projectDesc;
+
+	public String getProjectDescription() {
+		return projectDescription;
 	}
-	public void setProjectDesc(String projectDesc) {
-		this.projectDesc = projectDesc;
+	public void setProjectDescription(String projectDescription) {
+		this.projectDescription = projectDescription;
+	}
+	@Override
+	public String toString() {
+		return "ProjectVO [projectId=" + projectId + ", projectName=" + projectName + ", projectDescription=" + projectDescription
+				+ "]";
 	}
 
 	

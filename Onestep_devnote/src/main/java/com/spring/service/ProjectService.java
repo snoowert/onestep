@@ -11,6 +11,8 @@ public interface ProjectService {
 	List<ProjectVO> list(PageMaker pageMaker) throws SQLException;
 	ProjectVO feed(int projectId) throws SQLException;
 	
+	ProjectVO detail(int projectId) throws SQLException;
+	
 	void regist(ProjectVO pj) throws SQLException;
 	void modify(ProjectVO pj) throws SQLException;
 	void remove(int projectId) throws SQLException;
