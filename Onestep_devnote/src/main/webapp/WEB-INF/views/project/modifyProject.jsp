@@ -61,7 +61,8 @@
 			<div class="container-fluid" style="margin-top:50px;">
 				<section>
 					<!-- 입력란 -->
-					<form role="form" method="post" action="modify.do" name="modifyForm">
+					<form role="form" method="post" action="modifyPj.do" name="modifyForm">
+						<input type="hidden" name="projectId" value="${project.projectId }">
 						<div class="form-group">
 							<label for="projectname"> 프로젝트 이름 </label>
 							<input type="text" id="projectName" name="projectName" class="form-control" value="${project.projectName }" placeholder="프로젝트 명">
@@ -73,7 +74,7 @@
 					</form>
 					<!-- 생성버튼 -->
 					<div style="text-align:center;">
-						<button type="button" class="btn btn-primary dt-pjc-btn" id="registBtn" onclick="regist_go();">등 록</button>
+						<button type="button" class="btn btn-primary dt-pjc-btn" id="registBtn" onclick="regist_go();">수정</button>
 					</div> 
 				</section>
 			</div>

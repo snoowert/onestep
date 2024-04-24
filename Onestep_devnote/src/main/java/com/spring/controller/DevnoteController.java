@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.command.ModifyProjectCommand;
 import com.spring.command.PageMaker;
 import com.spring.dto.NoteVO;
 import com.spring.dto.ProjectVO;
@@ -79,18 +80,36 @@ public class DevnoteController {
 	}
 	
 	@GetMapping("/modifyProject")
-	public ModelAndView modifyForm(ProjectVO pj, ModelAndView mnv) throws SQLException {
+	public ModelAndView modifyForm(int projectId, ModelAndView mnv) throws SQLException {
 		String url = "/project/modifyProject";
 		
+		ProjectVO project = projectService.detail(projectId);
 		
-
+		mnv.addObject("project", project);
 		mnv.setViewName(url);
 		return mnv;
 	}
 	
 	
 	
-	
+	@PostMapping(value= "/modifyPj", produces = "text/plain; charset=utf-8")
+	public ModelAndView modifyPj(ModifyProjectCommand command, ModelAndView mnv) throws SQLException {
+		String url = "/project/modifyProject_success";
+		
+		ProjectVO project = command.toProjectVO();
+		
+		System.out.println(project.getProjectId());
+		projectService.modify(project);
+		
+		mnv.addObject("projectId", project.getProjectId());
+		mnv.setViewName(url);
+		
+		return mnv;
+		
+		
+		
+		
+	}
 	
 	
 	

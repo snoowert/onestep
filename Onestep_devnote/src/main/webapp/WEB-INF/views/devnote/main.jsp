@@ -28,7 +28,7 @@
 			<div>
 				<div>
 				
-				<button type="button" class="btn btn-primary" onclick="OpenWindow('modifyProject', '프로젝트 정보 수정', 700, 500);">수정</button>
+				<button type="button" class="btn btn-primary" onclick="OpenWindow('modifyProject?projectId=${project.projectId}', '프로젝트 정보 수정', 700, 500);">수정</button>
 				</div>
 			
 			</div>
