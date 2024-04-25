@@ -29,6 +29,14 @@
 
 							</div>
 
+					<div class="card-header">
+						<div class ="card-tools">
+							<button type="button" class="btn btn-primary" id="registBtn" onclick="regist_go();">등 록</button>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<button type="button" class="btn btn-warning" id="cancelBtn" onclick="history.go(-1);" >취 소</button>
+						</div>
+					</div>
+
 						</form>
 					</div>
 					</div><!--end card-body  -->
@@ -48,11 +56,11 @@ function modify_submit(){
 	document.querySelector("form[role='form']").submit();	
 }
 const editor = new toastui.Editor({
-    el: document.querySelector('#anscontent'), // 에디터를 적용할 요소 (컨테이너)
-    height: '500px',                        // 에디터 영역의 높이 값 (OOOpx || auto)
-    initialEditType: 'wysiwyg',            // 최초로 보여줄 에디터 타입 (markdown || wysiwyg)
+    el: document.querySelector('#anscontent'), 	 // 에디터를 적용할 요소 (컨테이너)
+    height: '500px',                       	 	 // 에디터 영역의 높이 값 (OOOpx || auto)
+    initialEditType: 'wysiwyg',           		 // 최초로 보여줄 에디터 타입 (markdown || wysiwyg)
     initialValue: '${answer.answercontent}',     // 내용의 초기 값으로, 반드시 마크다운 문자열 형태여야 함
-    previewStyle: 'vertical',                // 마크다운 프리뷰 스타일 (tab || vertical)
+    previewStyle: 'vertical',                	 // 마크다운 프리뷰 스타일 (tab || vertical)
     hooks: {
         async addImageBlobHook(blob, callback) {
             try {
