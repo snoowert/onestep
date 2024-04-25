@@ -24,7 +24,7 @@
 			<input id="password" name="password" type="password" class="form-control" placeholder="8자 이상 입력해주세요.">
 			<br>
 			<label class="form-label">비밀번호 확인</label>
-			<input id="password" name="re-password" type="password" class="form-control" placeholder="비밀번호 재입력">
+			<input id="re-password" name="re-password" type="password" class="form-control" placeholder="비밀번호 재입력">
 			<br>
 			<c:if test="${authority eq 'developer' }">
 				<label class="form-label">주력 언어</label>&nbsp;&nbsp;&nbsp;
@@ -44,6 +44,8 @@
 			<input type="button" class="btn btn-default" value="취소" onclick="history.go(-1)">
 		</form>
 	</dev>
+	<input type="hidden" id="userAnswer">
+	<input type="hidden" id="quizAnswer">
 </section>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -81,8 +83,14 @@
 			alert("비밀번호가 일치하지않습니다.\n다시 확인해주세요.");
 			return;
 		}
+		
 		var authority = $('#authority').val();
-
+		
+		if (authority === 'developer' && $('select[name="devlan"]').val() === 'none') {
+		    alert("개발 주력 언어를 선택해주세요.");
+		    return;
+		}
+	
 	    if (authority === 'normal') {
 	        // authority가 'normal'인 경우, 퀴즈를 받지 않고 바로 회원가입을 처리
 	        RealSubmit_go();
@@ -96,15 +104,24 @@
 		            // 받아온 퀴즈 데이터를 처리하여 팝업 창에 퀴즈를 표시
 		            var quizQuestion = data.question; 
 		            var quizAnswer = data.answer; 
-		            
+		            document.getElementById('quizAnswer').value = quizAnswer;
 		            // 퀴즈를 포함한 HTML을 생성
 		            var popupContent = quizQuestion;
 		            popupContent += '<input type="text" id="quizAnswerInput" class="form-control" placeholder="정답을 입력하세요">';
-		            popupContent += '<button type="button" class="btn btn-primary" onclick="checkAnswer(\'' + quizAnswer + '\');">확인</button>';
-		            
+		            popupContent += '<button type="button" class="btn btn-primary" onclick="on_Check();">확인</button>';
+		            popupContent += '<script>\n\
+		            					function on_Check(){\n\
+		            					var userAnswer = document.getElementById(\'quizAnswerInput\').value;\n\
+		            					opener.document.getElementById("userAnswer").value = userAnswer;\n\
+		            					window.close();}\n\
+		            				<\/script>';
 		            // 팝업 창 열기
 		            var popupWindow = window.open('', '_blank', 'width=400,height=300');
 		            popupWindow.document.write(popupContent);
+		            
+		            popupWindow.addEventListener('beforeunload', function() {
+		            	checkAnswer();
+		              });
 		        },
 		        error: function() {
 		            alert('퀴즈 데이터를 불러오는 데 실패했습니다.');
@@ -112,10 +129,10 @@
 		    });
 	    }
 	}
-	function checkAnswer(correctAnswer) {
+	function checkAnswer() {
         // 사용자가 입력한 답과 정답을 비교하여 처리하는 함수
-        var userAnswer = document.getElementById('quizAnswerInput').value;
-        
+        var userAnswer = document.getElementById('userAnswer').value;
+        var correctAnswer = document.getElementById('quizAnswer').value;
         if (userAnswer.trim().toLowerCase() === correctAnswer.trim().toLowerCase()) {
             // 정답인 경우, 회원가입 처리
             document.getElementById('memberform').submit();

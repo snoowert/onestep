@@ -43,6 +43,8 @@
 	<bean id="FreeCommentDAO"
 		  class="com.onestep.dao.FreeCommentDAOImpl"
 		  p:sqlSession-ref="sqlSession"/>
+	<bean id="ExpDAO" class="com.exp.dao.ExpDAOImpl"
+		p:sqlsession-ref="sqlSession"/>
 	<!-- service -->
 	<bean id="PdsService" class="com.pds.service.PdsServiceImpl"
 		p:pdsDAO-ref="PdsDAO"
@@ -56,4 +58,7 @@
 		  p:freeDAO-ref="FreeDAO"
 		  p:freeCommentDAO-ref="FreeCommentDAO"
 		  p:memberDAO-ref="MemberDAO"/>
+	<bean id="ExpService"
+		class="com.exp.service.ExpServiceImpl"
+		p:expDAO-ref="ExpDAO"/>
 </beans>

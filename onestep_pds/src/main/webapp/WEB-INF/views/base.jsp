@@ -30,7 +30,7 @@
         <a class="nav-link" href="/devnote/list">개발자노트</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/arduino/main">체험관</a>
+        <a class="nav-link" href="/exp/main">체험관</a>
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
