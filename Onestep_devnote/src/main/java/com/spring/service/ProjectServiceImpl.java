@@ -19,10 +19,6 @@ public class ProjectServiceImpl implements ProjectService{
 		return projectDAO.selectProjectList(pageMaker);
 	}
 
-	@Override
-	public ProjectVO feed(int projectId) throws SQLException {
-		return projectDAO.selectProjectByProjectId(projectId);
-	}
 
 	@Override
 	public void regist(ProjectVO pj) throws SQLException {

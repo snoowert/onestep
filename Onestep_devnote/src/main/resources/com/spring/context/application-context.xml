@@ -8,12 +8,21 @@
 		  class="com.spring.dao.NoteDAOImpl"
 		  p:sqlSession-ref="sqlSession" />
 		  
+	<bean id="NoteService"
+		  class="com.spring.service.NoteServiceImpl"
+		  p:noteDAO-ref="NoteDAO"
+		  
+		  />
+	
 	<bean id="ProjectDAO"
 		  class="com.spring.dao.ProjectDAOImpl"
-		  p:sqlSession-ref="sqlSession" />
+		  p:sqlSession-ref="sqlSession" 
+		  />
 		  
 	<bean id="ProjectService" 
 		  class="com.spring.service.ProjectServiceImpl"
 		  p:projectDAO-ref="ProjectDAO"
-		/>
+		  />
+		
+	
 </beans>

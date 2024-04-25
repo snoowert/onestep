@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ include file="/WEB-INF/views/module/base.jsp"%>
 
@@ -16,35 +17,7 @@
 }
 </style>
 <!-- 상세상단바 -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-<div class="collapse navbar-collapse" >
-	<ul class="navbar-nav">
-		<li class="nav-item">
-			<a class="nav-link" href="/devnote/main?projectId=${project.projectId}">프로젝트 홈</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="/devnote/feed">피드</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="/devnote/calendar">캘린더</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="/devnote/pjpds">파일&nbsp;</a>
-		</li>
-	</ul>
-
-		<div class="dropdown">
-			<button class="btn btn-light rounded-circle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" >
-				&nbsp;⋮&nbsp;
-			</button>
-			<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-				<li><a class="dropdown-item" href="#">프로젝트 삭제</a></li>
-				<li><a class="dropdown-item" href="#">프로젝트 탈퇴</a></li>
-				
-			</ul>
-		</div>
-</div>
-	</nav>
+<%@ include file="/WEB-INF/views/module/subbar.jsp" %>
 <!-- 상세상단바 끝 -->
 
 
@@ -109,9 +82,8 @@
 		</div>
 
 
-	</div>
 	<!-- 게시글 -->
-
+	<c:forEach var="note" items="${noteList }"> 
 	<div class="card" style="width: 90%; margin-left: auto; margin-right: auto;">
 		<div class="card-body" style="padding-bottom: -20px;">
 			<div style="margin-top: 10px;">[사용자이름자리]</div>
@@ -120,19 +92,13 @@
 				<button type="button" class="btn btn-secondary" style="float:right;">삭제</button>
 			</div>
 			<div class="card-title">
-				화면정의서
+				${note.noteTitle }
 				<hr style="width: 190%;" />
 			</div>
 			<div class="card-text">
-				<p>글 내용</p>
-				<p>글 내용</p>
-				<p>글 내용</p>
-
-				<p>글 내용</p>
-				<p>글 내용</p>
-				<p>글 내용</p>
+				${note.noteContent }
 			</div>
-			
+
 			<div class="">
 				<img src="" alt="댓글" style="float:left;"> 
 				<input class="form-control" type="text" style="display:inline-block; width: 80%; margin-left:10px;">
@@ -152,12 +118,15 @@
 			</div>
 			
 			<%@ include file="/WEB-INF/views/module/content_bottom.jsp" %>
+			
 		</div>		
 	</div>
+	</c:forEach>
 		<!-- 참여자 목록 -->
 		<%@include file="/WEB-INF/views/module/member.jsp" %>
 	</div>
 </div>
+	</div>
 
 
 <%@ include file="/WEB-INF/views/module/footer.jsp"%>
