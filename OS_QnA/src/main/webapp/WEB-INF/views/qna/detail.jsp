@@ -85,9 +85,11 @@
 						
 						<div class="card-header">
 							<div class="card-tools">
-								<button type="button" class="btn btn-primary" onclick="location='regist_answer'">답변 작성</button>
+								<button type="button" class="btn btn-primary" onclick="location='regist_answerForm?qnaid=${qna.qnaid}'">답변 작성</button>
 							</div>
 						</div>
+								
+						<!-- 질문 밑에 답변 붙이기 -->
 								
 				</div>													
 			</div><!-- end card -->				

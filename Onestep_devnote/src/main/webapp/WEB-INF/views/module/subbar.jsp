@@ -24,8 +24,8 @@
 				&nbsp;⋮&nbsp;
 			</button>
 			<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-				<li><a class="dropdown-item" href="#">프로젝트 삭제</a></li>
-				<li><a class="dropdown-item" href="#">프로젝트 탈퇴</a></li>
+				<li><a class="dropdown-item btn" href="/devnote/deleteProject">프로젝트 삭제</a></li>
+				<li><a class="dropdown-item btn" href="#">프로젝트 탈퇴</a></li>
 				
 			</ul>
 		</div>

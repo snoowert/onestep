@@ -2,13 +2,13 @@
 	pageEncoding="UTF-8"%>
 
 <%@ include file="/WEB-INF/views/module/header.jsp"%>
+
 <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" /> 
     <section class="content container-fluid">
 		<div class="row justify-content-center">
 			<div class="col-md-9" style="max-width:960px;">
 				<div class="card card-outline card-info">
 					<div class="card-header">
-						<h3 class="card-title p-1">질문작성</h3>
 						<div class ="card-tools">
 							<button type="button" class="btn btn-primary" id="registBtn" onclick="regist_go();">등 록</button>
 							&nbsp;&nbsp;&nbsp;&nbsp;
@@ -104,6 +104,5 @@ function regist_go(){
 }
 
 </script>
-
 
 <%@ include file="/WEB-INF/views/module/footer.jsp"%>

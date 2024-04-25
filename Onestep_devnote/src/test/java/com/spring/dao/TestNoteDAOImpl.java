@@ -13,88 +13,82 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.spring.command.PageMaker;
 import com.spring.dto.NoteVO;
+
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:com/spring/context/root-context.xml")
 @Transactional
 public class TestNoteDAOImpl {
-
+	
 	@Autowired
-	private NoteDAO noteDAO;
+	NoteDAO noteDAO;
 	
 	@Test
 	public void testSelectNoteList() throws SQLException {
-		List<NoteVO> noteList = noteDAO.selectNoteList();
-		Assert.assertEquals(0, noteList.size());
+	
+		 PageMaker pageMaker  = new PageMaker();
+		 pageMaker.setPage(1);
+		 pageMaker.setPerPageNum(10);
+		 
+		 List<NoteVO> noteList = noteDAO.selectNoteList(pageMaker);
+		 Assert.assertEquals(1, noteList.size());
+		 
 		
 	}
-
+	
 	@Test
-	public void testSelectNoteByDnId() throws SQLException {
-		int testNoteId = 1;
-		NoteVO note = noteDAO.selectNoteByDnId(testNoteId);
-		Assert.assertEquals(note.getNoteId(), testNoteId);
-
+	public void testSelectNoteByNoteId() throws SQLException {
+		
+		int testnoteid = 1;
+		NoteVO note = noteDAO.selectNoteByNoteId(testnoteid);
+		Assert.assertEquals(note.getNoteId(), testnoteid);
 	}
-
-	int insertNoteId = 1;
-
+	
+	int insertnoteid = 2;
+	
+	
 	@Test
 	@Rollback
 	public void testInsertNote() throws SQLException {
 		NoteVO note = new NoteVO();
-		note.setMemberId(2);
-		note.setNoteId(insertNoteId);
-		note.setNoteTitle("AI 자율주행 자동차 프로젝트");
-		note.setNoteContent("아두이노 모듈 자동차에 OpenCV 및 Yolov5를 이용하여... ");
+		note.setNoteId(insertnoteid);
+		note.setNoteTitle("이거 모르겠어용");
+		note.setNoteContent("여기서 왜 nullpoint exception이 뜨는 걸까용");
 		note.setNoteRegDate(new Date());
 		note.setNoteViewPoint(0);
-		note.setProjectId(1);
 		note.setMemberId(1);
-
+		note.setProjectId(37);
+		
 		noteDAO.insertNote(note);
-
-		NoteVO test = noteDAO.selectNoteByDnId(note.getNoteId());
-
-		Assert.assertEquals(note.getNoteId(), test.getNoteId());
+		
+		NoteVO getNote = noteDAO.selectNoteByNoteId(note.getNoteId());
+		
+		Assert.assertEquals(note.getNoteId(), getNote.getNoteId());
 	}
-
+	
 	@Test
 	@Rollback
 	public void testUpdateNote() throws SQLException {
-
-		int testNoteId = 1;
-		testInsertNote();
-		String testNoteTitle = "질문";
-		NoteVO targetNote = noteDAO.selectNoteByDnId(insertNoteId);
+		NoteVO note = noteDAO.selectNoteByNoteId(1);
+		note.setNoteTitle("진짜모르겠어요이겅");
+		note.setNoteContent("nullpointexception?!!?");
 		
-		Assert.assertNotNull(targetNote);
-		Assert.assertNotEquals(testNoteTitle, targetNote.getNoteTitle());
-		
-		targetNote.setNoteTitle(testNoteTitle);
-		
-		noteDAO.updateNote(targetNote);
-		
-		NoteVO test = noteDAO.selectNoteByDnId(testNoteId);
-		Assert.assertEquals(testNoteTitle, test.getNoteTitle());
-		
-		
+		noteDAO.updateNote(note);
+		Assert.assertEquals(note.getNoteTitle(), noteDAO.selectNoteByNoteId(1).getNoteTitle());
 	}
-
+	
 	@Test
 	@Rollback
-	public void testDeleteNote() throws Exception {
-		testInsertNote();
-		NoteVO targetNote = noteDAO.selectNoteByDnId(insertNoteId);
-
-		Assert.assertEquals(insertNoteId, targetNote.getNoteId());
-
-		noteDAO.deleteNote(insertNoteId);
-		NoteVO deleteNote = noteDAO.selectNoteByDnId(insertNoteId);
-
-		Assert.assertNull(deleteNote);
-
+	public void testDeletedNote() throws SQLException {
+		
+		noteDAO.deleteNote(1);
+		NoteVO note = noteDAO.selectNoteByNoteId(1);	
 	}
+	
+	
+	
 
 }

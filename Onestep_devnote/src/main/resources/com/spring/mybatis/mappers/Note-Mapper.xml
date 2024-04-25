@@ -12,21 +12,32 @@
 		order by noteid desc
 	</select>
 
-	<select id="selectNoteByDnId" parameterType="int" resultType="note">
+	<select id="selectNoteByNoteId" parameterType="int" resultType="note">
 		select *
 		from developnote
 		where noteid=#{noteId}
 	</select>
+	
+	<select id="selectNoteListCount" resultType="int">
+		select count(*)
+		from developnote
+	</select>
+	
+	
+	<select id="selectNoteSeqNext" resultType="int">
+		select noteid_seq.nextval as noteid from dual
+	</select>
+	
 	<insert id="insertNote" parameterType="note">
 		insert into 
-		developnote(Noteid, Notetitle, Notecontent, Noteviewpoint, NoteRegdate, memberid, Projectid)
+		developnote(noteid, notetitle, notecontent, noteviewpoint, noteregdate, memberid, projectid)
 		values(#{noteId}, #{noteTitle}, #{noteContent}, #{noteViewPoint}, #{noteRegDate}, #{memberId}, #{projectId})
 	</insert>
 		
 	<update id="updateNote" parameterType="note">
 		update developnote
 		set
-		notetitle=#{noteTitle}, notecontent=#{noteContent} memberid=#{memberId}
+		notetitle=#{noteTitle}, notecontent=#{noteContent}, memberid=#{memberId}
 		where noteid=#{noteId}
 	
 	</update>

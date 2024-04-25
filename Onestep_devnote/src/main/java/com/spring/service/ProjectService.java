@@ -9,7 +9,7 @@ import com.spring.dto.ProjectVO;
 public interface ProjectService {
 	
 	List<ProjectVO> list(PageMaker pageMaker) throws SQLException;
-	ProjectVO feed(int projectId) throws SQLException;
+
 	
 	ProjectVO detail(int projectId) throws SQLException;
 	
