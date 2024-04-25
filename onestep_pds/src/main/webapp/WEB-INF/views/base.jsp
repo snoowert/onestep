@@ -9,7 +9,6 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/bootstrap/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/bootstrap/plugins/summernote/summernote-bs4.min.css">
-  <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/banner.css">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">OneStep</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,5 +74,3 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-
-<script src="<%=request.getContextPath() %>/resources/js/banner.js"></script>

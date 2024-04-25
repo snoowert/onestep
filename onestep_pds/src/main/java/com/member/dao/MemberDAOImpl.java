@@ -10,7 +10,7 @@ import com.spring.command.PageMaker;
 
 public class MemberDAOImpl implements MemberDAO{
 	private SqlSession sqlsession;
-	public void setSqlsessin(SqlSession sqlsession) {
+	public void setSqlsession(SqlSession sqlsession) {
 		this.sqlsession = sqlsession;
 	}
 	@Override

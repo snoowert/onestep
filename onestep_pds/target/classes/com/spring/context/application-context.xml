@@ -34,11 +34,12 @@
 	<bean id="PdsFileDAO" class="com.pds.dao.PdsFileDAOImpl"
 		p:sqlSession-ref="sqlSession" />
 	<bean id="MemberDAO" class="com.member.dao.MemberDAOImpl"
-		p:sqlsessin-ref="sqlSession" />
+		p:sqlsession-ref="sqlSession" />
+	<bean id="QuizDAO" class="com.member.dao.QuizDAOImpl"
+		p:sqlSession-ref="sqlSession"/>
 	<bean id="FreeDAO"
 		  class="com.onestep.dao.FreeDAOImpl"
 		  p:sqlSession-ref="sqlSession"/>
-		  
 	<bean id="FreeCommentDAO"
 		  class="com.onestep.dao.FreeCommentDAOImpl"
 		  p:sqlSession-ref="sqlSession"/>
@@ -48,7 +49,8 @@
 		p:pdsFileDAO-ref="PdsFileDAO"
 		p:memberDAO-ref="MemberDAO"/>
 	<bean id="MemberService" class="com.member.service.MemberServiceImpl"
-		p:memberDAO-ref="MemberDAO" />
+		p:memberDAO-ref="MemberDAO"
+		p:quizDAO-ref="QuizDAO" />
 	<bean id="FreeService"
 		  class="com.onestep.service.FreeServiceImpl"
 		  p:freeDAO-ref="FreeDAO"

@@ -1,29 +1,27 @@
 package com.member.controller;
 
+import java.util.HashMap;
 import java.util.List;
-
-import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.member.dao.MemberDAO;
 import com.member.service.MemberService;
 import com.member.vo.MemberVO;
+import com.member.vo.QuizVO;
 import com.spring.command.MemberModifyCommand;
 import com.spring.command.MemberRegistCommand;
 import com.spring.command.PageMaker;
-import com.spring.exception.InvalidPasswordException;
-import com.spring.exception.NotFoundIdentityException;
 
 @Controller
 @RequestMapping("/member")
@@ -223,5 +221,19 @@ public class MemberController {
     public ResponseEntity<String> restoreMember(@RequestParam("memberid") int memberid) {
         memberService.restoreMember(memberid);
         return ResponseEntity.ok("Member restored successfully.");
+    }
+    //가입용 퀴즈 호출
+    @GetMapping("/quiz")
+    @ResponseBody
+    public Map<String, String> getQuizData(String devlan) {
+        // 퀴즈 데이터를 생성하거나 DB에서 가져와서 QuizData 객체로 반환합니다.
+        // 여기서는 간단한 예시로 고정된 데이터를 반환합니다.
+    	Map<String, String> quizData = new HashMap<>();
+        List<QuizVO> quizList = memberService.SelectQuizByDevlan(devlan);
+    	QuizVO quiz = quizList.get((int)(Math.random()*0));
+    	quizData.put("question", quiz.getQuizcontent());
+    	quizData.put("answer", quiz.getQuizanswer());
+        
+        return quizData;
     }
 }

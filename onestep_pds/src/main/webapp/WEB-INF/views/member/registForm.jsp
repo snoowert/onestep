@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +26,19 @@
 			<label class="form-label">비밀번호 확인</label>
 			<input id="password" name="re-password" type="password" class="form-control" placeholder="비밀번호 재입력">
 			<br>
-			
+			<c:if test="${authority eq 'developer' }">
+				<label class="form-label">주력 언어</label>&nbsp;&nbsp;&nbsp;
+				<div class="input-group">
+			        <select class="form-select" name="devlan" id="devlan">
+			            <option value="none">없음</option>
+			            <option value="java">자바</option>
+			            <option value="python">파이썬</option>
+			        </select>
+			    </div>
+			</c:if>
+			<c:if test="${authority eq 'normal' }">
+				<input name="devlan" type="hidden">
+			</c:if>
 			<br>
 			<input type="button" class="btn btn-primary" value="등록" onclick="regist_go()">&nbsp;&nbsp;&nbsp;
 			<input type="button" class="btn btn-default" value="취소" onclick="history.go(-1)">
@@ -36,8 +49,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 	var url = '/pds/regist';
+	var form = $('form[name="memberform"]');
 	function regist_go(){
-		var form = $('form[name="memberform"]');
 		
 		if(!$('input[name="username"]').val()){
 		    alert("사용자명은 필수입니다.");
@@ -68,9 +81,52 @@
 			alert("비밀번호가 일치하지않습니다.\n다시 확인해주세요.");
 			return;
 		}
+		var authority = $('#authority').val();
+
+	    if (authority === 'normal') {
+	        // authority가 'normal'인 경우, 퀴즈를 받지 않고 바로 회원가입을 처리
+	        RealSubmit_go();
+	    } else {
+			$.ajax({
+		        url: '/member/quiz', // 퀴즈 데이터를 받아오는 컨트롤러 주소
+		        type: 'GET',
+		        dataType: 'json',
+		        data: { devlan: $('#devlan').val() },
+		        success: function(data) {
+		            // 받아온 퀴즈 데이터를 처리하여 팝업 창에 퀴즈를 표시
+		            var quizQuestion = data.question; 
+		            var quizAnswer = data.answer; 
+		            
+		            // 퀴즈를 포함한 HTML을 생성
+		            var popupContent = quizQuestion;
+		            popupContent += '<input type="text" id="quizAnswerInput" class="form-control" placeholder="정답을 입력하세요">';
+		            popupContent += '<button type="button" class="btn btn-primary" onclick="checkAnswer(\'' + quizAnswer + '\');">확인</button>';
+		            
+		            // 팝업 창 열기
+		            var popupWindow = window.open('', '_blank', 'width=400,height=300');
+		            popupWindow.document.write(popupContent);
+		        },
+		        error: function() {
+		            alert('퀴즈 데이터를 불러오는 데 실패했습니다.');
+		        }
+		    });
+	    }
+	}
+	function checkAnswer(correctAnswer) {
+        // 사용자가 입력한 답과 정답을 비교하여 처리하는 함수
+        var userAnswer = document.getElementById('quizAnswerInput').value;
+        
+        if (userAnswer.trim().toLowerCase() === correctAnswer.trim().toLowerCase()) {
+            // 정답인 경우, 회원가입 처리
+            document.getElementById('memberform').submit();
+        } else {
+            // 오답인 경우, 메시지 표시 등 추가 처리 가능
+            alert('퀴즈의 정답을 맞추어야 회원가입이 가능합니다.');
+        }
+	}
+	function RealSubmit_go(){
 		form.submit();
 	}
-	
 	function EmailCheck(email) {
 	    // 이메일 형식을 검증하는 정규 표현식
 	    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
