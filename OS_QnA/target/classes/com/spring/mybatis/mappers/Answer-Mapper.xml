@@ -21,7 +21,7 @@
   	<insert id="insertAnswer" parameterType="answer">
   		insert into
   		answer(qnaid, answerid, memberid, answercontent)
-  		values(#{qnaid}, #{answerid}, #{memberid}, #{answercontent})
+  		values(#{qnaid}, ANSWERID_SEQ.NEXTVAL, #{memberid}, #{answercontent})
   	</insert>
   	
   	<update id="updateAnswer" parameterType="answer">

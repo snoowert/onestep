@@ -4,7 +4,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.member.dao.MemberDAO;
+import com.member.dao.QuizDAO;
 import com.member.vo.MemberVO;
+import com.member.vo.QuizVO;
 import com.spring.command.PageMaker;
 import com.spring.exception.InvalidPasswordException;
 import com.spring.exception.NotFoundIdentityException;
@@ -13,6 +15,10 @@ public class MemberServiceImpl implements MemberService{
 	private MemberDAO memberDAO;
 	public void setMemberDAO(MemberDAO memberDAO) {
 		this.memberDAO = memberDAO;
+	}
+	private QuizDAO quizDAO;
+	public void setQuizDAO(QuizDAO quizDAO) {
+		this.quizDAO = quizDAO;
 	}
 	@Override
 	public List<MemberVO> SearchMemberList(PageMaker pageMaker) {
@@ -62,6 +68,16 @@ public class MemberServiceImpl implements MemberService{
 	public void restoreMember(int memberid) {
 		// TODO Auto-generated method stub
 		memberDAO.restoreMember(memberid);
+	}
+	@Override
+	public List<QuizVO> SelectQuizByDevlan(String devlan) {
+		// TODO Auto-generated method stub
+		return quizDAO.SelectQuizByDevlan(devlan);
+	}
+	@Override
+	public QuizVO SelectQuizByQuizid(int quizid) {
+		// TODO Auto-generated method stub
+		return quizDAO.selectQuizByQuizid(quizid);
 	}
 	
 }
