@@ -45,8 +45,9 @@
 						</div>
 					</div>
 					
-						<form role="form" method="post" action="regist.do" name="registForm" enctype="multipart/form-data">
+						<form role="form" method="post" action="regist_answer" name="ansregistForm" enctype="multipart/form-data">
 							<input type="hidden" id="answercontent" name="answercontent">
+							<input type="hidden" id="answerid" name="answerid">
 							<div class="form-group">
 								<label for="answertitle">제 목</label> 
 								<input type="text" id="answertitle"  title="제목"
@@ -116,7 +117,7 @@ const editor = new toastui.Editor({
 });
 
 function regist_go(){
-	var form = document.registForm;
+	var form = document.ansregistForm;
 	document.querySelector("#answercontent").value = editor.getHTML();
 	var inputNotNull = document.querySelectorAll("input.notNull");
 	for(var input of inputNotNull){
@@ -127,7 +128,7 @@ function regist_go(){
 		}
 	}
 	
-	form.action="regist_go";
+	form.action="regist_answer";
 	form.method="post";
 	form.submit();
 	

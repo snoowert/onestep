@@ -128,7 +128,7 @@ public class QnAController {
 		return mnv;
 	}
 	
-	@GetMapping("/regist_answer")
+	@GetMapping("/regist_answerForm")
 	public ModelAndView ansregistForm(int qnaid, ModelAndView mnv) throws Exception{
 		String url = "/qna/regist_answer";
 		
