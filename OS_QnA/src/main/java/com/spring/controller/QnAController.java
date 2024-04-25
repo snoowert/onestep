@@ -130,7 +130,7 @@ public class QnAController {
 	
 	@GetMapping("/regist_answer")
 	public ModelAndView ansregistForm(int qnaid, ModelAndView mnv) throws Exception{
-		String url = "/qna/regist_answer?qnaid=\"+qnaid";
+		String url = "/qna/regist_answer";
 		
 		QnAVO qna = qnaService.detail(qnaid);
 		
@@ -141,7 +141,7 @@ public class QnAController {
 	
 	@PostMapping(value="/regist_answer", produces="text/plain;charset=utf-8")
 	public ModelAndView ansregist(AnswerRegistCommand answerReg, ModelAndView mnv) throws Exception{
-		String url = "/qna/regist_success";
+		String url = "/qna/answer_regist_success";
 		AnswerVO answer = answerReg.toAnswerVO();
 		int qnaid = answer.getAnswerid();
 		

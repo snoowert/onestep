@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="/WEB-INF/views/module/header.jsp"%>
 
 
@@ -10,8 +11,32 @@
 		<div class="row justify-content-center">
 			<div class="col-md-9" style="max-width:760px;">
 				<div class="card card-outline card-info">
-
-					<div class="card-body pad">
+				
+				<div class="card-body">
+					<div class="row">
+						<div class="form-group col-sm-12">
+							<label for="qnatitle">제 목</label>
+							<span id="qnatitle">${qna.qnatitle }</span>							
+						</div>
+					</div>
+					<div class="row">	
+						<div class="form-group col-sm-2" >
+							<label for="writer">작성자</label>
+							<span  id="writer">${qna.memberid }</span>
+						</div>			
+				
+				</div>													
+					<div class="form-group col-sm-12">
+						<label for="content">내 용</label>
+						<div id="content">${qna.qnacontent }</div>
+											
+				</div>	
+				</div>	
+				
+				<!-- 답변폼 -->
+				<hr class="hr-10">
+						<div class="card-body pad">
+				
 						<form role="form" method="post" action="ansregist" name="ansregistForm" enctype="multipart/form-data">
 							<input type="hidden" id="answercontent" name="answercontent">
 							<div class="form-group">
@@ -100,7 +125,7 @@ function regist_go(){
 		}
 	}
 	
-	form.action="regist_answer";
+	form.action="regist_go";
 	form.method="post";
 	form.submit();
 	
