@@ -132,9 +132,7 @@ public class QnAController {
 	public ModelAndView ansregistForm(int qnaid, ModelAndView mnv) throws Exception{
 		String url = "/qna/regist_answer";
 		
-		QnAVO qna = qnaService.detail(qnaid);
 		
-		mnv.addObject("qna",qna);
 		mnv.setViewName(url);
 		return mnv;
 	}

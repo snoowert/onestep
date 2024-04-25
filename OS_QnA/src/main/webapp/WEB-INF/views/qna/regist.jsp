@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@ include file="/WEB-INF/views/module/header.jsp"%>
+
 <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" /> 
     <section class="content container-fluid">
 		<div class="row justify-content-center">
@@ -103,6 +104,5 @@ function regist_go(){
 }
 
 </script>
-
 
 <%@ include file="/WEB-INF/views/module/footer.jsp"%>

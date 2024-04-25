@@ -37,7 +37,15 @@
 				<hr class="hr-10">
 						<div class="card-body pad">
 				
-						<form role="form" method="post" action="answerregist" name="answerregistForm" enctype="multipart/form-data">
+					<div class="card-header">
+						<div class ="card-tools">
+							<button type="button" class="btn btn-primary" id="registBtn" onclick="regist_go();">등 록</button>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<button type="button" class="btn btn-warning" id="cancelBtn" onclick="history.go(-1);" >취 소</button>
+						</div>
+					</div>
+					
+						<form role="form" method="post" action="regist.do" name="registForm" enctype="multipart/form-data">
 							<input type="hidden" id="answercontent" name="answercontent">
 							<div class="form-group">
 								<label for="answertitle">제 목</label> 
@@ -50,17 +58,11 @@
 									name="writer" class="form-control notNull" value="2" >
 								<input type="hidden" id="memberid" name="memberid" value="2">
 							</div>
-							<div class="form-group" id="anscontent" >
-								<input type="hidden" name="answercontent" id="answercontent" />
+							<div class="form-group" id="anscontent">
+							
+							
 							</div>
 
-					<div class="card-header">
-						<div class ="card-tools">
-							<button type="button" class="btn btn-primary" id="registBtn" onclick="answerregist();">등 록</button>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<button type="button" class="btn btn-warning" id="cancelBtn" onclick="history.go(-1);" >취 소</button>
-						</div>
-					</div>
 
 						</form>
 					</div>
@@ -113,7 +115,7 @@ const editor = new toastui.Editor({
     }
 });
 
-function answerregist(){
+function regist_go(){
 	var form = document.registForm;
 	document.querySelector("#answercontent").value = editor.getHTML();
 	var inputNotNull = document.querySelectorAll("input.notNull");
@@ -125,7 +127,7 @@ function answerregist(){
 		}
 	}
 	
-	form.action="answerregist";
+	form.action="regist_go";
 	form.method="post";
 	form.submit();
 	
