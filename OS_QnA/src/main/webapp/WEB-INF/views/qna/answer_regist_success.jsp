@@ -5,6 +5,5 @@
 <script>
  var qnaid="<%= request.getAttribute("qnaid") %>";
 	alert("답변이 등록 되었습니다.");
-	window.opener.location.href ='main?qnaid='+qnaid;
-	window.opener.location.reload();
+	location.href ='detail?qnaid='+qnaid;
 </script>

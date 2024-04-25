@@ -89,6 +89,8 @@
 							</div>
 						</div>
 								
+						<!-- 질문 밑에 답변 붙이기 -->
+								
 				</div>													
 			</div><!-- end card -->				
 		</div><!-- end col-md-12 -->

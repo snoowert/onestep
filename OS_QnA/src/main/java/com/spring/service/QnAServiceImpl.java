@@ -88,9 +88,8 @@ public class QnAServiceImpl implements QnAService {
 	}
 
 	@Override
-	public void registAnswer(AnswerVO answer, int answerid) throws SQLException {
+	public void registAnswer(AnswerVO answer ) throws SQLException {
 
-		answer.setAnswerid(answerid);
 		answerDAO.insertAnswer(answer);
 		
 	}

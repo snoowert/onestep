@@ -47,7 +47,7 @@
 					
 						<form role="form" method="post" action="regist_answer" name="ansregistForm" enctype="multipart/form-data">
 							<input type="hidden" id="answercontent" name="answercontent">
-							<input type="hidden" id="answerid" name="answerid">
+							<input type="hidden" id="qnaid" name="qnaid" value="${qna.qnaid} ">
 							<div class="form-group">
 								<label for="answertitle">제 목</label> 
 								<input type="text" id="answertitle"  title="제목"

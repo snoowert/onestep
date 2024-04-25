@@ -4,17 +4,10 @@ import com.spring.dto.AnswerVO;
 
 public class AnswerRegistCommand {
 	
-	private int answerid;
 	private int qnaid;
 	private String answercontent;
 	private int memberid;
-	
-	public int getAnswerid() {
-		return answerid;
-	}
-	public void setAnswerid(int answerid) {
-		this.answerid = answerid;
-	}
+
 	public int getQnaid() {
 		return qnaid;
 	}
@@ -36,7 +29,6 @@ public class AnswerRegistCommand {
 
 	public AnswerVO toAnswerVO(){
 		AnswerVO answer = new AnswerVO();
-		answer.setAnswerid(this.answerid);
 		answer.setQnaid(this.qnaid);
 		answer.setAnswercontent(this.answercontent);
 		answer.setMemberid(this.memberid);
