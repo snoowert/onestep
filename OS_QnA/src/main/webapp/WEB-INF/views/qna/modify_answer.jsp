@@ -41,6 +41,7 @@
 	<form role="form" method="post" action="answermodify" name="answermodifyForm"
 		onsubmit="return false;">
 		<input type="hidden" name="answercontent" value="${answer.answercontent }" />
+		<input type="hidden" name="answerid" value="${answer.answerid }" />
 		<div class="form-group">
 			<label for="answertitle">제 목</label> <input type="text" id="answertitle"
 				name='answertitle' class="form-control" value="${answer.answertitle }">
