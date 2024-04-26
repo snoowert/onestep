@@ -123,10 +123,10 @@
 	</div>
 	</c:forEach>
 		<!-- 참여자 목록 -->
-		<%@include file="/WEB-INF/views/module/member.jsp" %>
 	</div>
 </div>
 	</div>
+		<%@include file="/WEB-INF/views/module/member.jsp" %>
 
 
 <%@ include file="/WEB-INF/views/module/footer.jsp"%>

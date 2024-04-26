@@ -6,9 +6,10 @@
   
 <mapper namespace="Note-Mapper">
 	
-	<select id="selectNoteList" resultType="note">
+	<select id="selectNoteList" resultType="note" parameterType="int">
 		select *
 		from developnote
+		where projectid=#{projectId}
 		order by noteid desc
 	</select>
 
@@ -17,12 +18,6 @@
 		from developnote
 		where noteid=#{noteId}
 	</select>
-	
-	<select id="selectNoteListCount" resultType="int">
-		select count(*)
-		from developnote
-	</select>
-	
 	
 	<select id="selectNoteSeqNext" resultType="int">
 		select noteid_seq.nextval as noteid from dual
