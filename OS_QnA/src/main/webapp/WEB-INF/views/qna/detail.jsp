@@ -60,7 +60,7 @@
 						</div>		
 
 						<div class="form-group col-sm-3" >
-							<label for="qnaregdate">작성일</label>
+							<label for="qnaregdate">첫 작성일</label>
 							<span class="form-control" id="qnaregdate">
 								<fmt:formatDate value="${qna.qnaregdate }" pattern="yyyy-MM-dd"/>  
 							</span>
@@ -90,6 +90,16 @@
 						</div>
 								
 						<!-- 질문 밑에 답변 붙이기 -->
+						<div class="form-group col-md-9" style="max-width:760px; border-radious:10%;">
+							<c:forEach var="answer" items="${answerList }">
+								<div style="max-width:730px; border-radious:10%;">
+									<span id="answriter">${answer.memberid }</span>
+								</div>
+								<div id="answercontent">${answer.answercontent }</div>
+									<fmt:formatDate value="${answer.answerupdatedate }" pattern="yyyy-MM-dd" />
+									
+							</c:forEach>
+						</div>
 								
 				</div>													
 			</div><!-- end card -->				
