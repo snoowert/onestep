@@ -28,20 +28,18 @@
 				</div>													
 					<div class="form-group col-sm-12">
 						<label for="content">내 용</label>
-						<div id="content">${qna.qnacontent }</div>
-											
+						<div id="content">${qna.qnacontent }</div>								
 				</div>	
 				</div>	
-				
 				<!-- 답변폼 -->
 				<hr>
 						<div class="card-body pad">
 				
 					<div class="card-header">
 						<div class ="card-tools">
-							<button type="button" class="btn btn-primary" id="registBtn" onclick="regist_go();">등 록</button>
+							<button type="button" class="btn " id="registBtn" onclick="regist_go();">등 록</button>
 							&nbsp;&nbsp;&nbsp;&nbsp;
-							<button type="button" class="btn btn-warning" id="cancelBtn" onclick="history.go(-1);" >취 소</button>
+							<button type="button" class="btn " id="cancelBtn" onclick="history.go(-1);" >취 소</button>
 						</div>
 					</div>
 					

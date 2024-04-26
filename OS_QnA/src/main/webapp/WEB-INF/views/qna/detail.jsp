@@ -94,10 +94,8 @@
 							<c:forEach var="answer" items="${qna.answerlist }">
 								<div class="form-group col-sm-3">
 									<span id="answriter">${answer.memberid }</span>
-
-										<button type="button" id="modifyBtn" class="btn " onclick="submit_go('modifyForm.do');">수정하기</button>						
-						    			<button type="button" id="removeBtn" class="btn " onclick="submit_go('remove.do');">삭 제</button>
-
+										<button type="button" id="answermodifyBtn" class="btn " onclick="submit_go('modify_answer');">수정하기</button>						
+						    			<button type="button" id="removeBtn" class="btn " onclick="submit_go('remove_answer');">삭 제</button>
 								</div>
 								<div id="answercontent">${answer.answercontent }</div>
 									<fmt:formatDate value="${answer.answerupdatedate }" pattern="yyyy-MM-dd" />

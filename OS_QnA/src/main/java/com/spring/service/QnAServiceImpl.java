@@ -95,7 +95,7 @@ public class QnAServiceImpl implements QnAService {
 	}
 
 	@Override
-	public void modifyAnswer(AnswerVO answer, int answerid) throws SQLException {
+	public void modifyAnswer(AnswerVO answer) throws SQLException {
 
 		answerDAO.updateAnswer(answer);
 		
