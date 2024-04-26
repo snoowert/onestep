@@ -11,12 +11,13 @@
 </head>
 <body>
 <section class="container">
+	<!--
 	<div class="row mx-auto">
 		<div class="bg-secondary col-sm-10" style="height:100%;">
 			<h1 style="margin-top:3rem">자료실</h1>
 			<p>개발자에게 필요한 자료를 다운받을 수 있는 게시판입니다.</p>
 		</div>	
-	</div>
+	</div>-->
 	<br>
 	<div class="row mx-auto">
 		<div class="col-md-10 ">

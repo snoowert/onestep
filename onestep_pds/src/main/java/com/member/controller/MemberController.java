@@ -230,7 +230,7 @@ public class MemberController {
         // 여기서는 간단한 예시로 고정된 데이터를 반환합니다.
     	Map<String, String> quizData = new HashMap<>();
         List<QuizVO> quizList = memberService.SelectQuizByDevlan(devlan);
-    	QuizVO quiz = quizList.get((int)(Math.random()*0));
+    	QuizVO quiz = quizList.get((int)(Math.random()*5));
     	quizData.put("question", quiz.getQuizcontent());
     	quizData.put("answer", quiz.getQuizanswer());
         

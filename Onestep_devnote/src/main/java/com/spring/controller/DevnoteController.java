@@ -17,6 +17,7 @@ import com.spring.command.ModifyProjectCommand;
 import com.spring.command.PageMaker;
 import com.spring.dto.NoteVO;
 import com.spring.dto.ProjectVO;
+import com.spring.service.NoteService;
 import com.spring.service.ProjectService;
 
 @Controller
@@ -25,6 +26,9 @@ public class DevnoteController {
 	
 	@Autowired
 	private ProjectService projectService;
+	
+	@Autowired
+	private NoteService noteService;
 	
 	@GetMapping("/list")
 	public ModelAndView list(ModelAndView mnv, @ModelAttribute PageMaker pageMaker) throws SQLException {
@@ -113,11 +117,15 @@ public class DevnoteController {
 	
 	
 	
-	
 	@GetMapping("/feed")
-	public ModelAndView feed(NoteVO note, ModelAndView mnv) throws SQLException {
+	public ModelAndView feed(PageMaker pageMaker, ModelAndView mnv) throws SQLException {
 		String url = "/devnote/feed";
-
+	
+		List<NoteVO> noteList = noteService.list(pageMaker);
+		mnv.addObject("noteList", noteList);
+		
+		System.out.println(noteList.get(0).getNoteContent());
+		
 		mnv.setViewName(url);
 		return mnv;
 	}
