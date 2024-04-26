@@ -89,19 +89,22 @@
 							</div>
 						</div>
 								
-						<!-- 질문 밑에 답변 붙이기 -->
+						<!-- 질문 밑에 답변 띄우기 -->
 						<div class="form-group col-md-9" style="max-width:760px; border-radious:10%;">
-							<c:forEach var="answer" items="${answerList }">
-								<div style="max-width:730px; border-radious:10%;">
+							<c:forEach var="answer" items="${qna.answerlist }">
+								<div class="form-group col-sm-3">
 									<span id="answriter">${answer.memberid }</span>
+
+										<button type="button" id="modifyBtn" class="btn " onclick="submit_go('modifyForm.do');">수정하기</button>						
+						    			<button type="button" id="removeBtn" class="btn " onclick="submit_go('remove.do');">삭 제</button>
+
 								</div>
 								<div id="answercontent">${answer.answercontent }</div>
 									<fmt:formatDate value="${answer.answerupdatedate }" pattern="yyyy-MM-dd" />
-									
+									<hr>
 							</c:forEach>
 						</div>
-								
-				</div>													
+				</div>																				
 			</div><!-- end card -->				
 		</div><!-- end col-md-12 -->
 	</div><!-- end row  -->
