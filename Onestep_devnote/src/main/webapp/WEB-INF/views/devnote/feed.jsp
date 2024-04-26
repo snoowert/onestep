@@ -80,7 +80,7 @@
 				</div>
 			</div>
 		</div>
-
+ 
 
 	<!-- 게시글 -->
 	<c:forEach var="note" items="${noteList }"> 
