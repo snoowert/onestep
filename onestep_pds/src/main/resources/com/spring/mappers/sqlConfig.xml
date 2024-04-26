@@ -13,6 +13,7 @@
 		<typeAlias type="com.onestep.dto.FreeVO" alias="free"/>
 		<typeAlias type="com.onestep.dto.FreeCommentVO" alias="comment"/>
 		<typeAlias type="com.member.vo.QuizVO" alias="quiz"/>
+		<typeAlias type="com.exp.vo.ExpVO" alias="exp"/>
 	</typeAliases>
 	
 </configuration>

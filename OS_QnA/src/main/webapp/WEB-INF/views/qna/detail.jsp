@@ -60,7 +60,7 @@
 						</div>		
 
 						<div class="form-group col-sm-3" >
-							<label for="qnaregdate">작성일</label>
+							<label for="qnaregdate">첫 작성일</label>
 							<span class="form-control" id="qnaregdate">
 								<fmt:formatDate value="${qna.qnaregdate }" pattern="yyyy-MM-dd"/>  
 							</span>
@@ -89,17 +89,30 @@
 							</div>
 						</div>
 								
-						<!-- 질문 밑에 답변 붙이기 -->
-								
-				</div>													
+						<!-- 질문 밑에 답변 띄우기 -->
+						<div class="form-group col-md-9" style="max-width:760px; border-radious:10%;">
+							<c:forEach var="answer" items="${qna.answerlist }">
+								<div class="form-group col-sm-3">
+									<span id="answriter">${answer.memberid }</span>
+										<button type="button" id="answermodifyBtn" class="btn " onclick="modify_go(${answer.answerid});">수정하기</button>						
+						    			<button type="button" id="removeBtn" class="btn " onclick="submit_go('remove_answer');">삭 제</button>
+								</div>
+								<div id="answercontent">${answer.answercontent }</div>
+									<fmt:formatDate value="${answer.answerupdatedate }" pattern="yyyy-MM-dd" />
+									<hr>
+							</c:forEach>
+						</div>
+				</div>																				
 			</div><!-- end card -->				
 		</div><!-- end col-md-12 -->
 	</div><!-- end row  -->
 </section>
   <!-- /.content -->
 <!-- REQUIRED SCRIPTS -->
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <form role="form">
 	<input type="hidden" name="qnaid" value="${qna.qnaid }" />
+	<input type="hidden" name="answerid" />
 </form>
 <script>
 var formObj = document.querySelector("form[role='form']");
@@ -108,6 +121,12 @@ function submit_go(url){
 		return;
 	}
 	formObj.action=url;
+	formObj.submit();
+}
+
+function modify_go(url){
+	$('input[name="answerid"]').val(url);
+	formObj.action='modify_answerForm';
 	formObj.submit();
 }
 </script>

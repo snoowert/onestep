@@ -28,31 +28,25 @@
 				</div>													
 					<div class="form-group col-sm-12">
 						<label for="content">내 용</label>
-						<div id="content">${qna.qnacontent }</div>
-											
+						<div id="content">${qna.qnacontent }</div>								
 				</div>	
 				</div>	
-				
 				<!-- 답변폼 -->
-				<hr class="hr-10">
+				<hr>
 						<div class="card-body pad">
 				
 					<div class="card-header">
 						<div class ="card-tools">
-							<button type="button" class="btn btn-primary" id="registBtn" onclick="regist_go();">등 록</button>
+							<button type="button" class="btn " id="registBtn" onclick="regist_go();">등 록</button>
 							&nbsp;&nbsp;&nbsp;&nbsp;
-							<button type="button" class="btn btn-warning" id="cancelBtn" onclick="history.go(-1);" >취 소</button>
+							<button type="button" class="btn " id="cancelBtn" onclick="history.go(-1);" >취 소</button>
 						</div>
 					</div>
 					
 						<form role="form" method="post" action="regist_answer" name="ansregistForm" enctype="multipart/form-data">
 							<input type="hidden" id="answercontent" name="answercontent">
 							<input type="hidden" id="qnaid" name="qnaid" value="${qna.qnaid} ">
-							<div class="form-group">
-								<label for="answertitle">제 목</label> 
-								<input type="text" id="answertitle"  title="제목"
-									name='answertitle' class="form-control notNull" placeholder="제목을 작성해 주세요">
-							</div>							
+													
 							<div class="form-group">
 								<label for="writer">작성자</label> 
 								<input type="text" id="writer" title="작성자" readonly
