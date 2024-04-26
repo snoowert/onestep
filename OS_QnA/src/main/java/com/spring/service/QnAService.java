@@ -32,7 +32,7 @@ public interface QnAService {
 	
 	void registAnswer(AnswerVO answer) throws SQLException;
 	
-	void modifyAnswer(AnswerVO answer, int answerid) throws SQLException;
+	void modifyAnswer(AnswerVO answer) throws SQLException;
 	
 	void deleteAnswer(int answerid) throws SQLException;
 }

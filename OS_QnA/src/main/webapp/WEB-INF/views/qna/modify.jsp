@@ -2,8 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@ include file="/WEB-INF/views/module/header.jsp"%>
-<link rel="stylesheet"
-	href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+<link rel="stylesheet"	href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 <div class="card-header">
 	<h3 class="card-title">공지 수정</h3>
 	<div class="card-tools">
@@ -42,10 +41,8 @@
 <div class="card-footer" style="display: none"></div>
 </div>
 
-<script
-	src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script	src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
 
