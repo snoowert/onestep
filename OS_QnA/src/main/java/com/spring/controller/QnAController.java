@@ -166,9 +166,9 @@ public class QnAController {
 		return mnv;
 	}
 	
-	@GetMapping("/modify_answer")
+	@GetMapping("/modify_answerForm")
 	public ModelAndView AnswerModifyForm(int answerid, ModelAndView mnv) throws Exception{
-		String url = "/qna/modifyanswer";
+		String url = "/qna/modify_answer";
 		
 		AnswerVO answer = qnaService.readanswer(answerid);
 		

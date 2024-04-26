@@ -94,7 +94,7 @@
 							<c:forEach var="answer" items="${qna.answerlist }">
 								<div class="form-group col-sm-3">
 									<span id="answriter">${answer.memberid }</span>
-										<button type="button" id="answermodifyBtn" class="btn " onclick="submit_go('modify_answer');">수정하기</button>						
+										<button type="button" id="answermodifyBtn" class="btn " onclick="modify_go(${answer.answerid});">수정하기</button>						
 						    			<button type="button" id="removeBtn" class="btn " onclick="submit_go('remove_answer');">삭 제</button>
 								</div>
 								<div id="answercontent">${answer.answercontent }</div>
@@ -109,8 +109,10 @@
 </section>
   <!-- /.content -->
 <!-- REQUIRED SCRIPTS -->
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <form role="form">
 	<input type="hidden" name="qnaid" value="${qna.qnaid }" />
+	<input type="hidden" name="answerid" />
 </form>
 <script>
 var formObj = document.querySelector("form[role='form']");
@@ -119,6 +121,12 @@ function submit_go(url){
 		return;
 	}
 	formObj.action=url;
+	formObj.submit();
+}
+
+function modify_go(url){
+	$('input[name="answerid"]').val(url);
+	formObj.action='modify_answerForm';
 	formObj.submit();
 }
 </script>
