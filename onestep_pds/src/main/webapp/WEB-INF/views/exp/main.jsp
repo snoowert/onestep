@@ -14,78 +14,149 @@
         margin: 0 auto; 
     }
 </style>
-
+<br>
 <section class="content col-md-12">
 		<div class="row">
-			<div class="col-md-7">
-			    <div class="card card-primary">
+		    <div class="col-md-7">
+		        <div class="card card-primary">
+		            <div class="card-header">
+		                <h3 class="card-title">Camera</h3>
+		            </div>
+		            <div class="card-body">
+		                <video src="<%=request.getContextPath() %>${exp.expname }" style="width:100%; height:610px" controls id="myVideo"></video>
+		            </div>
+		        </div>
+		    </div>
+		
+		    <div class="col-md-5 align-items-stretch">
+		        <div class="card card-primary">
+		            <div class="card-header">
+		                <h3 class="card-title">LED</h3>
+		            </div>
+		            <div class="card-body">
+		                <div class="row justify-content-center">
+		                    <button class="btn btn-primary col-md-2" style="background:orange;color:black" onclick="video_on('SOS');">
+		                        <img src="<%=request.getContextPath() %>/resources/img/light/sos.png" class="image-button-img">
+		                    </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		                    <button class="btn btn-primary col-md-2" style="background:orange;color:black" onclick="video_on('4WayFlasher');">
+		                        <img src="<%=request.getContextPath() %>/resources/img/light/4wayFlasher.png" class="image-button-img">
+		                    </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		                    <button class="btn btn-primary col-md-2" style="background:orange;color:black" onclick="video_on('fade');">
+		                        <img src="<%=request.getContextPath() %>/resources/img/light/fade.png" class="image-button-img">
+		                    </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		                </div>
+		            </div>
+		        </div>
+		        <div class="card card-primary">
+		            <div class="card-header">
+		                <h3 class="card-title">차량 조작</h3>
+		            </div>
+		            <div class="row">
+		            <div class="card-body">
+		                <div class="row justify-content-center">
+		                    <button class="btn btn-primary col-md-2" onclick="video_on('goLeft');">
+		                        <img src="<%=request.getContextPath() %>/resources/img/movement/goLeft.png" class="image-button-img">
+		                    </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		                    <button class="btn btn-primary col-md-2" onclick="video_on('go');">
+		                        <img src="<%=request.getContextPath() %>/resources/img/movement/go.png" class="image-button-img">
+		                    </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		                    <button class="btn btn-primary col-md-2" onclick="video_on('goRight');">
+		                        <img src="<%=request.getContextPath() %>/resources/img/movement/goRight.png" class="image-button-img">
+		                    </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		                </div>
+		                <br>
+		                <div class="row justify-content-center">
+		                    <button class="btn btn-primary col-md-2" onclick="video_on('turnLeft');">
+		                        <img src="<%=request.getContextPath() %>/resources/img/movement/turnLeft.png" class="image-button-img">
+		                    </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		                    <button class="btn btn-danger col-md-2" onclick="video_on('stop');">
+		                        <img src="<%=request.getContextPath() %>/resources/img/movement/stop.png" class="image-button-img">
+		                    </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		                    <button class="btn btn-primary col-md-2" onclick="video_on('turnRight');">
+		                        <img src="<%=request.getContextPath() %>/resources/img/movement/turnRight.png" class="image-button-img">
+		                    </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		                </div>
+		                <br>
+		                <div class="row justify-content-center">
+		                    <button class="btn btn-primary col-md-2" onclick="video_on('backLeft');">
+		                        <img src="<%=request.getContextPath() %>/resources/img/movement/backLeft.png" class="image-button-img">
+		                    </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		                    <button class="btn btn-primary col-md-2" onclick="video_on('back');">
+		                        <img src="<%=request.getContextPath() %>/resources/img/movement/back.png" class="image-button-img">
+		                    </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		                    <button class="btn btn-primary col-md-2" onclick="video_on('backRight');">
+		                        <img src="<%=request.getContextPath() %>/resources/img/movement/backRight.png" class="image-button-img">
+		                    </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		                </div>
+		                </div>
+		            </div>
+		            </div>
+		        </div>
+		    </div>
+
+			<div class="row col-sm-12 mx-auto">
+			    <div class="card card-primary mx-auto w-100">
 			        <div class="card-header">
-			            <h3 class="card-title">Camera</h3>
+			            <h3 class="card-title">신호 패널</h3>&nbsp;&nbsp;
 			        </div>
-			        <div class="card-body">
-			            <video src="<%=request.getContextPath() %>${exp.expname }" style="width:100%; height:576px" controls id="myVideo" ></video>
+			        <div class="card-body mx-auto w-100">
+			            <div class="row justify-content-center">
+			                <div class="col my-auto">
+			                    <button class="image-button" onclick="video_on('rock');">
+			                        <img src="<%=request.getContextPath() %>/resources/img/sign/rock.png" class="image-button-img">
+			                    </button>
+			                </div>
+			                <div class="col my-auto">
+			                    <button class="image-button" onclick="video_on('across');">
+			                        <img src="<%=request.getContextPath() %>/resources/img/sign/across.png" class="image-button-img">
+			                    </button>
+			                </div>
+			                <div class="col my-auto">
+			                    <button class="image-button" onclick="video_on('speed50');">
+			                        <img src="<%=request.getContextPath() %>/resources/img/sign/speed50.png" class="image-button-img">
+			                    </button>
+			                </div>
+			                <div class="col my-auto">
+			                    <button class="image-button" onclick="video_on('person');">
+			                        <img src="<%=request.getContextPath() %>/resources/img/sign/person.png" class="image-button-img">
+			                    </button>
+			                </div>
+			                <div class="col my-auto">
+			                    <button class="image-button" onclick="video_on('stopSign');">
+			                        <img src="<%=request.getContextPath() %>/resources/img/sign/stop.png" class="image-button-img">
+			                    </button>
+			                </div>
+			                <div class="col my-auto">
+			                    <button class="image-button" onclick="video_on('slow');">
+			                        <img src="<%=request.getContextPath() %>/resources/img/sign/slow.png" class="image-button-img">
+			                    </button>
+			                </div>
+			                <div class="col my-auto">
+			                    <button class="image-button" onclick="video_on('keepout');">
+			                        <img src="<%=request.getContextPath() %>/resources/img/sign/keepout.png" class="image-button-img">
+			                    </button>
+			                </div>
+			                <div class="col my-auto">
+			                    <button class="image-button" onclick="video_on('keepout');">
+			                        <img src="<%=request.getContextPath() %>/resources/img/sign/keepout.png" class="image-button-img">
+			                    </button>
+			                </div>
+			                <div class="col my-auto">
+			                    <button class="image-button" onclick="video_on('keepout');">
+			                        <img src="<%=request.getContextPath() %>/resources/img/sign/keepout.png" class="image-button-img">
+			                    </button>
+			                </div>
+			                <div class="col my-auto">
+			                    <button class="image-button" onclick="video_on('track');">
+			                        <img src="<%=request.getContextPath() %>/resources/img/sign/track.png" class="image-button-img">
+			                    </button>
+			                </div>
+			            </div>
 			        </div>
 			    </div>
 			</div>
 
-
-			<div class="col-md-5">
-			<div class="card card-primary">
-					<div class="card-header">
-						<h3 class="card-title">LED</h3>
-					</div>
-					<div class="card-body">
-						<div class="row justify-content-center">
-							<button class="btn btn-primary col-md-2" style="background:orange;color:black" onclick="video_on('SOS');">SOS</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<button class="btn btn-primary col-md-2" style="background:orange;color:black" onclick="video_on('4WayFlasher');">비상등</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<button class="btn btn-primary col-md-2" style="background:orange;color:black" onclick="video_on('fade');">점등</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</div>
-					</div>
-				</div>
-				<div class="card card-primary">
-					<div class="card-header">
-						<h3 class="card-title">차량 조작</h3>
-					</div>
-					<div class="card-body">
-						<div class="row justify-content-center">
-							<button class="btn btn-primary col-md-2" onclick="video_on('goLeft');">좌전진</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<button class="btn btn-primary col-md-2" onclick="video_on('go');">전진</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<button class="btn btn-primary col-md-2" onclick="video_on('goRight');">우전진</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</div>
-						<br>
-						<div class="row justify-content-center">
-							<button class="btn btn-primary col-md-2" onclick="video_on('turnLeft');">좌회전</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<button class="btn btn-danger col-md-2" onclick="video_on('stop');">정지</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<button class="btn btn-primary col-md-2" onclick="video_on('turnRight');">우회전</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</div>
-						<br>
-						<div class="row justify-content-center">
-							<button class="btn btn-primary col-md-2" onclick="video_on('backLeft');">좌후진</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<button class="btn btn-primary col-md-2" onclick="video_on('back');">후진</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<button class="btn btn-primary col-md-2" onclick="video_on('backRight');">우후진</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</div>
-					</div>
-				</div>
-
-					<div class="card card-primary">
-						<div class="card-header">
-						<h3 class="card-title">신호 패널</h3>&nbsp;&nbsp;
-					</div>
-						<div class="card-body">
-						    <div class="row justify-content-center">
-						        <button class="image-button" onclick="move('backLeft');" style="margin-right: 100px;">
-						            <img src="${pageContext.request.contextPath}/resources/images/go.png" class="image-button-img">
-						        </button>&nbsp;&nbsp;
-						        <button class="image-button" onclick="move('back');" style="margin-right: 10px;">
-						            <img src="${pageContext.request.contextPath}/resources/images/stop.png" class="image-button-img">
-						        </button>&nbsp;&nbsp;
-						    </div>
-						</div>
-					</div>
-				</div>
-			</div>
-			</div>
-		</div>
+			
 </section>
 
 
