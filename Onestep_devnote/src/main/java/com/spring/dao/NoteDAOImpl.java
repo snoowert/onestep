@@ -16,19 +16,13 @@ public class NoteDAOImpl implements NoteDAO {
 	}
 
 	@Override
-	public List<NoteVO> selectNoteList(PageMaker pagemaker) throws SQLException {
-		return sqlsession.selectList("Note-Mapper.selectNoteList", pagemaker);
+	public List<NoteVO> selectNoteList(int projectId) throws SQLException {
+		return sqlsession.selectList("Note-Mapper.selectNoteList", projectId);
 	}
 
 	@Override
 	public NoteVO selectNoteByNoteId(int noteId) throws SQLException {
 		return sqlsession.selectOne("Note-Mapper.selectNoteByNoteId", noteId);
-	}
-
-	
-	@Override
-	public int selectNoteListCount(PageMaker pagemaker) throws SQLException {
-		return sqlsession.selectOne("Note-Mapper.selectNoteListCount", pagemaker);
 	}
 
 
@@ -59,6 +53,7 @@ public class NoteDAOImpl implements NoteDAO {
 		sqlsession.update("Note-Mapper.increaseNoteViewPoint", noteId);
 		
 	}
+
 
 
 

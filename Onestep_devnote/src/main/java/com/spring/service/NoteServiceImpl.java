@@ -16,8 +16,8 @@ public class NoteServiceImpl implements NoteService{
 	
 
 	@Override
-	public List<NoteVO> list(PageMaker pageMaker) throws SQLException {
-		return noteDAO.selectNoteList(pageMaker);
+	public List<NoteVO> feedList(int projectId) throws SQLException {
+		return noteDAO.selectNoteList(projectId);
 	}
 
 	@Override

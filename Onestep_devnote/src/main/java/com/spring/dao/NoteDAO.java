@@ -9,9 +9,8 @@ import com.spring.dto.NoteVO;
 public interface NoteDAO {
 	
 	
-	 List<NoteVO> selectNoteList(PageMaker pagemaker) throws SQLException;
+	 List<NoteVO> selectNoteList(int projectId) throws SQLException;
 	 NoteVO selectNoteByNoteId(int noteId) throws SQLException;
-	 int selectNoteListCount(PageMaker pagemaker)throws SQLException;
 	 int selectNoteSeqNext(int noteId) throws SQLException;
 	 
 	 void insertNote(NoteVO note) throws SQLException;

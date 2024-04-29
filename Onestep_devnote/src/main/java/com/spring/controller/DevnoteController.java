@@ -118,13 +118,13 @@ public class DevnoteController {
 	
 	
 	@GetMapping("/feed")
-	public ModelAndView feed(PageMaker pageMaker, ModelAndView mnv) throws SQLException {
+	public ModelAndView feed(int projectId, ModelAndView mnv) throws SQLException {
 		String url = "/devnote/feed";
-	
-		List<NoteVO> noteList = noteService.list(pageMaker);
-		mnv.addObject("noteList", noteList);
 		
-		System.out.println(noteList.get(0).getNoteContent());
+		List<NoteVO> noteList = noteService.feedList(projectId);
+		mnv.addObject("noteList", noteList);
+
+		
 		
 		mnv.setViewName(url);
 		return mnv;

@@ -8,7 +8,7 @@ import com.spring.dto.NoteVO;
 
 public interface NoteService {
 	
-	List<NoteVO> list(PageMaker pageMaker) throws SQLException;
+	List<NoteVO> feedList(int projectId) throws SQLException;
 	
 	void regist(NoteVO note) throws SQLException;
 	NoteVO detail(int noteId)throws SQLException;

@@ -9,7 +9,7 @@
 			<a class="nav-link" href="/devnote/main?projectId=${project.projectId}">프로젝트 홈</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="/devnote/feed">피드</a>
+			<a class="nav-link" href="/devnote/feed?projectId=${project.projectId }">피드</a>
 		</li>
 		<li class="nav-item">
 			<a class="nav-link" href="/devnote/calendar">캘린더</a>
