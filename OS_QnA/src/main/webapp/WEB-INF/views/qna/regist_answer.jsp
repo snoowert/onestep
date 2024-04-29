@@ -19,50 +19,52 @@
 							<span id="qnatitle">${qna.qnatitle }</span>							
 						</div>
 					</div>
+					
 					<div class="row">	
 						<div class="form-group col-sm-2" >
 							<label for="writer">작성자</label>
 							<span  id="writer">${qna.memberid }</span>
 						</div>			
 				
-				</div>													
+					</div>	
+																	
 					<div class="form-group col-sm-12">
 						<label for="content">내 용</label>
 						<div id="content">${qna.qnacontent }</div>								
-				</div>	
+					</div>	
 				</div>	
 				<!-- 답변폼 -->
 				<hr>
-						<div class="card-body pad">
+				<div class="card-body pad">
 				
-					<div class="card-header">
-						<div class ="card-tools">
-							<button type="button" class="btn " id="registBtn" onclick="regist_go();">등 록</button>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<button type="button" class="btn " id="cancelBtn" onclick="history.go(-1);" >취 소</button>
-						</div>
+				<div class="card-header">
+					<div class ="card-tools">
+						<button type="button" class="btn " id="registBtn" onclick="regist_go();">등 록</button>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<button type="button" class="btn " id="cancelBtn" onclick="history.go(-1);" >취 소</button>
 					</div>
+				</div>
 					
-						<form role="form" method="post" action="regist_answer" name="ansregistForm" enctype="multipart/form-data">
-							<input type="hidden" id="answercontent" name="answercontent">
-							<input type="hidden" id="qnaid" name="qnaid" value="${qna.qnaid} ">
-													
-							<div class="form-group">
-								<label for="writer">작성자</label> 
-								<input type="text" id="writer" title="작성자" readonly
-									name="writer" class="form-control notNull" value="2" >
-								<input type="hidden" id="memberid" name="memberid" value="2">
-							</div>
-							<div class="form-group" id="anscontent">
-							
-							
-							</div>
-
-
-						</form>
+					
+			<form role="form" method="post" action="regist_answer" name="ansregistForm" enctype="multipart/form-data">
+					<input type="hidden" id="answercontent" name="answercontent">
+					<input type="hidden" id="qnaid" name="qnaid" value="${qna.qnaid} ">						
+					<div class="form-group">
+						<label for="writer">작성자</label> 
+						<input type="text" id="writer" title="작성자" readonly
+							name="writer" class="form-control notNull" value="2" >
+						<input type="hidden" id="memberid" name="memberid" value="2">
 					</div>
+				<div class="form-group" id="anscontent">
+							
+							
+				</div>
+
+
+			</form>
+						</div>
 					</div><!--end card-body  -->
-					<div class="card-footer" style="display:none">
+				<div class="card-footer" style="display:none">
 					
 				</div><!-- end card -->				
 			</div><!-- end col-md-12 -->

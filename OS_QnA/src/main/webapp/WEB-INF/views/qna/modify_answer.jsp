@@ -22,7 +22,7 @@
 		<div class="form-group">
 			<label for="memberid">작성자</label> <input type="text" id="memberid"
 				readonly name="memberid" class="form-control"
-				value="${qna.memberid }">
+				value="${answer.memberid }">
 		</div>
 		<div class="form-group">
 			<label for="anscontent">내 용</label>

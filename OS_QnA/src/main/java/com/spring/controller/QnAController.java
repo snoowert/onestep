@@ -160,6 +160,7 @@ public class QnAController {
 	public ModelAndView removeAnswer(int qnaid, int answerid, ModelAndView mnv) throws Exception{
 		String url = "/qna/answer_remove_success";
 		ModelAndView answer = new ModelAndView();
+		
 		qnaService.remove(answerid);
 		mnv.addObject("qnaid", qnaid);
 		mnv.setViewName(url);
