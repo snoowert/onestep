@@ -42,7 +42,7 @@
 					<h3 class="card-title">상세보기</h3>
 					<div class="card-tools">
 						<button type="button" id="modifyBtn" class="btn btn-warning" onclick="submit_go('modifyForm.do');">수정하기</button>						
-					    <button type="button" id="removeBtn" class="btn btn-danger" onclick="submit_go('remove.do');">삭 제</button>
+					    <button type="button" id="removeBtn" class="btn btn-danger" onclick="submit_go('remove_answer');">삭 제</button>
 					    <button type="button" id="listBtn" class="btn btn-primary" onclick="CloseWindow();">닫 기</button>
 				    </div>
 				</div>
@@ -111,7 +111,7 @@
 <!-- REQUIRED SCRIPTS -->
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <form role="form">
-	<input type="hidden" name="qnaid" value="${qna.qnaid }" />
+	<!-- <input type="hidden" name="qnaid" value="${qna.qnaid }" /> -->
 	<input type="hidden" name="answerid" />
 </form>
 <script>
@@ -129,5 +129,15 @@ function modify_go(url){
 	formObj.action='modify_answerForm';
 	formObj.submit();
 }
+
+function submit_go(url){
+	if(url=="remove_answer" && !confirm("정말로 삭제하시겠습니까?")){
+		return;
+	}
+	formObj.action='remove_answer';
+	
+	formObj.submit();
+}
+
 </script>
 <%@ include file="/WEB-INF/views/module/footer.jsp"%>

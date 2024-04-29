@@ -7,11 +7,9 @@
 
 <div class="card-tools">
 		<div class="float-right">
-			<button type="button" class="btn btn-warning" id="modifyBtn"
-				onclick="modify_submit();">수 정</button>
+			<button type="button" class="btn btn-warning" id="modifyBtn" onclick="modify_submit();">수 정</button>
 			&nbsp;&nbsp;&nbsp;&nbsp;
-			<button type="button" class="btn btn-default " id="cancelBtn"
-				onclick="history.go(-1);">취 소</button>
+			<button type="button" class="btn btn-default " id="cancelBtn" onclick="history.go(-1);">취 소</button>
 		</div>
 	</div>
 
@@ -93,6 +91,14 @@ function modify_submit(){
 	form.method="post";
 	form.submit();
 	
+}
+
+function submit_go(url){
+	if(url=="remove.do" && !confirm("정말로 삭제하시겠습니까?")){
+		return;
+	}
+	formObj.action=url;
+	formObj.submit();
 }
 
 </script>
