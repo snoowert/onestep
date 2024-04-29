@@ -22,6 +22,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -82,13 +83,13 @@ public class QnAController {
 		String url = "/qna/detail";
 		
 		QnAVO qna = null;
-
 		if(from != null && from.equals("list")) {
 			qnaService.increaseViewCnt(qnaid);
 			url = "redirect:/detail?qnaid="+qnaid;
 		}
 		else {
 			qna = qnaService.getQnA(qnaid);
+			//System.out.println(qna.getQnaid());
 		}
 		
 		mnv.addObject("qna", qna);
@@ -157,12 +158,11 @@ public class QnAController {
 	}
 	
 	@GetMapping("/remove_answer")
-	public ModelAndView removeAnswer(int qnaid, int answerid, ModelAndView mnv) throws Exception{
+	public ModelAndView removeAnswer(int answerid, ModelAndView mnv) throws Exception{
 		String url = "/qna/answer_remove_success";
-		ModelAndView answer = new ModelAndView();
 		
 		qnaService.remove(answerid);
-		mnv.addObject("qnaid", qnaid);
+		//mnv.addObject("answerid", answerid);
 		mnv.setViewName(url);
 		return mnv;
 	}
@@ -183,7 +183,8 @@ public class QnAController {
 	public ModelAndView modifyAnswer(AnswerModifyCommand answerMod, ModelAndView mnv) throws Exception{
 		String url = "/qna/answer_modify_success";
 		AnswerVO answer = answerMod.toAnswerVO();
-		
+		//System.out.println(answer.getAnswerid());
+		//System.out.println(answer.getQnaid());
 		qnaService.modifyAnswer(answer);
 		
 		mnv.addObject("qnaid", answer.getQnaid());

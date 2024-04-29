@@ -30,9 +30,9 @@
   		where answerid=#{answerid}
   	</update>
   	
-  	<delete id="deleteAnswer" parameterType="answer">
+  	<delete id="deleteAnswer" parameterType="int">
   		delete
-  		from answercontent
+  		from answer
   		where answerid=#{answerid}
   	</delete>
   	

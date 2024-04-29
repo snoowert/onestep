@@ -42,7 +42,7 @@
 					<h3 class="card-title">상세보기</h3>
 					<div class="card-tools">
 						<button type="button" id="modifyBtn" class="btn btn-warning" onclick="submit_go('modifyForm.do');">수정하기</button>						
-					    <button type="button" id="removeBtn" class="btn btn-danger" onclick="submit_go('remove_answer');">삭 제</button>
+					    <button type="button" id="removeBtn" class="btn btn-danger" onclick="removeAnswer('remove_answer');">삭 제</button>
 					    <button type="button" id="listBtn" class="btn btn-primary" onclick="CloseWindow();">닫 기</button>
 				    </div>
 				</div>
@@ -96,7 +96,7 @@
 							<div class="form-group col-sm-3">
 								<span id="answriter">${answer.memberid }</span>
 									<button type="button" id="answermodifyBtn" class="btn " onclick="modify_go(${answer.answerid});">수정하기</button>						
-						   			<button type="button" id="removeBtn" class="btn " onclick="submit_go('remove_answer');">삭 제</button>
+						   			<button type="button" id="removeBtn" class="btn " onclick="removeAnswer('remove_answer', ${answer.answerid});">삭 제</button>
 							</div>
 							<div id="answercontent">${answer.answercontent }</div>
 								<fmt:formatDate value="${answer.answerupdatedate }" pattern="yyyy-MM-dd" />
@@ -114,7 +114,9 @@
 	<input type="hidden" name="qnaid" value="${qna.qnaid }" />
 	<input type="hidden" name="answerid" />
 </form>
+
 <script>
+
 var formObj = document.querySelector("form[role='form']");
 function submit_go(url){
 	if(url=="remove.do" && !confirm("정말로 삭제하시겠습니까?")){
@@ -130,13 +132,17 @@ function modify_go(url){
 	formObj.submit();
 }
 
-function submit_go(url){
-	if(url=="remove_answer" && !confirm("정말로 삭제하시겠습니까?")){
+function removeAnswer(action, answerid){
+	
+	if(!confirm("정말로 삭제하시겠습니까?")) {
 		return;
 	}
-	formObj.action='remove_answer';
 	
-	formObj.submit();
+	var formObj = document.querySelector("form[role='form']");
+		formObj.action = action;
+		$('input[name="answerid"]').val(answerid);
+		formObj.submit();
+	
 }
 
 </script>
