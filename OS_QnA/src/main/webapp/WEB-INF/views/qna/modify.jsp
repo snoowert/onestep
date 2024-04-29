@@ -16,8 +16,7 @@
 	</div>
 </div>
 <div class="card-body">
-	<form role="form" method="post" action="modify.do" name="modifyForm"
-		onsubmit="return false;">
+	<form role="form" method="post" action="modify.do" name="modifyForm" onsubmit="return false;">
 		<input type="hidden" name="qnaid" value="${qna.qnaid }" />
 		<div class="form-group">
 			<label for="qnatitle">제 목</label> <input type="text" id="qnatitle"

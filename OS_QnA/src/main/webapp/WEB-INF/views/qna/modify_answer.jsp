@@ -16,9 +16,9 @@
 <div class="card-body">
 	<form role="form" method="post" action="answermodify" name="answermodifyForm" id="answermodify"
 		onsubmit="return false;">
-		<input type="hidden" name="answercontent" value="${answer.answercontent }" />
+		<input type="hidden" name="answercontent" />
 		<input type="hidden" name="answerid" value="${answer.answerid }" />
-
+		<input type="hidden" name="qnaid" value="${answer.qnaid }" />
 		<div class="form-group">
 			<label for="memberid">작성자</label> <input type="text" id="memberid"
 				readonly name="memberid" class="form-control"
@@ -27,9 +27,9 @@
 		<div class="form-group">
 			<label for="anscontent">내 용</label>
 			<div id="anscontent">
-
+			<input type="hidden" name="answercontent" id="answercontent" />
 			</div>
-				<input type="hidden" name="anscontent" id="anscontent" />
+				
 
 		</div>
 
@@ -39,10 +39,8 @@
 <div class="card-footer" style="display: none"></div>
 
 
-<script
-	src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script	src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
 
@@ -79,11 +77,12 @@ const editor = new toastui.Editor({
     }
 });
 
+var form = document.answermodifyForm;
+
 function modify_submit(){
 	
-	var form = document.querySelector("#answermodify");
-	
-	document.querySelector("#anscontent").value = editor.getHTML();
+	var ansContentInput = document.querySelector("input[name='answercontent']");
+    ansContentInput.value = editor.getHTML(); 
 	
 	var inputNotNull = document.querySelectorAll("input.notNull");
 	
@@ -93,13 +92,6 @@ function modify_submit(){
 	
 }
 
-function submit_go(url){
-	if(url=="remove.do" && !confirm("정말로 삭제하시겠습니까?")){
-		return;
-	}
-	formObj.action=url;
-	formObj.submit();
-}
 
 </script>
 

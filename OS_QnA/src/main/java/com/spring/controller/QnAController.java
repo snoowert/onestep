@@ -157,23 +157,25 @@ public class QnAController {
 		return mnv;
 	}
 	
-	@GetMapping("/remove_answer")
-	public ModelAndView removeAnswer(int answerid, ModelAndView mnv) throws Exception{
+	@PostMapping("/remove_answer")
+	public ModelAndView removeAnswer(int qnaid, int answerid, ModelAndView mnv) throws Exception{
 		String url = "/qna/answer_remove_success";
 		
 		qnaService.remove(answerid);
 		mnv.addObject("answerid", answerid);
+		mnv.addObject("qnaid", qnaid);
 		mnv.setViewName(url);
 		return mnv;
 	}
 	
 	@GetMapping("/modify_answerForm")
-	public ModelAndView AnswerModifyForm(int answerid, ModelAndView mnv) throws Exception{
+	public ModelAndView AnswerModifyForm(int qnaid, int answerid, ModelAndView mnv) throws Exception{
 		String url = "/qna/modify_answer";
 		
 		AnswerVO answer = qnaService.readanswer(answerid);
 		
 		mnv.addObject("answer", answer);
+		mnv.addObject("qnaid", qnaid);
 		mnv.setViewName(url);
 		
 		return mnv;
@@ -183,8 +185,6 @@ public class QnAController {
 	public ModelAndView modifyAnswer(AnswerModifyCommand answerMod, ModelAndView mnv) throws Exception{
 		String url = "/qna/answer_modify_success";
 		AnswerVO answer = answerMod.toAnswerVO();
-		//System.out.println(answer.getAnswerid());
-		//System.out.println(answer.getQnaid());
 		qnaService.modifyAnswer(answer);
 		
 		mnv.addObject("qnaid", answer.getQnaid());

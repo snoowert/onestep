@@ -42,7 +42,7 @@
 					<h3 class="card-title">상세보기</h3>
 					<div class="card-tools">
 						<button type="button" id="modifyBtn" class="btn btn-warning" onclick="submit_go('modifyForm.do');">수정하기</button>						
-					    <button type="button" id="removeBtn" class="btn btn-danger" onclick="removeAnswer('remove_answer');">삭 제</button>
+					    <button type="button" id="removeBtn" class="btn btn-danger" onclick="submit_go('remove.do');">삭 제</button>
 					    <button type="button" id="listBtn" class="btn btn-primary" onclick="CloseWindow();">닫 기</button>
 				    </div>
 				</div>
@@ -91,6 +91,7 @@
 							</div>			
 					</div>																				
 					<!-- 질문 밑에 답변 띄우기 -->
+					
 					<div class="form-group col-md-9" style="max-width:760px; border-radious:10%;">
 						<c:forEach var="answer" items="${qna.answerlist }">
 							<div class="form-group col-sm-3">
@@ -109,6 +110,7 @@
 </section>
   <!-- /.content -->
 <!-- REQUIRED SCRIPTS -->
+
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <form role="form">
 	<input type="hidden" name="qnaid" value="${qna.qnaid }" />
@@ -139,8 +141,10 @@ function removeAnswer(answerid){
 	}
 	
 	var formObj = document.querySelector("form[role='form']");
-		formObj.action = "/remove_answer";
+		formObj.action = "/answer_remove_success";
 		$('input[name="answerid"]').val(answerid);
+		
+		formObj.method="POST";
 		formObj.submit();
 }
 
