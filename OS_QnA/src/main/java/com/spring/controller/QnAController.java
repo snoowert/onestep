@@ -162,7 +162,7 @@ public class QnAController {
 		String url = "/qna/answer_remove_success";
 		
 		qnaService.remove(answerid);
-		//mnv.addObject("answerid", answerid);
+		mnv.addObject("answerid", answerid);
 		mnv.setViewName(url);
 		return mnv;
 	}

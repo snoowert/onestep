@@ -96,7 +96,7 @@
 							<div class="form-group col-sm-3">
 								<span id="answriter">${answer.memberid }</span>
 									<button type="button" id="answermodifyBtn" class="btn " onclick="modify_go(${answer.answerid});">수정하기</button>						
-						   			<button type="button" id="removeBtn" class="btn " onclick="removeAnswer('remove_answer', ${answer.answerid});">삭 제</button>
+						   			<button type="button" id="removeBtn" class="btn " onclick="removeAnswer(${answer.answerid});">삭 제</button>
 							</div>
 							<div id="answercontent">${answer.answercontent }</div>
 								<fmt:formatDate value="${answer.answerupdatedate }" pattern="yyyy-MM-dd" />
@@ -132,17 +132,16 @@ function modify_go(url){
 	formObj.submit();
 }
 
-function removeAnswer(action, answerid){
+function removeAnswer(answerid){
 	
 	if(!confirm("정말로 삭제하시겠습니까?")) {
 		return;
 	}
 	
 	var formObj = document.querySelector("form[role='form']");
-		formObj.action = action;
+		formObj.action = "/remove_answer";
 		$('input[name="answerid"]').val(answerid);
 		formObj.submit();
-	
 }
 
 </script>
