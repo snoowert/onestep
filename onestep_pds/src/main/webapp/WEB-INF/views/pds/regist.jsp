@@ -6,13 +6,13 @@
 <meta charset="UTF-8">
 <title>자료 등록</title>
 <%@ include file="/WEB-INF/views/base.jsp" %>
+<%@ include file="/WEB-INF/views/pds/pdsBanner.jsp" %>
 <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 </head>
 <body>
 <section class="container">
 	<dev class="container-fluid col-sm-10">
 		<form class="mb-3" name="pdsform" id="pdsform" action="/pds/regist" method="POST" enctype="multipart/form-data">
-			<label class="form-label">제목</label>
 			<input id="pdstitle" name="pdstitle" type="text" class="form-control" placeholder="자료명">
 			<br>
 			<input type="hidden" id="pdscontent" name="pdscontent">
@@ -68,7 +68,7 @@
         el: document.querySelector('#content'), // 에디터를 적용할 요소 (컨테이너)
         height: '500px',                        // 에디터 영역의 높이 값 (OOOpx || auto)
         initialEditType: 'wysiwyg',            // 최초로 보여줄 에디터 타입 (markdown || wysiwyg)
-        initialValue: '내용을 입력해 주세요.',     // 내용의 초기 값으로, 반드시 마크다운 문자열 형태여야 함
+        placeholder: '내용을 입력해 주세요.',     // 내용의 초기 값으로, 반드시 마크다운 문자열 형태여야 함
         previewStyle: 'vertical',                // 마크다운 프리뷰 스타일 (tab || vertical)
         hooks: {
             async addImageBlobHook(blob, callback) {

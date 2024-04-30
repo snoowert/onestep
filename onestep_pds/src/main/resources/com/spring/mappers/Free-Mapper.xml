@@ -22,7 +22,6 @@
         </where>
         order by Freeid desc
     </select>
-
     <select id="selectFreeListCount" resultType="int">
         select count(*) from free
         <where>

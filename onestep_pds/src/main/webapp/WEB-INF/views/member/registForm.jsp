@@ -95,6 +95,7 @@
 	        // authority가 'normal'인 경우, 퀴즈를 받지 않고 바로 회원가입을 처리
 	        RealSubmit_go();
 	    } else {
+	    	alert("개발자 확인용 퀴즈를 맞히시면 가입이 승인됩니다.");
 			$.ajax({
 		        url: '/member/quiz', // 퀴즈 데이터를 받아오는 컨트롤러 주소
 		        type: 'GET',

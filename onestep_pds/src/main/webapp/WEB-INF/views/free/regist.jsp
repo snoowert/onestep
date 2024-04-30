@@ -1,46 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-    
 <%@ include file="/WEB-INF/views/modules/header.jsp" %>
 <%@ include file="/WEB-INF/views/base.jsp" %>
+<%@ include file="/WEB-INF/views/free/freeBanner.jsp" %>
+<!-- Main content -->
+<section class="content container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-9">
+            <div class="card card-outline card-info">
 
-  <!-- Main content -->
-    <section class="content container-fluid">
-		<div class="row justify-content-center">
-			<div class="col-md-9" style="max-width:960px;">
-				<div class="card card-outline card-info">
-
-					<div class="card-body pad">
-						<form role="form" method="post" action="regist.do" name="registForm">
-							<input type="hidden" id="freecontent" name="freecontent">
-							<div class="form-group">
-								<input type="text" id="freetitle"  title="제목"
-									name='freetitle' class="form-control notNull" placeholder="제목을 쓰세요">
-							</div>							
-							<div class="form-group">
-								<input type="text" id="writer" title="작성자" readonly
-									name="writer" class="form-control notNull" value="${loginUser.username }" >
-								<input type="hidden" id="memberid" name="memberid" value="${loginUser.memberid }">
-							</div>
-							<div class="form-group" id="content">
-								
-							
-							</div>
-							
-						</form>
-					</div><!--end card-body  -->
-					<div class="card-footer" style="display:none">
-
-
-					</div><!--end card-footer  -->
-						<div class ="card-tools">
-							<button type="button" class="btn btn-primary btn float-right" id="registBtn" onclick="regist_go();">등 록</button>
-						</div>
-				</div><!-- end card -->				
-			</div><!-- end col-md-12 -->
-		</div><!-- end row -->
-    </section>
+                <div class="card-body pad">
+                    <form role="form" method="post" action="regist.do" name="registForm">
+                        <input type="hidden" id="freecontent" name="freecontent">
+                        <div class="form-group">
+                            <input type="text" id="freetitle" title="제목"
+                                name='freetitle' class="form-control notNull" placeholder="제목을 쓰세요">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="writer" title="작성자" readonly
+                                name="writer" class="form-control notNull" value="${loginUser.username }">
+                            <input type="hidden" id="memberid" name="memberid" value="${loginUser.memberid }">
+                        </div>
+                        <div class="form-group" id="content">
+                            
+                        </div>
+                    </form>
+                </div><!--end card-body  -->
+                <div class="card-footer" style="display:none">
+                </div><!--end card-footer  -->
+                <div class="card-tools" style="margin:10px">
+                    <button type="button" class="btn btn-primary float-right" id="registBtn" onclick="regist_go();">등 록</button>
+                    <button type="button" class="btn btn-warning float-right mx-2" id="cancelBtn" onclick="history.go(-1);">취 소</button>
+                </div>
+            </div><!-- end card -->                
+        </div><!-- end col-md-12 -->
+    </div><!-- end row -->
+</section>
 <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
 
 <script>

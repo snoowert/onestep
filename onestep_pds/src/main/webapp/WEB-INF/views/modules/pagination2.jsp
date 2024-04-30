@@ -20,7 +20,7 @@
 		</li>
 		
 		<li class="page-item">
-			<a class="page-link" href="javascript:list_go(${pageMaker.prev ? pageMaker.startPage-1 : pageMaker.page});">
+			<a class="page-link" href="javascript:search_list(${pageMaker.prev ? pageMaker.startPage-1 : pageMaker.startPage});">
 				<i class="fas fa-angle-left"></i>
 			</a>						
 		</li>
@@ -34,12 +34,12 @@
 		</c:forEach>
 			
 		<li class="page-item">
-			<a class="page-link" href="javascript:list_go(${pageMaker.next ? pageMaker.endPage+1 :pageMaker.page});">
+			<a class="page-link" href="javascript:search_list(${pageMaker.next ? pageMaker.endPage+1 :pageMaker.endPage});">
 				<i class="fas fa-angle-right"></i>
 			</a>						
 		</li>	
 		<li class="page-item">
-			<a class="page-link" href="javascript:list_go(${pageMaker.realEndPage});">
+			<a class="page-link" href="javascript:search_list(${pageMaker.realEndPage});">
 				<i class="fas fa-angle-double-right"></i>
 			</a>
 		</li>		

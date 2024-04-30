@@ -12,7 +12,6 @@ public interface FreeDAO {
 	int selectFreeListCount(PageMaker pageMaker)throws SQLException;
 	FreeVO selectFreeByFreeId(int freeid)throws SQLException;
 	int selectFreeSeqNext()throws SQLException;
-	
 	void insertFree(FreeVO free)throws SQLException;
 	void updateFree(FreeVO free)throws SQLException;
 	void deleteFree(int freeid)throws SQLException;

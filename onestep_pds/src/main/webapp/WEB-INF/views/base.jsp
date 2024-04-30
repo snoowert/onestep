@@ -10,10 +10,8 @@
   <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/bootstrap/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/bootstrap/plugins/summernote/summernote-bs4.min.css">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">OneStep</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  &nbsp;&nbsp;<a class="navbar-brand" href="/main/"><img src="<%=request.getContextPath() %>/resources/img/onestep_logo.png" style="width:50px;height:50px;"></a>
+  
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -53,24 +51,3 @@
     </ul>
   </div>
 </nav>
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="<%=request.getContextPath() %>/resources/img/ONESTEP1.png" class="d-block w-100" style="height: calc(100vh / 3); object-fit: cover;" alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img src="<%=request.getContextPath() %>/resources/img/ONESTEP1.png" class="d-block w-100" style="height: calc(100vh / 3); object-fit: cover;" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img src="<%=request.getContextPath() %>/resources/img/ONESTEP1.png" class="d-block w-100" style="height: calc(100vh / 3); object-fit: cover;" alt="Third slide">
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>

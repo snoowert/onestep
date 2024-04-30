@@ -52,7 +52,7 @@
  	
 	<beans:bean id="loginSuccessHandler"
 		 	class="com.spring.security.LoginSuccessHandler"
-		 	p:defaultTargetUrl="/pds/list" 
+		 	p:defaultTargetUrl="/main/" 
 		 	p:loginUserLogSavePath-ref="loginUserLogPath" 
 		 	p:loginUserLogSaveFileName-ref="loginUserLogFileName"
 		 	/>  

@@ -2,43 +2,41 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/modules/header.jsp" %>
 <%@ include file="/WEB-INF/views/base.jsp" %>
+<%@ include file="/WEB-INF/views/free/freeBanner.jsp" %>
+ <!-- Main content -->
+<section class="content container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-9">
+            <div class="card card-outline card-info">
 
-  <!-- Main content -->
-    <section class="content container-fluid">
-		<div class="row justify-content-center">
-			<div class="col-md-9" style="max-width:960px;">
-				<div class="card card-outline card-info">
-				
-					<div class="card-body">
-						<form role="form" method="post" action="modify.do" name="modifyForm" onsubmit="return false;">
-							<input type="hidden" name="freeid" value="${free.freeid }" />
-							<div class="form-group">
-								<label for="freeTitle">제 목</label> 
-								<input type="text" id="freetitle" name='freetitle' class="form-control" value="${free.freetitle }">
-							</div>
-							<div class="form-group">
-								<label for="memberid">작성자</label> 
-								<input type="text" id="memberid" readonly	name="memberid" class="form-control"  value="${free.memberid }">
-							</div>
-							<div class="form-group">
-								<label for="freecontent">내 용</label>
-								<div id="content"></div>	
-								<input type="hidden" name="freecontent" id="freecontent"/>	
-												
-							</div>
-						</form>
-					</div><!--end card-body  -->
-					<div class="card-footer" style="display:none"></div>
-				</div><!-- end card -->		
-							<div class="float-right">
-								<button type="button" class="btn btn-warning " id="modifyBtn" onclick="modify_submit();">수 정</button>
-								&nbsp;&nbsp;&nbsp;&nbsp;
-								<button type="button" class="btn btn-default " id="cancelBtn" onclick="history.go(-1);">취 소</button>
-							</div>		
-			</div><!-- end col-md-12 -->
+                <div class="card-body">
+                    <form role="form" method="post" action="modify.do" name="modifyForm" onsubmit="return false;">
+                        <input type="hidden" name="freeid" value="${free.freeid }" />
+                        <div class="form-group"> 
+                            <input type="text" id="freetitle" name='freetitle' class="form-control" value="${free.freetitle }">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="writer" readonly name="writer" class="form-control" value="${free.writer }"> 
+                            <input type="hidden" id="memberid" readonly	name="memberid" class="form-control"  value="${free.memberid }">
+                        </div>
+                        <div class="form-group">
+                            <div id="content"></div>  
+                            <input type="hidden" name="freecontent" id="freecontent"/>    
+                        </div>
+                    </form>
+                </div><!--end card-body  -->
+                <div class="card-footer" style="display:none"></div>
+                <div class="card-footer text-right"> <!-- 수정된 부분 -->
+                    <button type="button" class="btn btn-warning" id="modifyBtn" onclick="modify_submit();">수 정</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-default" id="cancelBtn" onclick="history.go(-1);">취 소</button>
+                </div>      
+            </div><!-- end card -->        
+        </div><!-- end col-md-12 -->
 
-		</div><!-- end row -->
-    </section>
+    </div><!-- end row -->
+</section>
+
     <!-- /.content -->
 <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
 <script>
