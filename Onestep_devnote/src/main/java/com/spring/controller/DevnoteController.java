@@ -1,20 +1,27 @@
 package com.spring.controller;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.spring.command.ModifyProjectCommand;
 import com.spring.command.PageMaker;
+import com.spring.command.RegistFeedCommand;
+import com.spring.dto.CalendarVO;
 import com.spring.dto.NoteVO;
 import com.spring.dto.ProjectVO;
 import com.spring.service.NoteService;
@@ -118,18 +125,64 @@ public class DevnoteController {
 	
 	
 	@GetMapping("/feed")
-	public ModelAndView feed(int projectId, ModelAndView mnv) throws SQLException {
+	public ModelAndView feedList(int projectId, ModelAndView mnv) throws SQLException {
 		String url = "/devnote/feed";
 		
 		List<NoteVO> noteList = noteService.feedList(projectId);
+		
+		ProjectVO project = projectService.detail(projectId);
+		mnv.addObject("project", project);
+		
 		mnv.addObject("noteList", noteList);
+		mnv.setViewName(url);
+		return mnv;
+	}
+	
+	
+	@PostMapping(value="/feedRegist", produces="text/plain; charset=utf-8")
+	public ModelAndView feedRegist(RegistFeedCommand regCommand, ModelAndView mnv) throws SQLException {
+		String url = "/devnote/registFeed_success";
+		
+		NoteVO note = regCommand.toNoteVO();
+	
+		System.out.println(note);
+		
+		note.getNoteRegDate();
+		
+		
+		noteService.regist(note);
+		mnv.setViewName(url);
+		return mnv;	
+		
+	}
+	
 
+
+	
+	@GetMapping("/calendar")
+	public ModelAndView calendar(int projectId,  ModelAndView mnv) throws SQLException {
+		String url = "/devnote/calendar";
+		
+		
+		ProjectVO project = projectService.detail(projectId);
+		List<CalendarVO> cal = projectService.calList(projectId);
+		
+		mnv.addObject("calendar",cal);
+		mnv.addObject("projectId", projectId);
+		mnv.addObject("project", project);
+		mnv.setViewName(url);
+		return mnv;
+		
+	}
+	
+	@PostMapping(value="/calendar_success", produces="text/plain; charset=utf-8")
+	public ModelAndView calendarList(ModelAndView mnv) throws SQLException {
+		String url = "/devnote/calendar_success";
 		
 		
 		mnv.setViewName(url);
 		return mnv;
 	}
-	
 	
 	
 }

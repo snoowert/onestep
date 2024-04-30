@@ -25,8 +25,8 @@
 	
 	<insert id="insertNote" parameterType="note">
 		insert into 
-		developnote(noteid, notetitle, notecontent, noteviewpoint, noteregdate, memberid, projectid)
-		values(#{noteId}, #{noteTitle}, #{noteContent}, #{noteViewPoint}, #{noteRegDate}, #{memberId}, #{projectId})
+		developnote(noteid, notetitle, notecontent, noteviewpoint, memberid, projectid)
+		values(#{noteId}, #{noteTitle}, #{noteContent}, #{noteViewPoint}, #{memberId}, #{projectId})
 	</insert>
 		
 	<update id="updateNote" parameterType="note">

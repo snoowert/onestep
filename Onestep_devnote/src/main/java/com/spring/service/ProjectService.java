@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.spring.command.PageMaker;
+import com.spring.dto.CalendarVO;
 import com.spring.dto.ProjectVO;
 
 public interface ProjectService {
@@ -16,6 +17,12 @@ public interface ProjectService {
 	void regist(ProjectVO pj) throws SQLException;
 	void modify(ProjectVO pj) throws SQLException;
 	void remove(int projectId) throws SQLException;
+	
+	
+	
+	
+	// 달력
+	List<CalendarVO> calList(int projectId) throws SQLException;
 	
 
 }

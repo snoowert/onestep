@@ -60,6 +60,12 @@ public class NoteVO {
 	public void setNoteRegDate(Date noteRegDate) {
 		this.noteRegDate = noteRegDate;
 	}
+	@Override
+	public String toString() {
+		return "NoteVO [noteId=" + noteId + ", projectId=" + projectId + ", memberId=" + memberId + ", noteTitle="
+				+ noteTitle + ", noteContent=" + noteContent + ", noteViewPoint=" + noteViewPoint + ", noteRegDate="
+				+ noteRegDate + "]";
+	}
 
 
 	

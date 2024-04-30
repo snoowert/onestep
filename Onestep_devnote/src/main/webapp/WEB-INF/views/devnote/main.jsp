@@ -37,7 +37,7 @@
 			
 		<%@ include file="/WEB-INF/views/module/content_bottom.jsp" %>
 		<!-- 참여자 목록 -->
-		<%@include file="/WEB-INF/views/module/member.jsp" %>
+		<%@include file="/WEB-INF/views/module/devmember.jsp" %>
 
 
 

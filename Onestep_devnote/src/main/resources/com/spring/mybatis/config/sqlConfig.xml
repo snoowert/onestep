@@ -12,7 +12,7 @@
 		
 		<typeAlias type="com.spring.dto.ProjectVO" alias="project"/>
 		<typeAlias type="com.spring.dto.NoteVO" alias="note" />
-		
+		<typeAlias type="com.spring.dto.CalendarVO" alias="cal" />
 	
 	</typeAliases>
 	

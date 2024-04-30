@@ -12,10 +12,10 @@
 			<a class="nav-link" href="/devnote/feed?projectId=${project.projectId }">피드</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="/devnote/calendar">캘린더</a>
+			<a class="nav-link" href="/devnote/calendar?projectId=${project.projectId }">캘린더</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="/devnote/pjpds">파일&nbsp;</a>
+			<a class="nav-link" href="/devnote/pjpds?projectId=${project.projectId }">파일&nbsp;</a>
 		</li>
 	</ul>
 
