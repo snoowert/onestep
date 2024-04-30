@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>자료 수정</title>
 <%@ include file="/WEB-INF/views/base.jsp" %>
+<%@ include file="/WEB-INF/views/pds/pdsBanner.jsp" %>
 <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 </head>
 <body>

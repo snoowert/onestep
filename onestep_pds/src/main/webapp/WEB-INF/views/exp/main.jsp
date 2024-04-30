@@ -23,8 +23,9 @@
 		                <h3 class="card-title">Camera</h3>
 		            </div>
 		            <div class="card-body">
-		                <video src="<%=request.getContextPath() %>${exp.expname }" style="width:100%; height:610px" controls id="myVideo"></video>
-		            </div>
+					    <video src="<%=request.getContextPath() %>${exp.expname}" style="width:100%; height:610px" controls autoplay loop id="myVideo"></video>
+					</div>
+
 		        </div>
 		    </div>
 		
@@ -35,7 +36,7 @@
 		            </div>
 		            <div class="card-body">
 		                <div class="row justify-content-center">
-		                    <button class="btn btn-primary col-md-2" style="background:orange;color:black" onclick="video_on('SOS');">
+		                    <button class="btn btn-primary col-md-2" style="background:orange;color:black" onclick="video_on('sos');">
 		                        <img src="<%=request.getContextPath() %>/resources/img/light/sos.png" class="image-button-img">
 		                    </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		                    <button class="btn btn-primary col-md-2" style="background:orange;color:black" onclick="video_on('4WayFlasher');">
@@ -102,52 +103,52 @@
 			        <div class="card-body mx-auto w-100">
 			            <div class="row justify-content-center">
 			                <div class="col my-auto">
-			                    <button class="image-button" onclick="video_on('rock');">
+			                    <button class="image-button" onclick="video_on('rock');" style="width:116px;height:116px">
 			                        <img src="<%=request.getContextPath() %>/resources/img/sign/rock.png" class="image-button-img">
 			                    </button>
 			                </div>
 			                <div class="col my-auto">
-			                    <button class="image-button" onclick="video_on('across');">
+			                    <button class="image-button" onclick="video_on('across');" style="width:116px;height:116px">
 			                        <img src="<%=request.getContextPath() %>/resources/img/sign/across.png" class="image-button-img">
 			                    </button>
 			                </div>
 			                <div class="col my-auto">
-			                    <button class="image-button" onclick="video_on('speed50');">
+			                    <button class="image-button" onclick="video_on('speed50');" style="width:116px;height:116px">
 			                        <img src="<%=request.getContextPath() %>/resources/img/sign/speed50.png" class="image-button-img">
 			                    </button>
 			                </div>
 			                <div class="col my-auto">
-			                    <button class="image-button" onclick="video_on('person');">
+			                    <button class="image-button" onclick="video_on('person');" style="width:116px;height:116px">
 			                        <img src="<%=request.getContextPath() %>/resources/img/sign/person.png" class="image-button-img">
 			                    </button>
 			                </div>
 			                <div class="col my-auto">
-			                    <button class="image-button" onclick="video_on('stopSign');">
+			                    <button class="image-button" onclick="video_on('stopsign');" style="width:116px;height:116px">
 			                        <img src="<%=request.getContextPath() %>/resources/img/sign/stop.png" class="image-button-img">
 			                    </button>
 			                </div>
 			                <div class="col my-auto">
-			                    <button class="image-button" onclick="video_on('slow');">
+			                    <button class="image-button" onclick="video_on('slow');" style="width:116px;height:116px">
 			                        <img src="<%=request.getContextPath() %>/resources/img/sign/slow.png" class="image-button-img">
 			                    </button>
 			                </div>
 			                <div class="col my-auto">
-			                    <button class="image-button" onclick="video_on('keepout');">
+			                    <button class="image-button" onclick="video_on('car');" style="width:116px;height:116px">
+			                        <img src="<%=request.getContextPath() %>/resources/img/sign/car.png" class="image-button-img">
+			                    </button>
+			                </div>
+			                <div class="col my-auto">
+			                    <button class="image-button" onclick="video_on('bike');" style="width:116px;height:116px">
+			                        <img src="<%=request.getContextPath() %>/resources/img/sign/bike.png" class="image-button-img">
+			                    </button>
+			                </div>
+			                <div class="col my-auto">
+			                    <button class="image-button" onclick="video_on('keepout');" style="width:116px;height:116px">
 			                        <img src="<%=request.getContextPath() %>/resources/img/sign/keepout.png" class="image-button-img">
 			                    </button>
 			                </div>
 			                <div class="col my-auto">
-			                    <button class="image-button" onclick="video_on('keepout');">
-			                        <img src="<%=request.getContextPath() %>/resources/img/sign/keepout.png" class="image-button-img">
-			                    </button>
-			                </div>
-			                <div class="col my-auto">
-			                    <button class="image-button" onclick="video_on('keepout');">
-			                        <img src="<%=request.getContextPath() %>/resources/img/sign/keepout.png" class="image-button-img">
-			                    </button>
-			                </div>
-			                <div class="col my-auto">
-			                    <button class="image-button" onclick="video_on('track');">
+			                    <button class="image-button" onclick="video_on('track');" style="width:116px;height:116px">
 			                        <img src="<%=request.getContextPath() %>/resources/img/sign/track.png" class="image-button-img">
 			                    </button>
 			                </div>
@@ -181,41 +182,6 @@
 	            console.error('Ajax 요청 중 에러가 발생했습니다:', error);
 	        }
 	    });
-	}
-	function led_start(num){
-		let url = "built_in/" + num;
-		
-		$.ajax({
-			"url": url,
-			"method":"GET",
-			"success" : function(result){
-				alert(result);
-			}
-		});
-	}
-	
-	function move(move_text){
-		let url = "move/" + move_text;
-		
-		$.ajax({
-			"url": url,
-			"method":"GET",
-			"success" : function(result){
-				alert(result);
-			}
-		});
-	}
-	function ipInput(){
-		
-		var ip_form = $("#ip_form").serialize()
-		console.log(ip_form);
-		let url="ip_set";
-		$.ajax({
-			"url":url,
-			"data":ip_form,
-			"method":"POST",
-			"success" : function(){}
-		});
 	}
 </script>
 <%@ include file="/WEB-INF/views/modules/footer.jsp" %>

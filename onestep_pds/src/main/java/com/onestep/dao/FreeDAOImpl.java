@@ -29,6 +29,7 @@ public class FreeDAOImpl implements FreeDAO{
 	    return sqlsession.selectList("Free-Mapper.selectFreeList", pageMaker, rows);
 	}
 
+
 	@Override
 	public int selectFreeListCount(PageMaker pageMaker) throws SQLException {
 		return sqlsession.selectOne("Free-Mapper.selectFreeListCount",pageMaker);

@@ -3,7 +3,7 @@
 
 <%@ include file="/WEB-INF/views/module/header.jsp" %>
 <script>
-	alert("삭제 되었습니다.");
-	window.location.href='main';
-	window.opener.location.reload();
+qnaid="<%= request.getAttribute("qnaid") %>";
+alert("삭제 되었습니다.");
+location.href ='detail?qnaid='+qnaid;
 </script>

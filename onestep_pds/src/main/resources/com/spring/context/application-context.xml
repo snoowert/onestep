@@ -45,6 +45,10 @@
 		  p:sqlSession-ref="sqlSession"/>
 	<bean id="ExpDAO" class="com.exp.dao.ExpDAOImpl"
 		p:sqlsession-ref="sqlSession"/>
+	<bean id="QnADAO" class="com.qna.dao.QnADAOImpl"
+		p:sqlSession-ref="sqlSession"/>
+	<bean id="AnswerDAO" class="com.qna.dao.AnswerDAOImpl"
+		p:sqlSession-ref="sqlSession"/>
 	<!-- service -->
 	<bean id="PdsService" class="com.pds.service.PdsServiceImpl"
 		p:pdsDAO-ref="PdsDAO"
@@ -61,4 +65,12 @@
 	<bean id="ExpService"
 		class="com.exp.service.ExpServiceImpl"
 		p:expDAO-ref="ExpDAO"/>
+	<bean id="MainService"
+		class="com.main.service.MainServiceImpl"
+		p:freeDAO-ref="FreeDAO"/>
+	<bean id="QnAService"
+		class="com.qna.service.QnAServiceImpl"
+		p:answerDAO-ref="AnswerDAO"
+		p:qnADAO-ref="QnADAO"
+		p:memberDAO-ref="MemberDAO"/>
 </beans>
