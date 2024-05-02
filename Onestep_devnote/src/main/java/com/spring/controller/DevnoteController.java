@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,6 +21,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.spring.command.ModifyProjectCommand;
 import com.spring.command.PageMaker;
+import com.spring.command.RegistCalendarCommand;
 import com.spring.command.RegistFeedCommand;
 import com.spring.dto.CalendarVO;
 import com.spring.dto.NoteVO;
@@ -131,6 +133,7 @@ public class DevnoteController {
 		List<NoteVO> noteList = noteService.feedList(projectId);
 		
 		ProjectVO project = projectService.detail(projectId);
+		
 		mnv.addObject("project", project);
 		
 		mnv.addObject("noteList", noteList);
@@ -166,6 +169,7 @@ public class DevnoteController {
 		
 		ProjectVO project = projectService.detail(projectId);
 		List<CalendarVO> cal = projectService.calList(projectId);
+		System.out.println(cal.isEmpty());
 		
 		mnv.addObject("calendar",cal);
 		mnv.addObject("projectId", projectId);
@@ -175,14 +179,39 @@ public class DevnoteController {
 		
 	}
 	
-	@PostMapping(value="/calendar_success", produces="text/plain; charset=utf-8")
-	public ModelAndView calendarList(ModelAndView mnv) throws SQLException {
-		String url = "/devnote/calendar_success";
-		
-		
-		mnv.setViewName(url);
-		return mnv;
-	}
 	
+ 	@PostMapping("/save-event")
+    @ResponseBody
+    public String saveEventToDB(RegistCalendarCommand regCalCommand) throws Exception{
+        // eventData 객체로부터 데이터를 추출하여 CalendarVO 객체에 설정
+ 		System.out.println(regCalCommand.getTitle());
+        CalendarVO calendarVO = regCalCommand.toVO();
+        
+
+        // CalendarService를 사용하여 DB에 일정 저장
+        projectService.calInsert(calendarVO);
+
+        return "일정이 성공적으로 저장되었습니다.";
+    }
 	
+ 	@PostMapping("/deleteCalendar")
+    @ResponseBody
+    public String deleteCalendar(@RequestParam("id") int eventId) throws Exception{
+
+ 		projectService.calDelete(eventId);
+        return "이벤트가 성공적으로 삭제되었습니다.";
+    }
+	
+ 	
+ 	
+ 	
+ 	@GetMapping("/projectFile")
+ 	public ModelAndView projectFileList(ModelAndView mnv) throws Exception {
+ 		String url = "/devnote/projectFile";
+ 		
+ 		
+ 		mnv.setViewName(url);
+ 		return mnv;
+ 	}
+ 	
 }

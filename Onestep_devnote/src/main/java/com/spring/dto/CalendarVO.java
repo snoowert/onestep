@@ -12,6 +12,10 @@ public class CalendarVO {
 	private String content;
 	private int memberId;
 	private int projectId;
+	
+	private String startDate;
+	private String endDate;
+	
 	public int getId() {
 		return id;
 	}
@@ -60,15 +64,20 @@ public class CalendarVO {
 	public void setProjectId(int projectId) {
 		this.projectId = projectId;
 	}
-	@Override
-	public String toString() {
-		return "CalendarVO [id=" + id + ", callId=" + callId + ", title=" + title + ", startd=" + startd + ", endd="
-				+ endd + ", Content=" + content + ", memberId=" + memberId + ", projectId=" + projectId + "]";
-	}
-	
 	
 
-	
+	public String getStartDate() {
+		return startDate;
+	}
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+	public String getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
 	
 	
 

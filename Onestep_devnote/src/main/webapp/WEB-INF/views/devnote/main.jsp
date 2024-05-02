@@ -19,7 +19,8 @@
 			<%@ include file="/WEB-INF/views/module/content_top.jsp" %>
 			<div class="card-body" style="padding-bottom:-20px;">
 				<h2 class="card-title">${project.projectName }</h2>
-			<hr style="width:90%;  margin-left : auto; margin-right : auto;">
+				<button type="button" class="btn btn-secondary" onclick="OpenWindow('modifyProject?projectId=${project.projectId}', '프로젝트 정보 수정', 700, 500);">수정</button>
+			<hr/>
 			<!-- 설명 -->
 			</div>
 			<div class="card-body"> 
@@ -28,7 +29,6 @@
 			<div>
 				<div>
 				
-				<button type="button" class="btn btn-primary" onclick="OpenWindow('modifyProject?projectId=${project.projectId}', '프로젝트 정보 수정', 700, 500);">수정</button>
 				</div>
 			
 			</div>

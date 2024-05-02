@@ -16,8 +16,20 @@ public class CalendarDAOImpl implements CalendarDAO{
 	
 	@Override
 	public List<CalendarVO> selectCalendarList(int projectId) throws SQLException {
+		CalendarVO cal = new CalendarVO();
 		return sqlSession.selectList("Calendar-Mapper.selectCalendarList", projectId);
 
+	}
+
+	@Override
+	public void insertCalendar(CalendarVO cal) throws SQLException {
+		sqlSession.insert("Calendar-Mapper.insertCalendar", cal);
+	}
+
+	@Override
+	public void deleteCalendar(int id) throws SQLException {
+		// TODO Auto-generated method stub
+		sqlSession.delete("Calendar-Mapper.deleteCalendar",id);
 	}
 
 

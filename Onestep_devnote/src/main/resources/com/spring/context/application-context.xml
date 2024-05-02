@@ -13,6 +13,7 @@
 		  p:noteDAO-ref="NoteDAO"
 		  
 		  />
+
 		  
 	<bean id="CalendarDAO"
 		  class="com.spring.dao.CalendarDAOImpl"
@@ -29,6 +30,14 @@
 		  p:projectDAO-ref="ProjectDAO"
 		  p:calendarDAO-ref="CalendarDAO"
 		  />
+		  
+		  
+		  
+	<bean id="ProjectFileDAO"
+		  class="com.spring.dao.ProjectFileDAOImpl"
+		  p:sqlSession-ref="sqlSession"/>
+
+	
 		
 	
 </beans>

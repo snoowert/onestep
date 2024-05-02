@@ -9,4 +9,6 @@ public interface CalendarDAO {
 	
 	List<CalendarVO> selectCalendarList(int projectId) throws SQLException;
 	
+	void insertCalendar(CalendarVO cal) throws SQLException;
+	void deleteCalendar(int id) throws SQLException;
 }

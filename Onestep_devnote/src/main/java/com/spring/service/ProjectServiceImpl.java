@@ -1,6 +1,9 @@
 package com.spring.service;
 
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import com.spring.command.PageMaker;
@@ -51,9 +54,53 @@ public class ProjectServiceImpl implements ProjectService{
 		
 	}
 
+	
+	
+	
+	
 	@Override
 	public List<CalendarVO> calList(int projectId) throws SQLException {
-		return calendarDAO.selectCalendarList(projectId);
+		List<CalendarVO> cal = calendarDAO.selectCalendarList(projectId);
+		
+		DateFormat dateFomatter = new SimpleDateFormat("yyyy-MM-dd");
+		
+		for(CalendarVO calendar : cal ) {
+			calendar.setStartDate(dateFomatter.format(calendar.getStartd()));
+			calendar.setEndDate(dateFomatter.format(calendar.getEndd()));
+		}
+		System.out.println(cal);
+		return cal;
 	}
 
+	@Override
+	public void calInsert(CalendarVO cal) throws SQLException {
+		calendarDAO.insertCalendar(cal);
+	}
+
+	@Override
+	public void calDelete(int id) throws SQLException {
+		// TODO Auto-generated method stub
+		calendarDAO.deleteCalendar(id);
+	}
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

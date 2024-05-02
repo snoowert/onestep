@@ -15,7 +15,7 @@
 			<a class="nav-link" href="/devnote/calendar?projectId=${project.projectId }">캘린더</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="/devnote/pjpds?projectId=${project.projectId }">파일&nbsp;</a>
+			<a class="nav-link" href="/devnote/projectFile?projectId=${project.projectId }">파일&nbsp;</a>
 		</li>
 	</ul>
 

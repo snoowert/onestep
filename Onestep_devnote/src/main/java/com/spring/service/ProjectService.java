@@ -23,6 +23,7 @@ public interface ProjectService {
 	
 	// 달력
 	List<CalendarVO> calList(int projectId) throws SQLException;
-	
+	void calInsert(CalendarVO cal) throws SQLException;
+	void calDelete(int id) throws SQLException;
 
 }

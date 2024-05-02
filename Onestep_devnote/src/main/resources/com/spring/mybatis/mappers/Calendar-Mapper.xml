@@ -21,16 +21,19 @@
 	
 	<insert id="insertCalendar" parameterType="cal">
 		insert into
-		calendar(id, callId, title, startd, endd, content, memberid, projectid)
-		value(#{id} #{callId} #{title}, #{startd}, #{endd}, #{content}, #{memberId}, #{projectId})
+		calendar(id, title, startd, endd, memberid, projectid)
+		values(CALENDERID_SEQ.NEXTVAL, #{title}, #{startd}, #{endd}, #{memberId}, #{projectId})
 	
 	</insert>
 	
 	<update id="updateCalendar" parameterType="cal">
-	
+		
 	</update>
 	
-	<delete id="deleteCalendar" parameterType="int"></delete>
+	<delete id="deleteCalendar" parameterType="int">
+		delete from Calendar
+		where id = #{id}
+	</delete>
   
 
 </mapper>

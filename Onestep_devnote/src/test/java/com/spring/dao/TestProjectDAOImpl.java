@@ -1,6 +1,8 @@
 package com.spring.dao;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -16,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.command.PageMaker;
 import com.spring.dto.CalendarVO;
+import com.spring.dto.ProjectFileVO;
 import com.spring.dto.ProjectVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -30,22 +33,32 @@ public class TestProjectDAOImpl {
 	@Autowired
 	CalendarDAO calendarDAO;
 	
+	@Autowired
+	ProjectFileDAO projectFileDAO;
+	
 	@Test
 	public void testSelectProjectList() throws Exception {
-		
-		List<CalendarVO> cal = calendarDAO.selectCalendarList(37);
-		
-		assertNotNull(cal);
+		 
+		PageMaker pageMaker = new PageMaker();		
+		List<ProjectFileVO> pjFileList = projectFileDAO.selectProjectFileList(pageMaker);
+		int s = projectFileDAO.selectProjectFileListCount(pageMaker);
+		Assert.assertEquals(0, s);
 	}
 	
-//	
+	@Test
+	@Rollback
+	public void t() throws Exception{
+		int s = projectFileDAO.selectProjectFileByFileId(1).getFileDownCnt();
+		projectFileDAO.increaseProjectFileDownCnt(1);
+		assertEquals(s, projectFileDAO.selectProjectFileByFileId(1).getFileDownCnt());
+	}
 //	@Test
-//	public void testSelectProjectByProejctId() throws SQLException {
-//		int testProjectId = 1;
-//		ProjectVO pj = projectDAO.selectProjectByProjectId(testProjectId);
-//		Assert.assertEquals(pj.getProjectId(), testProjectId);
+//	public void testSelectProjectByProejctId() throws Exception {
+//		int testFileId = 1;
+//		ProjectFileVO pjfile = projectFileDAO.selectProjectFileByFileId(testFileId);
+//		Assert.assertEquals(pjfile.getFileId(), testFileId);
 //	}
-//	
+	
 //	
 //	
 //	
