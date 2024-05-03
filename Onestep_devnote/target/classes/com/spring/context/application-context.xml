@@ -4,40 +4,41 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="NoteDAO"
-		  class="com.spring.dao.NoteDAOImpl"
-		  p:sqlSession-ref="sqlSession" />
-		  
-	<bean id="NoteService"
-		  class="com.spring.service.NoteServiceImpl"
-		  p:noteDAO-ref="NoteDAO"
-		  
-		  />
+	<bean id="NoteDAO" class="com.spring.dao.NoteDAOImpl"
+		p:sqlSession-ref="sqlSession" />
 
-		  
-	<bean id="CalendarDAO"
-		  class="com.spring.dao.CalendarDAOImpl"
-		  p:sqlSession-ref="sqlSession"/>
-		  
-	
-	<bean id="ProjectDAO"
-		  class="com.spring.dao.ProjectDAOImpl"
-		  p:sqlSession-ref="sqlSession" 
-		  />
-		  
-	<bean id="ProjectService" 
-		  class="com.spring.service.ProjectServiceImpl"
-		  p:projectDAO-ref="ProjectDAO"
-		  p:calendarDAO-ref="CalendarDAO"
-		  />
-		  
-		  
-		  
+	<bean id="NoteService" class="com.spring.service.NoteServiceImpl"
+		p:noteDAO-ref="NoteDAO" />
+
+
+	<bean id="CalendarDAO" class="com.spring.dao.CalendarDAOImpl"
+		p:sqlSession-ref="sqlSession" />
+
+
+	<bean id="ProjectDAO" class="com.spring.dao.ProjectDAOImpl"
+		p:sqlSession-ref="sqlSession" />
+
+	<bean id="ProjectService"
+		class="com.spring.service.ProjectServiceImpl"
+		p:projectDAO-ref="ProjectDAO" p:calendarDAO-ref="CalendarDAO" />
+
+
+
 	<bean id="ProjectFileDAO"
-		  class="com.spring.dao.ProjectFileDAOImpl"
-		  p:sqlSession-ref="sqlSession"/>
+		class="com.spring.dao.ProjectFileDAOImpl"
+		p:sqlSession-ref="sqlSession" />
 
-	
+
+	<bean id="ProjectFileService"
+		class="com.spring.service.ProjectFileServiceImpl"
+		p:projectFileDAO-ref="ProjectFileDAO" />
 		
-	
+		
+	<bean id="fileUploadPath" class="java.lang.String">
+		<constructor-arg value="${savePath.projectFile}"></constructor-arg>
+	</bean>
+
+
+
+
 </beans>

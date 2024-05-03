@@ -1,11 +1,14 @@
 package com.spring.controller;
 
+import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -23,10 +27,13 @@ import com.spring.command.ModifyProjectCommand;
 import com.spring.command.PageMaker;
 import com.spring.command.RegistCalendarCommand;
 import com.spring.command.RegistFeedCommand;
+import com.spring.command.RegistFileCommand;
 import com.spring.dto.CalendarVO;
 import com.spring.dto.NoteVO;
+import com.spring.dto.ProjectFileVO;
 import com.spring.dto.ProjectVO;
 import com.spring.service.NoteService;
+import com.spring.service.ProjectFileService;
 import com.spring.service.ProjectService;
 
 @Controller
@@ -38,6 +45,12 @@ public class DevnoteController {
 	
 	@Autowired
 	private NoteService noteService;
+	
+	@Autowired
+	private ProjectFileService projectFileService;
+	
+	
+	
 	
 	@GetMapping("/list")
 	public ModelAndView list(ModelAndView mnv, @ModelAttribute PageMaker pageMaker) throws SQLException {
@@ -206,12 +219,73 @@ public class DevnoteController {
  	
  	
  	@GetMapping("/projectFile")
- 	public ModelAndView projectFileList(ModelAndView mnv) throws Exception {
+ 	public ModelAndView projectFileList(PageMaker pageMaker, int projectId, ModelAndView mnv) throws Exception {
  		String url = "/devnote/projectFile";
  		
+ 		ProjectVO project = projectService.detail(projectId);
+ 		List<ProjectFileVO> projectFileList = projectFileService.fileList(pageMaker);
+ 		
+ 		mnv.addObject("project", project);
+ 		mnv.addObject("projectId", projectId); 
+ 		mnv.addObject("projectFileList", projectFileList);
  		
  		mnv.setViewName(url);
  		return mnv;
  	}
+ 	
+ 	
+ 	@GetMapping("/projectFile_upload")
+ 	public ModelAndView projectFileUpload(int projectId, ModelAndView mnv) throws Exception {
+ 		String url = "/devnote/projectFile_upload";
+ 		
+ 		ProjectVO project = projectService.detail(projectId);
+
+		mnv.addObject("project", project); 		
+ 		mnv.setViewName(url);
+ 		return mnv;
+ 		
+ 	}
+
+	@Resource(name = "fileUploadPath")
+	private String fileUploadPath;
+ 	
+ 	@PostMapping(value="/projectFileRegist", produces="text/plain; charset=utf-8")
+ 	public ModelAndView uploadFile(RegistFileCommand regFile, ModelAndView mnv) throws Exception {
+ 		String url = "/devnote/projectFile_success";
+ 		
+ 		List<MultipartFile> multiFiles = regFile.getUploadFile();
+ 		String savePath = this.fileUploadPath;
+ 		
+ 		List<RegistFileCommand> projectFileList = saveFileToAttaches(multiFiles, savePath);
+ 		
+ 		mnv.setViewName(url);
+ 		return mnv;
+ 	}
+
+	private List<RegistFileCommand> saveFileToAttaches(List<MultipartFile> multiFiles, String savePath) throws Exception{
+		
+		if (multiFiles == null) return null;
+		
+		List<RegistFileCommand> projectFileList = new ArrayList<RegistFileCommand>();
+		for (MultipartFile multi : multiFiles) {
+			String uuid = UUID.randomUUID().toString().replace("-", "");
+			String fileName = uuid+"$$"+multi.getOriginalFilename();
+			
+			File target = new File(savePath, fileName);
+			target.mkdirs();
+			multi.transferTo(target);
+			
+			RegistFileCommand projectFile = new RegistFileCommand();
+			projectFile.setProjectFileName(fileName);
+			projectFile.setProjectFileType(fileName.substring(fileName.lastIndexOf('.') + 1)
+			.toUpperCase());
+	
+			projectFileList.add(projectFile);
+		}
+		return projectFileList;
+	}
+
+ 	
+ 	
  	
 }
