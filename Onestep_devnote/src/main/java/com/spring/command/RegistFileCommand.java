@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.spring.dto.ProjectFileVO;
+
 public class RegistFileCommand {
 	
 	private String projectFileId;
@@ -38,6 +40,12 @@ public class RegistFileCommand {
 		this.projectFileType = projectFileType;
 	}
 
+	public ProjectFileVO toProjectFileVO(){
+		ProjectFileVO pjFile = new ProjectFileVO();
+		pjFile.setFileName(this.projectFileName);
+		
+		return pjFile;
+	}
 
 	
 

@@ -41,7 +41,7 @@
 	<insert id="insertProjectFile" parameterType="pjfile">
 		insert into
 		projectfile (fileid, filename, filedowncnt, memberid, projectid)
-		values(projectfileid_seq.nextval, #{fileName }, #{fileDownCnt}, #{memberId}, #{projectId})
+		values(projectfileid_seq.nextval, #{fileName, jdbcType=VARCHAR }, #{fileDownCnt}, #{memberId}, #{projectId})
 	</insert>
 	<update id="increaseProjectFileDownCnt" parameterType="int">
 		update projectfile

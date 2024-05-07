@@ -11,7 +11,11 @@ public interface ProjectFileService {
 	
 	void uploadFile(ProjectFileVO projectFile) throws Exception;
 	void deleteFile(int fileId) throws Exception;
+	
+	ProjectFileVO getFileByFileId(int fileId) throws Exception;
 	void increaseDownCnt(int fileId) throws Exception;
+	
+	void removeFileByFileId(int fileId) throws Exception;
 	
 	
 	

@@ -53,7 +53,7 @@
                 <tbody>
                     <c:if test="${empty projectFileList}">
                         <tr>
-                            <td colspan="5">해당 내용이 없습니다.</td>
+                            <td colspan="4">해당 내용이 없습니다.</td>
                         </tr>
                     </c:if>
                     <c:forEach items="${projectFileList}" var="projectFile">
@@ -65,7 +65,7 @@
                             </td>
                             <td>${projectFile.memberId }</td>
                             <td><span class="badge bg-red">${projectFile.fileDownCnt }</span></td>
-                        	<td><input type="button" class="img-button" alt="삭제"></td>
+                        	<td><input type="button" class="img-button" onclick="delete_do();" alt="삭제"></td>
                         </tr>
                     </c:forEach>
                 </tbody>
@@ -84,6 +84,16 @@
 
 
 <script>
+
+function delete_do(){
+    if(confirm("삭제하시겠습니까? ")){
+        location.href ="/devnote/projectFile?fileid=${fileId}";
+    }else{
+        return;
+    }
+}
+
+
 function OpenWindow(UrlStr, WinTitle, WinWidth, WinHeight) {
 	winleft = (screen.width - WinWidth) / 2;
 	wintop = (screen.height - WinHeight) / 2;

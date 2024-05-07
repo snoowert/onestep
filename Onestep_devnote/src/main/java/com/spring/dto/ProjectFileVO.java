@@ -1,12 +1,20 @@
 package com.spring.dto;
 
+import java.util.List;
+
 public class ProjectFileVO {
 	
 	private int fileId;
+	private String uploadPath;
 	private String fileName;
 	private int fileDownCnt;
 	private int memberId;
 	private int projectId;
+	
+	private List<ProjectFileVO> projectFileList;
+	
+	
+
 	public int getFileId() {
 		return fileId;
 	}
@@ -37,9 +45,20 @@ public class ProjectFileVO {
 	public void setProjectId(int projectId) {
 		this.projectId = projectId;
 	}
+	public String getUploadPath() {
+		return uploadPath;
+	}
+	public void setUploadPath(String uploadPath) {
+		this.uploadPath = uploadPath;
+	}
 	
 	
-	
+	public List<ProjectFileVO> getProjectFileList() {
+		return projectFileList;
+	}
+	public void setProjectFileList(List<ProjectFileVO> projectFileList) {
+		this.projectFileList = projectFileList;
+	}
 	
 	
 

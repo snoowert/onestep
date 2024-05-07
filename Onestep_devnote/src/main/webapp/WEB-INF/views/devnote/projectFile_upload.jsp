@@ -55,9 +55,11 @@ body {
 			<div class="container-fluid" style="margin-top:50px;">
 				<form class="mb-3" name="pjFileform" id="pjFileform" action="/devnote/projectFileRegist" method="POST" enctype="multipart/form-data">								
 				<div class="card">
+						<input type="hidden" id="fileId">
 						<div class="card-header">
-							<input type="file" name="uploadFile" style="display:inline">
+							<input type="file" id="fileName" name="fileName" style="display:inline">
 						</div>
+						<input type="hidden" id="memberId" value="2">
 				</div>									
 				<br>
 				<input type="button" class="btn btn-primary" value="등록" onclick="savePost()">&nbsp;&nbsp;&nbsp;
@@ -77,33 +79,24 @@ body {
 <script>
 
 function savePost() {
-	
-	var inputs = $('input[name="uploadFile"]');
-	for(var input of inputs){
-		//console.log(input.name+" : "+input.value);
-		if(input.value==""){
-			alert("파일을 선택하세요.");
-			input.focus();
-			input.click();
-			return;
-		}
-	}
-	$("form[name='pjFileform']").submit();
-	
+    var inputs = $('input[name="fileName"]');
+    var fileSelected = false;
+    
+    for (var input of inputs) {
+        if (input.files.length > 0) {
+            fileSelected = true;
+            break;
+        }
+    }
+    
+    if (!fileSelected) {
+        alert("파일을 선택하세요.");
+        return;
+    }
+    
+    $("form[name='pjFileform']").submit();
 }
 
-var dataNum=0;
-
-function addFile_go(){
-	
-	var div=$('<div>').addClass("inputRow").attr("data-no",dataNum);	
-	var input=$('<input>').attr({"type":"file","name":"uploadFile"}).css("display","inline");
-	div.append(input).append("<button onclick='remove_go("+dataNum+");' style='border:0;outline:0;' class='badge bg-red' type='button'>X</button>");	
-	$('.fileInput').append(div); 
-	
-	dataNum++;	
-	
-}
 
 function regist_go(){
 	

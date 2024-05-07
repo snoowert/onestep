@@ -34,4 +34,15 @@ public class ProjectFileServiceImpl implements ProjectFileService{
 		projectFileDAO.increaseProjectFileDownCnt(fileId);
 	}
 
+	@Override
+	public ProjectFileVO getFileByFileId(int fileId) throws Exception {
+		return projectFileDAO.selectProjectFileByFileId(fileId);
+	}
+
+	@Override
+	public void removeFileByFileId(int fileId) throws Exception {
+		projectFileDAO.deleteProjectFile(fileId);
+		
+	}
+
 }
