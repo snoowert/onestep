@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전방카메라</title>
+    <style>
+        .btn {
+            padding: 7px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn-danger {
+            background-color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <iframe src="http://127.0.0.1:5000/onestep/video"
+                style="width: 470px; height: 270px; border-radius: 10px; border:1px solid black;"></iframe>
+
+        <div style="text-align:end; padding-right:10px;">
+            <button class="btn" onclick="startDriving()">주행시작</button>
+            <button class="btn btn-danger" onclick="stopDriving()">긴급정지</button>
+        </div>
+    </div>
+
+    <script>
+        function startDriving() {
+            fetch('/onestep/start-driving', { method: 'POST' })
+            .then(response => response.json())
+            .then(data => console.log('주행 시작:', data))
+            .catch(error => console.error('주행 시작 오류:', error));
+        }
+
+        function stopDriving() {
+            fetch('/onestep/stop-driving', { method: 'POST' })
+            .then(response => response.json())
+            .then(data => console.log('긴급 정지:', data))
+            .catch(error => console.error('긴급 정지 오류:', error));
+        }
+        function manualControl(direction) {
+	    fetch('/onestep/manual-control', { method: 'POST',
+	        headers: {
+	            'Content-Type': 'application/json'
+	        },
+	        body: JSON.stringify({ direction: direction })
+	    })
+	    .then(response => response.json())
+	    .then(data => console.log('수동 주행:', data))
+	    .catch(error => console.error('수동 주행 오류:', error));
+	}
+        function lightcontrol(direction) {
+            fetch('http://127.0.0.1:5000/onestep/light', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ direction: direction })
+            })
+            .then(response => response.json())
+            .then(data => console.log('불빛:', data))
+            .catch(error => console.error('불빛 오류:', error));
+        }
+        function speedcontrol(direction) {
+	    fetch('http://127.0.0.1:5000/onestep/speed', {
+	        method: 'POST',
+	        headers: {
+	            'Content-Type': 'application/json'
+	        },
+	        body: JSON.stringify({ direction: direction })
+	    })
+	    .then(response => response.json())
+	    .then(data => console.log('스피드:', data))
+	    .catch(error => console.error('스피드 오류:', error));
+	}
+    </script>
+</body>
+</html>
